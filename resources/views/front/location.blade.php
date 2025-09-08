@@ -16,7 +16,7 @@
         <div class="row">
             @if($properties->count() == 0)
                 <div class="text-danger mt_30 mb_30">
-                    No property found in this location.
+                    No se encontró ninguna propiedad en esta ubicación.
                 </div>
             @else
                 @foreach($properties as $item)
@@ -27,16 +27,16 @@
                             <div class="top">
                                 @if($item->purpose == 'Sale')
                                 <div class="status-sale">
-                                    For Sale
+                                    En venta
                                 </div>
                                 @else
                                 <div class="status-rent">
-                                    For Rent
+                                    En alquiler
                                 </div>
                                 @endif
                                 @if($item->is_featured == 'Yes')
                                 <div class="featured">
-                                    Featured
+                                    Destacados
                                 </div>
                                 @endif
                             </div>

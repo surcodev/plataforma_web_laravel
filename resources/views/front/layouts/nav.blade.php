@@ -19,16 +19,16 @@
                             <a href="{{ route('home') }}" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('property-search') }}" class="nav-link">Properties</a>
+                            <a href="{{ url('property-search') }}" class="nav-link">Propiedades</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('agents') }}" class="nav-link">Agents</a>
+                            <a href="{{ route('agents') }}" class="nav-link">Agentes</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('locations') }}" class="nav-link">Locations</a>
+                            <a href="{{ route('locations') }}" class="nav-link">Ubicaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('pricing') }}" class="nav-link">Pricing</a>
+                            <a href="{{ route('pricing') }}" class="nav-link">Precios</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('faq') }}" class="nav-link">FAQ</a>
@@ -37,16 +37,16 @@
                             <a href="{{ route('blog') }}" class="nav-link">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('contact') }}" class="nav-link">Contact</a>
+                            <a href="{{ route('contact') }}" class="nav-link">Contacto</a>
                         </li>
 
                         @if(Auth::guard('web')->check())
                         <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link">Customer Dashboard</a>
+                            <a href="{{ route('dashboard') }}" class="nav-link">Cliente Dashboard</a>
                         </li>
                         @elseif(Auth::guard('agent')->check())
                         <li class="nav-item">
-                            <a href="{{ route('agent_dashboard') }}" class="nav-link">Agent Dashboard</a>
+                            <a href="{{ route('agent_dashboard') }}" class="nav-link">Agente Dashboard</a>
                         </li>
                         @else
                         <li class="nav-item">

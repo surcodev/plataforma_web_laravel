@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Blog</h2>
+                <h2>Noticias del día</h2>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                             </p>
                         </div>
                         <div class="button">
-                            <a href="{{ route('post',$item->slug) }}" class="btn btn-primary">Read More</a>
+                            <a href="{{ route('post',$item->slug) }}" class="btn btn-primary">Leer más</a>
                         </div>
                     </div>
                 </div>

@@ -24,9 +24,9 @@
                     </div>
 
                     <div class="widget">
-                        <h2>Location</h2>
+                        <h2>Ubicación</h2>
                         <select name="location" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Location</option>
+                            <option value="">Seleccionar ubicación</option>
                             @foreach($locations as $location)
                                 <option value="{{ $location->id }}" @if($form_location == $location->id) selected @endif>{{ $location->name }}</option>
                             @endforeach
@@ -34,9 +34,9 @@
                     </div>
 
                     <div class="widget">
-                        <h2>Type</h2>
+                        <h2>Tipo</h2>
                         <select name="type" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Type</option>
+                            <option value="">Seleccionar tipo</option>
                             @foreach($types as $type)
                                 <option value="{{ $type->id }}" @if($form_type == $type->id) selected @endif>{{ $type->name }}</option>
                             @endforeach
@@ -44,18 +44,18 @@
                     </div>
 
                     <div class="widget">
-                        <h2>Purpose</h2>
+                        <h2>Propósito</h2>
                         <select name="purpose" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Purpose</option>
-                            <option value="Rent" @if($form_purpose == 'Rent') selected @endif>For Rent</option>
-                            <option value="Sale" @if($form_purpose == 'Sale') selected @endif>For Sale</option>
+                            <option value="Seleccionar propósito"></option>
+                            <option value="Rent" @if($form_purpose == 'Rent') selected @endif>En alquiler</option>
+                            <option value="Sale" @if($form_purpose == 'Sale') selected @endif>En venta</option>
                         </select>
                     </div>
 
                     <div class="widget">
-                        <h2>Amenities</h2>
+                        <h2>Comodidades</h2>
                         <select name="amenity" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Amenity</option>
+                            <option value="">Seleccionar comodidad</option>
                             @foreach($amenities as $amenity)
                                 <option value="{{ $amenity->id }}" @if($form_amenity == $amenity->id) selected @endif>{{ $amenity->name }}</option>
                             @endforeach
@@ -142,7 +142,7 @@
                         <div class="row">
 
                             @if($properties->count() == 0)
-                            <div class="text-danger">No Property Found</div>
+                            <div class="text-danger">No se encontró ninguna propiedad</div>
                             @else
                             @foreach($properties as $item)
                             <div class="col-lg-6 col-md-6 col-sm-12">

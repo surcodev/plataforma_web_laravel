@@ -8,9 +8,9 @@
             <div class="col-md-12">
                 <div class="item">
                     <div class="text">
-                        <h2>Discover Your New Home</h2>
+                        <h2>Descubre tu nuevo hogar</h2>
                         <p>
-                            You can get your desired awesome properties, homes, condos etc. here by name, category or location.
+                            Encuentra las mejores propiedades, casas, departamentos y más, por nombre, categoría o ubicación.
                         </p>
                     </div>
                     <div class="search-section">
@@ -19,13 +19,13 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="Find Anything ..." value="">
+                                            <input type="text" name="name" class="form-control" placeholder="Encuentra lo que buscas ..." value="">
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <select name="location" class="form-select select2">
-                                                <option value="">Select Location</option>
+                                                <option value="">Seleccionar ubicación</option>
                                                 @foreach($search_locations as $location)
                                                     <option value="{{ $location->id }}">{{ $location->name }}</option>
                                                 @endforeach
@@ -35,7 +35,7 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <select name="type" class="form-select select2">
-                                                <option value="">Select Type</option>
+                                                <option value="">Selecionar tipo</option>
                                                 @foreach($search_types as $type)
                                                     <option value="{{ $type->id }}">{{ $type->name }}</option>
                                                 @endforeach
@@ -45,7 +45,7 @@
                                     <div class="col-lg-3">
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fas fa-search"></i>
-                                            Search
+                                            Buscar
                                         </button>
                                     </div>
                                 </div>
@@ -64,8 +64,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Featured Properties</h2>
-                    <p>Find out the awesome properties that you must love</p>
+                    <h2>Propiedades destacadas</h2>
+                    <p>Descubre las increíbles propiedades que te encantarán</p>
                 </div>
             </div>
         </div>
@@ -78,16 +78,16 @@
                         <div class="top">
                             @if($item->purpose == 'Sale')
                             <div class="status-sale">
-                                For Sale
+                                En venta
                             </div>
                             @else
                             <div class="status-rent">
-                                For Rent
+                                En alquiler
                             </div>
                             @endif
                             @if($item->is_featured == 'Yes')
                             <div class="featured">
-                                Featured
+                                Destacado
                             </div>
                             @endif
                         </div>
@@ -151,9 +151,9 @@
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div class="text">
-                        <h2>Years of Experience</h2>
+                        <h2>Años de experiencia</h2>
                         <p>
-                            With decades of combined experience in the industry, our agents have the expertise and knowledge to provide you with a seamless home-buying experience.
+                            Con décadas de experiencia combinada en la industria, nuestros agentes tienen la experiencia y el conocimiento para brindarle una experiencia de compra de vivienda perfecta.
                         </p>
                     </div>
                 </div>
@@ -164,9 +164,9 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <div class="text">
-                        <h2>Competitive Prices</h2>
+                        <h2>Precios competitivos</h2>
                         <p>
-                            We understand that buying a home is a significant investment, which is why we strive to offer competitive prices to our clients.
+                            Entendemos que comprar una casa es una inversión importante, por eso nos esforzamos por ofrecer precios competitivos a nuestros clientes.
                         </p>
                     </div>
                 </div>
@@ -177,9 +177,9 @@
                         <i class="fas fa-share-alt"></i>
                     </div>
                     <div class="text">
-                        <h2>Responsive Communication</h2>
+                        <h2>Comunicación receptiva</h2>
                         <p>
-                            Our responsive agents are here to answer your questions and address your concerns, ensuring a smooth and stress-free home-buying experience.
+                            Nuestros agentes receptivos están aquí para responder sus preguntas y abordar sus inquietudes, garantizando una experiencia de compra de vivienda fluida y sin estrés.
                         </p>
                     </div>
                 </div>
@@ -194,9 +194,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Agents</h2>
+                    <h2>Agentes</h2>
                     <p>
-                        Meet our expert property agents from the following list
+                        Conozca a nuestros agentes inmobiliarios expertos de la siguiente lista
                     </p>
                 </div>
             </div>
@@ -227,9 +227,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Locations</h2>
+                    <h2>Ubicaciones</h2>
                     <p>
-                        Check out all the properties of important locations
+                        Consulta todas las propiedades de lugares importantes
                     </p>
                 </div>
             </div>
@@ -259,7 +259,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="main-header">Our Happy Clients</h2>
+                <h2 class="main-header">Nuestros Clientes Felices</h2>
             </div>
         </div>
         <div class="row">
@@ -292,9 +292,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Latest News</h2>
+                    <h2>Últimas noticias</h2>
                     <p>
-                        Check our latest news from the following section
+                        Consulta nuestras últimas novedades en la siguiente sección
                     </p>
                 </div>
             </div>
@@ -316,7 +316,7 @@
                             </p>
                         </div>
                         <div class="button">
-                            <a href="{{ route('post',$item->slug) }}" class="btn btn-primary">Read More</a>
+                            <a href="{{ route('post',$item->slug) }}" class="btn btn-primary">Leer más</a>
                         </div>
                     </div>
                 </div>

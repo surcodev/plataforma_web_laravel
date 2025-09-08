@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Pricing</h2>
+                <h2>Planes de Subscripción</h2>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@
                         </ul>
                         <div class="buy">
                             <a href="{{ route('agent_payment') }}" class="btn btn-primary">
-                                Choose Plan
+                                Elegir plan
                             </a>
                         </div>
                     </div>

@@ -3,18 +3,18 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="item">
-                    <h2 class="heading">Important Links</h2>
+                    <h2 class="heading">Secciones clave</h2>
                     <ul class="useful-links">
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('property_search') }}">Properties</a></li>
-                        <li><a href="{{ route('agents') }}">Agents</a></li>
+                        <li><a href="{{ route('property_search') }}">Propiedades</a></li>
+                        <li><a href="{{ route('agents') }}">Agentes</a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="item">
-                    <h2 class="heading">Locations</h2>
+                    <h2 class="heading">Ubicación</h2>
                     <ul class="useful-links">
                         @php
                             $locations = \App\Models\Location::take(4)->get();
@@ -28,7 +28,7 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="item">
-                    <h2 class="heading">Contact</h2>
+                    <h2 class="heading">Contáctanos</h2>
 
                     @if($global_setting->footer_address != '')
                     <div class="list-item">
@@ -46,7 +46,7 @@
                         <div class="left">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <div class="right">{{ $global_setting->footer_email }}</div>
+                        <div class="right">{{ $global_setting->footer_phone }}</div>
                     </div>
                     @endif
 
@@ -55,7 +55,7 @@
                         <div class="left">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="right">{{ $global_setting->footer_phone }}</div>
+                        <div class="right">{{ $global_setting->footer_email }}</div>
                     </div>
                     @endif
                     
@@ -92,19 +92,18 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="item">
-                    <h2 class="heading">Newsletter</h2>
+                    <h2 class="heading">Noticias</h2>
                     <p>
-                        To get the latest news from our website, please
-                        subscribe us here:
+                        Para recibir las últimas noticias de nuestra web, suscríbete aquí:
                     </p>
                     <form action="{{ route('subscriber_send_email') }}" method="post" class="form_subscribe_ajax">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Your Email Address">
+                            <input type="text" name="email" class="form-control" placeholder="Tu correo electrónico">
                             <span class="text-danger error-text email_error"></span>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Subscribe Now">
+                            <input type="submit" class="btn btn-primary" value="Suscríbete ahora">
                         </div>
                     </form>
                 </div>
@@ -124,9 +123,9 @@
             <div class="col-lg-6 col-md-6">
                 <div class="right">
                     <ul>
-                        <li><a href="{{ route('terms') }}">Terms of Use</a></li>
+                        <li><a href="{{ route('terms') }}">Términos de uso</a></li>
                         <li>
-                            <a href="{{ route('privacy') }}">Privacy Policy</a>
+                            <a href="{{ route('privacy') }}">Políticas de privacidad</a>
                         </li>
                     </ul>
                 </div>

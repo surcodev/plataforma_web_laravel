@@ -31,13 +31,13 @@
                 </ul>
             </li>
 
-            <li class="{{ Request::is('admin/package/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_package_index') }}"><i class="far fa-file"></i> <span>Package</span></a></li>
+            <li class="{{ Request::is('admin/package/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_package_index') }}"><i class="far fa-file"></i> <span>Paquete</span></a></li>
 
-            <li class="{{ Request::is('admin/order/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_order_index') }}"><i class="far fa-file"></i> <span>Orders</span></a></li>
+            <li class="{{ Request::is('admin/order/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_order_index') }}"><i class="far fa-file"></i> <span>Pedidos</span></a></li>
 
-            <li class="{{ Request::is('admin/customer/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_customer_index') }}"><i class="far fa-file"></i> <span>Customer</span></a></li>
+            <li class="{{ Request::is('admin/customer/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_customer_index') }}"><i class="far fa-file"></i> <span>Cliente</span></a></li>
 
-            <li class="{{ Request::is('admin/agent/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_agent_index') }}"><i class="far fa-file"></i> <span>Agent</span></a></li>
+            <li class="{{ Request::is('admin/agent/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_agent_index') }}"><i class="far fa-file"></i> <span>Agente</span></a></li>
 
             <li class="{{ Request::is('admin/testimonial/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_testimonial_index') }}"><i class="far fa-file"></i> <span>Testimonial</span></a></li>
 
@@ -45,13 +45,13 @@
 
             <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_faq_index') }}"><i class="far fa-file"></i> <span>FAQ</span></a></li>
 
-            <li class="{{ Request::is('admin/page/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_page_index') }}"><i class="far fa-file"></i> <span>Page Section</span></a></li>
+            <li class="{{ Request::is('admin/page/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_page_index') }}"><i class="far fa-file"></i> <span>Sección de página</span></a></li>
 
-            <li class="{{ Request::is('admin/subscriber/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_index') }}"><i class="far fa-file"></i> <span>Subscriber</span></a></li>
+            <li class="{{ Request::is('admin/subscriber/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_index') }}"><i class="far fa-file"></i> <span>Suscriptor</span></a></li>
 
-            <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_profile') }}"><i class="far fa-file"></i> <span>Edit Profile</span></a></li>
+            <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_profile') }}"><i class="far fa-file"></i> <span>Editar perfil</span></a></li>
 
-            <li><a class="nav-link" href="{{ route('admin_logout') }}"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin_logout') }}"><i class="fas fa-sign-out-alt"></i> <span>Cerra sesión</span></a></li>
 
         </ul>
     </aside>
