@@ -66,20 +66,20 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ $package->name }}</h2>
                         <h3 class="card-price">${{ $package->price }}</h3>
-                        <h4 class="card-day">({{ $package->allowed_days }} Days)</h4>
+                        <h4 class="card-day">({{ $package->allowed_days }} Días)</h4>
                         <hr />
                         <ul class="fa-ul">
                             <li>
-                                <span class="fa-li"><i class="{{ $allowed_properties_icon }}"></i></span>{{ $allowed_properties_value }} Properties Allowed
+                                <span class="fa-li"><i class="{{ $allowed_properties_icon }}"></i></span>{{ $allowed_properties_value }} Propiedades Permitidas
                             </li>
                             <li>
-                                <span class="fa-li"><i class="{{ $allowed_featured_properties_icon }}"></i></span>{{ $allowed_featured_properties_value }} Featured Property
+                                <span class="fa-li"><i class="{{ $allowed_featured_properties_icon }}"></i></span>{{ $allowed_featured_properties_value }} Propiedades Destacadas
                             </li>
                             <li>
-                                <span class="fa-li"><i class="{{ $allowed_photos_icon }}"></i></span>{{ $allowed_photos_value }} Photos per Property
+                                <span class="fa-li"><i class="{{ $allowed_photos_icon }}"></i></span>{{ $allowed_photos_value }} Fotos por propiedad
                             </li>
                             <li>
-                                <span class="fa-li"><i class="{{ $allowed_videos_icon }}"></i></span>{{ $allowed_videos_value }} Videos per Property
+                                <span class="fa-li"><i class="{{ $allowed_videos_icon }}"></i></span>{{ $allowed_videos_value }} Vídeos por propiedad
                             </li>
                         </ul>
                         <div class="buy">

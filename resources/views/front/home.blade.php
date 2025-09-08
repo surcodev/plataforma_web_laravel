@@ -137,9 +137,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Why Choose Us</h2>
+                    <h2>¿Por qué escogernos?</h2>
                     <p>
-                        Describing why we are best in the property business
+                            Somos la plataforma ideal para encontrar propiedades, casas y departamentos con facilidad, confianza y transparencia. Te ofrecemos herramientas avanzadas de búsqueda y asesoría personalizada para que tomes la mejor decisión en bienes raíces.
                     </p>
                 </div>
             </div>

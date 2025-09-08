@@ -18,12 +18,12 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="main-select-user d-flex justify-content-center align-items-center">
                     <div class="select-customer">
-                        <div><a href="{{ route('registration') }}">Customer Registration</a></div>
-                        <div><a href="{{ route('login') }}">Customer Login</a></div>
+                        <div><a href="{{ route('registration') }}">Registro de cliente</a></div>
+                        <div><a href="{{ route('login') }}">Inicio de sesión del cliente</a></div>
                     </div>
                     <div class="select-agent">
-                        <div><a href="{{ route('agent_registration') }}">Agent Registration</a></div>
-                        <div><a href="{{ route('agent_login') }}">Agent Login</a></div>
+                        <div><a href="{{ route('agent_registration') }}">Registro de agente</a></div>
+                        <div><a href="{{ route('agent_login') }}">Inicio de sesión de agente</a></div>
                     </div>
                 </div>  
             </div>
