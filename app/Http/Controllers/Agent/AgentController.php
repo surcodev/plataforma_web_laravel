@@ -332,7 +332,8 @@ class AgentController extends Controller
             $message .= 'Your payment has been successfully processed. Payment information is given below:<br><br>';
             $message .= 'Invoice No: '.$invoice_no.'<br>';
             $message .= 'Payment Method: PayPal<br>';
-            $message .= 'Transaction ID: '.$response->id.'<br>';
+            // $message .= 'Transaction ID: '.$response->id.'<br>';
+            $message .= 'Transaction ID: '.$response['id'].'<br>';
             $message .= 'Package Name: '.$package_data->name.'<br>';
             $message .= 'Paid Amount: $'.$package_data->price.'<br>';
             $message .= 'Purchase Date: '.date('Y-m-d').'<br>';
@@ -354,7 +355,8 @@ class AgentController extends Controller
             $message .= 'Agent Name: '.Auth::guard('agent')->user()->name.'<br>';
             $message .= 'Agent Email: '.Auth::guard('agent')->user()->email.'<br>';
             $message .= 'Payment Method: Stripe<br>';
-            $message .= 'Transaction ID: '.$response->id.'<br>';
+            // $message .= 'Transaction ID: '.$response->id.'<br>';
+            $message .= 'Transaction ID: '.$response['id'].'<br>';
             $message .= 'Package Name: '.$package_data->name.'<br>';
             $message .= 'Paid Amount: $'.$package_data->price.'<br>';
             $message .= 'Purchase Date: '.date('Y-m-d').'<br>';
@@ -442,7 +444,8 @@ class AgentController extends Controller
             $message .= 'Your payment has been successfully processed. Payment information is given below:<br><br>';
             $message .= 'Invoice No: '.$invoice_no.'<br>';
             $message .= 'Payment Method: Stripe<br>';
-            $message .= 'Transaction ID: '.$response->id.'<br>';
+            // $message .= 'Transaction ID: '.$response->id.'<br>';
+            $message .= 'Transaction ID: '.$response['id'].'<br>';
             $message .= 'Package Name: '.$package_data->name.'<br>';
             $message .= 'Paid Amount: $'.$package_data->price.'<br>';
             $message .= 'Purchase Date: '.date('Y-m-d').'<br>';
@@ -464,7 +467,8 @@ class AgentController extends Controller
             $message .= 'Agent Name: '.Auth::guard('agent')->user()->name.'<br>';
             $message .= 'Agent Email: '.Auth::guard('agent')->user()->email.'<br>';
             $message .= 'Payment Method: Stripe<br>';
-            $message .= 'Transaction ID: '.$response->id.'<br>';
+            // $message .= 'Transaction ID: '.$response->id.'<br>';
+            $message .= 'Transaction ID: '.$response['id'].'<br>';
             $message .= 'Package Name: '.$package_data->name.'<br>';
             $message .= 'Paid Amount: $'.$package_data->price.'<br>';
             $message .= 'Purchase Date: '.date('Y-m-d').'<br>';
@@ -492,7 +496,7 @@ class AgentController extends Controller
         // Check in orders table if this agent has any package purchased
         $order = Order::where('agent_id', Auth::guard('agent')->user()->id)->where('currently_active',1)->first();
         if(!$order){
-            return redirect()->route('agent_payment')->with('error', 'You have not purchased any package yet. Please purchase a package to see properties.');
+            return redirect()->route('agent_payment')->with('error', 'Aún no has comprado ningún paquete. Compra uno para ver las propiedades.');
         }
 
         $properties = Property::where('agent_id', Auth::guard('agent')->user()->id)->get();
@@ -504,12 +508,12 @@ class AgentController extends Controller
         // Check in orders table if this agent has any package purchased
         $order = Order::where('agent_id', Auth::guard('agent')->user()->id)->where('currently_active',1)->first();
         if(!$order){
-            return redirect()->route('agent_payment')->with('error', 'You have not purchased any package yet. Please purchase a package to create properties.');
+            return redirect()->route('agent_payment')->with('error', 'Aún no has comprado ningún paquete. Compra un paquete para crear propiedades.');
         }
 
         // Check if the agent has reached the maximum number of properties allowed in the package
         if($order->package->allowed_properties <= Property::where('agent_id', Auth::guard('agent')->user()->id)->count()){
-            return redirect()->route('agent_payment')->with('error', 'You have reached the maximum number of properties allowed in your package. Please purchase a new package to create more properties.');
+            return redirect()->route('agent_payment')->with('error', 'Has alcanzado el número máximo de propiedades permitidas en tu paquete. Compra un nuevo paquete para crear más propiedades.');
         }
 
         // Check if package has been expired

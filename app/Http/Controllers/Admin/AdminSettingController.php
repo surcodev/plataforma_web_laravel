@@ -22,7 +22,7 @@ class AdminSettingController extends Controller
 
         $setting = Setting::where('id',1)->first();
         $final_name = 'logo_'.time().'.'.$request->logo->extension();
-        if($setting->logo != '') {
+        if ($setting->logo != '' && file_exists(public_path('uploads/'.$setting->logo))) {
             unlink(public_path('uploads/'.$setting->logo));
         }
         $request->logo->move(public_path('uploads'), $final_name);

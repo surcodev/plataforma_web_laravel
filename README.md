@@ -1,5 +1,5 @@
 npm install
-
+composer install
 php artisan config:clear
 php artisan migrate
 php artisan db:seed
