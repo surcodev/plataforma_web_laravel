@@ -16,7 +16,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Packages</h4>
+                            <h4>Paquetes totales</h4>
                         </div>
                         <div class="card-body">
                             {{ $total_packages }}
@@ -31,7 +31,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Completed Orders</h4>
+                            <h4>Total de pedidos completados</h4>
                         </div>
                         <div class="card-body">
                             {{ $total_completed_orders }}
@@ -46,7 +46,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Active Properties</h4>
+                            <h4>Propiedades activas totales</h4>
                         </div>
                         <div class="card-body">
                             {{ $total_active_properties }}
@@ -61,7 +61,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Active Subscribers</h4>
+                            <h4>Total de suscriptores activos</h4>
                         </div>
                         <div class="card-body">
                             {{ $total_active_subscribers }}
@@ -76,7 +76,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Active Customers</h4>
+                            <h4>Total de clientes activos</h4>
                         </div>
                         <div class="card-body">
                             {{ $total_active_customers }}
@@ -91,7 +91,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Active Agents</h4>
+                            <h4>Agentes activos totales</h4>
                         </div>
                         <div class="card-body">
                             {{ $total_active_agents }}

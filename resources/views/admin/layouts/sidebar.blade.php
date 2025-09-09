@@ -12,7 +12,7 @@
             <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
 
             <li class="nav-item dropdown {{ Request::is('admin/setting/*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-folder"></i><span>Website Setting</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-folder"></i><span>Configuración del sitio web</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/setting/logo/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting_logo_index') }}"><i class="fas fa-angle-right"></i> Logo</a></li>
                     <li class="{{ Request::is('admin/setting/favicon/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting_favicon_index') }}"><i class="fas fa-angle-right"></i> Favicon</a></li>
@@ -22,12 +22,12 @@
             </li>
 
             <li class="nav-item dropdown {{ Request::is('admin/location/*') || Request::is('admin/type/*') || Request::is('admin/amenity/*') || Request::is('admin/property/*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-folder"></i><span>Property Section</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-folder"></i><span>Sección de Propiedades</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/location/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_location_index') }}"><i class="fas fa-angle-right"></i> Location</a></li>
-                    <li class="{{ Request::is('admin/type/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_type_index') }}"><i class="fas fa-angle-right"></i> Type</a></li>
-                    <li class="{{ Request::is('admin/amenity/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_amenity_index') }}"><i class="fas fa-angle-right"></i> Amenity</a></li>
-                    <li class="{{ Request::is('admin/property/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_property_index') }}"><i class="fas fa-angle-right"></i> Property</a></li>
+                    <li class="{{ Request::is('admin/location/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_location_index') }}"><i class="fas fa-angle-right"></i> Ubicaciones</a></li>
+                    <li class="{{ Request::is('admin/type/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_type_index') }}"><i class="fas fa-angle-right"></i> Tipo</a></li>
+                    <li class="{{ Request::is('admin/amenity/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_amenity_index') }}"><i class="fas fa-angle-right"></i> Comodidad</a></li>
+                    <li class="{{ Request::is('admin/property/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_property_index') }}"><i class="fas fa-angle-right"></i> Propiedades</a></li>
                 </ul>
             </li>
 
@@ -47,7 +47,7 @@
 
             <li class="{{ Request::is('admin/page/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_page_index') }}"><i class="far fa-file"></i> <span>Sección de página</span></a></li>
 
-            <li class="{{ Request::is('admin/subscriber/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_index') }}"><i class="far fa-file"></i> <span>Suscriptor</span></a></li>
+            <li class="{{ Request::is('admin/subscriber/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_index') }}"><i class="far fa-file"></i> <span>Suscriptores</span></a></li>
 
             <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_profile') }}"><i class="far fa-file"></i> <span>Editar perfil</span></a></li>
 

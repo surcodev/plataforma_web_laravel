@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Property Listing</h2>
+                <h2>Listado de propiedades</h2>
             </div>
         </div>
     </div>
@@ -19,8 +19,8 @@
                 <form action="{{ route('property_search') }}" method="get">
                 <div class="property-filter">
                     <div class="widget">
-                        <h2>Find Anything</h2>
-                        <input type="text" name="name" class="form-control" placeholder="Search By Name ..." value="{{ $form_name }}">
+                        <h2>Accede a lo que necesites</h2>
+                        <input type="text" name="name" class="form-control" placeholder="Buscar por nombre ..." value="{{ $form_name }}">
                     </div>
 
                     <div class="widget">
@@ -63,9 +63,9 @@
                     </div>
 
                     <div class="widget">
-                        <h2>Bedrooms</h2>
+                        <h2>Habitaciones</h2>
                         <select name="bedroom" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Bedroom</option>
+                            <option value="">Némuero de habitaciones</option>
                             @for($i=1;$i<=50;$i++)
                                 <option value="{{ $i }}" @if($form_bedroom == $i) selected @endif>{{ $i }}</option>
                             @endfor
@@ -73,9 +73,9 @@
                     </div>
 
                     <div class="widget">
-                        <h2>Bathrooms</h2>
+                        <h2>Baños</h2>
                         <select name="bathroom" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Bathroom</option>
+                            <option value="">Número de baños</option>
                             @for($i=1;$i<=50;$i++)
                                 <option value="{{ $i }}" @if($form_bathroom == $i) selected @endif>{{ $i }}</option>
                             @endfor
@@ -83,9 +83,9 @@
                     </div>
 
                     <div class="widget">
-                        <h2>Min Price</h2>
+                        <h2>Precio mínimo</h2>
                         <select name="min_price" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Minimum Price</option>
+                            <option value="">Seleccione Precio Mínimo</option>
                             <option value="1" @if($form_min_price == '1') selected @endif>1</option>
                             <option value="1000" @if($form_min_price == '1000') selected @endif>1000</option>
                             <option value="2000" @if($form_min_price == '2000') selected @endif>2000</option>
@@ -107,9 +107,9 @@
                     </div>
 
                     <div class="widget">
-                        <h2>Max Price</h2>
+                        <h2>Precio máximo</h2>
                         <select name="max_price" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Select Maximum Price</option>
+                            <option value="">Seleccionar precio máximo</option>
                             <option value="1" @if($form_min_price == '1') selected @endif>1</option>
                             <option value="1000" @if($form_max_price == '1000') selected @endif>1000</option>
                             <option value="2000" @if($form_max_price == '2000') selected @endif>2000</option>
@@ -131,7 +131,7 @@
                     </div>
 
                     <div class="filter-button">
-                        <button type="submit" class="btn btn-primary">Filter</button>
+                        <button type="submit" class="btn btn-primary">Filtros</button>
                     </div>
                 </div>
                 </form>

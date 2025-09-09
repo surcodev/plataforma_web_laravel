@@ -1,5 +1,5 @@
 INSERT INTO `settings` (`id`, `logo`, `favicon`, `banner`, `footer_address`, `footer_email`, `footer_phone`, `footer_facebook`, `footer_twitter`, `footer_linkedin`, `footer_instagram`, `footer_copyright`, `created_at`, `updated_at`) VALUES
-(1, 'logo_1745742469.png', 'favicon_1745742706.png', 'banner_1745743308.jpg', '34 Antiger Lane, USA, 12937', 'contact@mywebsite.com', '122-222-1212', '#', '#', '#', '#', 'Copyright 2025, YourWebsite. All Rights Reserved.', NULL, '2025-04-27 02:49:01');
+(1, 'logo_1745742469.png', 'favicon_1745742706.png', 'banner_1745743308.jpg', '34 Antiger Lane, USA, 12937', 'info@bienes-raices-santa-clara-sac.com', '+51 979 785 497', '#', '#', '#', '#', 'Copyright 2025, bienes-raices-santa-clara-sac.com, Todos los derechos reservados.', NULL, '2025-04-27 02:49:01');
 
 -- --------------------------------------------------------
 
@@ -24,23 +24,22 @@ INSERT INTO `agents` (`id`, `name`, `email`, `photo`, `password`, `company`, `de
 -- --------------------------------------------------------
 
 INSERT INTO `amenities` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Free Wifi', '2025-04-22 23:15:53', '2025-04-22 23:15:53'),
-(2, 'Swimming Pool', '2025-04-22 23:15:59', '2025-04-22 23:15:59'),
-(3, 'Breakfast', '2025-04-22 23:16:04', '2025-04-22 23:16:04'),
-(4, 'Car Parking', '2025-04-22 23:16:13', '2025-04-22 23:16:13'),
-(5, 'Air Conditioning', '2025-04-22 23:16:19', '2025-04-22 23:16:19'),
-(6, 'Gym', '2025-04-22 23:16:29', '2025-04-22 23:16:29'),
-(7, 'Fitness Center', '2025-04-22 23:16:34', '2025-04-22 23:16:34'),
-(10, 'Fireplace', '2025-04-26 11:57:31', '2025-04-26 11:57:35');
+(1, 'Wifi gratis', '2025-04-22 23:15:53', '2025-04-22 23:15:53'),
+(2, 'Piscina', '2025-04-22 23:15:59', '2025-04-22 23:15:59'),
+(3, 'Desayuno', '2025-04-22 23:16:04', '2025-04-22 23:16:04'),
+(4, 'Aparcamiento de coches', '2025-04-22 23:16:13', '2025-04-22 23:16:13'),
+(5, 'Aire nacondicionado', '2025-04-22 23:16:19', '2025-04-22 23:16:19'),
+(6, 'Gimnasio', '2025-04-22 23:16:29', '2025-04-22 23:16:29'),
+(10, 'Chimenea', '2025-04-26 11:57:31', '2025-04-26 11:57:35');
 
 -- --------------------------------------------------------
 
 INSERT INTO `faqs` (`id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
-(1, 'How to buy a property?', 'Lorem ipsum dolor sit amet, autem ceteros ut quo. Ea sit melius percipit praesent, habeo novum est te. Labore dictas prodesset vim ei. Nisl vivendo fabellas an qui, quot illum an est, vide melius an has. Ut usu tollit atomorum. Est eu alienum omnesque. Vis ad consul epicurei.', '2025-04-26 18:55:14', '2025-04-26 18:55:14'),
-(2, 'What a real estate agent do?', 'Semper mentitum mediocrem no eos, id putent vituperata duo, at error assueverit interesset vix. Id mei audiam scripserit, pro ullum nostrum eu, ne sea zril graeci repudiandae. Ne affert euismod nonumes mei, sit ut ferri fabellas instructior. Et eam tibique detraxit, pri iisque eripuit disputationi an, pro eu aperiam similique neglegentur. Fabulas perfecto mei no. Vel sale solum ei, mel volumus deseruisse quaerendum ad.', '2025-04-26 18:55:35', '2025-04-26 18:55:35'),
-(3, 'What is a mortgage?', 'Eum simul appareat te. Vim ei aliquid vocibus. Nam ne possit consequat. Everti singulis per at, cu sea nonumy quidam. Dicit persequeris disputationi ad sea. An omnes diceret sapientem eos, cu mei dicant essent delectus.', '2025-04-26 18:55:58', '2025-04-26 18:55:58'),
-(4, 'What is a home inspection?', 'Pertinacia interesset neglegentur an usu, everti legendos maluisset pri no. Quem assueverit vel ut, est cu quod delicata vituperatoribus, melius argumentum nam eu. Cibo duis inani et vix, duo choro abhorreant ea, eripuit deleniti fabellas sed ne. Qui omnes conceptam rationibus an, veri postea splendide in sit, vel legimus liberavisse ea. Et postea aeterno vis, ex definitionem conclusionemque pri, ei mea aeque eirmod. Laoreet inciderint no quo.', '2025-04-26 18:56:14', '2025-04-26 18:56:14'),
-(5, 'What is property tax and how you can calculate that?', 'Nam essent latine patrioque ne, pro id utinam essent constituam, ex vel mazim adipiscing definiebas. In nec eirmod eripuit, sed ut idque persequeris repudiandae. Sit wisi cotidieque ut, usu eu populo putent aperiri. Te brute alienum recusabo mea.', '2025-04-26 18:56:34', '2025-04-26 18:56:34');
+(1, '¿Cómo comprar una propiedad?', 'Lorem ipsum dolor sit amet, autem ceteros ut quo. Ea sit melius percipit praesent, habeo novum est te. Labore dictas prodesset vim ei. Nisl vivendo fabellas an qui, quot illum an est, vide melius an has. Ut usu tollit atomorum. Est eu alienum omnesque. Vis ad consul epicurei.', '2025-04-26 18:55:14', '2025-04-26 18:55:14'),
+(2, '¿Qué hace un agente de bienes raíces?', 'Semper mentitum mediocrem no eos, id putent vituperata duo, at error assueverit interesset vix. Id mei audiam scripserit, pro ullum nostrum eu, ne sea zril graeci repudiandae. Ne affert euismod nonumes mei, sit ut ferri fabellas instructior. Et eam tibique detraxit, pri iisque eripuit disputationi an, pro eu aperiam similique neglegentur. Fabulas perfecto mei no. Vel sale solum ei, mel volumus deseruisse quaerendum ad.', '2025-04-26 18:55:35', '2025-04-26 18:55:35'),
+(3, '¿Qué es una hipoteca?', 'Eum simul appareat te. Vim ei aliquid vocibus. Nam ne possit consequat. Everti singulis per at, cu sea nonumy quidam. Dicit persequeris disputationi ad sea. An omnes diceret sapientem eos, cu mei dicant essent delectus.', '2025-04-26 18:55:58', '2025-04-26 18:55:58'),
+(4, '¿Qué es una inspección de vivienda?', 'Pertinacia interesset neglegentur an usu, everti legendos maluisset pri no. Quem assueverit vel ut, est cu quod delicata vituperatoribus, melius argumentum nam eu. Cibo duis inani et vix, duo choro abhorreant ea, eripuit deleniti fabellas sed ne. Qui omnes conceptam rationibus an, veri postea splendide in sit, vel legimus liberavisse ea. Et postea aeterno vis, ex definitionem conclusionemque pri, ei mea aeque eirmod. Laoreet inciderint no quo.', '2025-04-26 18:56:14', '2025-04-26 18:56:14'),
+(5, '¿Qué es el impuesto sobre la propiedad y cómo se puede calcular?', 'Nam essent latine patrioque ne, pro id utinam essent constituam, ex vel mazim adipiscing definiebas. In nec eirmod eripuit, sed ut idque persequeris repudiandae. Sit wisi cotidieque ut, usu eu populo putent aperiri. Te brute alienum recusabo mea.', '2025-04-26 18:56:34', '2025-04-26 18:56:34');
 
 -- --------------------------------------------------------
 
@@ -53,6 +52,34 @@ INSERT INTO `locations` (`id`, `name`, `slug`, `photo`, `total_properties`, `cre
 (6, 'New York', 'newyork', 'location_1745323993.jpg', 0, '2025-04-22 06:13:13', '2025-04-22 06:13:13'),
 (7, 'San Diago', 'sandiago', 'location_1745324006.jpg', 0, '2025-04-22 06:13:26', '2025-04-22 06:13:26'),
 (8, 'Washington', 'washington', 'location_1745324017.jpg', 0, '2025-04-22 06:13:37', '2025-04-22 06:13:37');
+
+-- INSERT INTO `locations` (`id`, `name`, `slug`, `photo`, `total_properties`, `created_at`, `updated_at`) VALUES
+-- (1, 'Amazonas', 'amazonas', 'location_1.jpg', 0, NOW(), NOW()),
+-- (2, 'Áncash', 'ancash', 'location_2.jpg', 0, NOW(), NOW()),
+-- (3, 'Apurímac', 'apurimac', 'location_3.jpg', 0, NOW(), NOW()),
+-- (4, 'Arequipa', 'arequipa', 'location_4.jpg', 0, NOW(), NOW()),
+-- (5, 'Ayacucho', 'ayacucho', 'location_5.jpg', 0, NOW(), NOW()),
+-- (6, 'Cajamarca', 'cajamarca', 'location_6.jpg', 0, NOW(), NOW()),
+-- (7, 'Callao', 'callao', 'location_7.jpg', 0, NOW(), NOW()),
+-- (8, 'Cusco', 'cusco', 'location_8.jpg', 0, NOW(), NOW()),
+-- (9, 'Huancavelica', 'huancavelica', 'location_9.jpg', 0, NOW(), NOW()),
+-- (10, 'Huánuco', 'huanuco', 'location_10.jpg', 0, NOW(), NOW()),
+-- (11, 'Ica', 'ica', 'location_11.jpg', 0, NOW(), NOW()),
+-- (12, 'Junín', 'junin', 'location_12.jpg', 0, NOW(), NOW()),
+-- (13, 'La Libertad', 'la-libertad', 'location_13.jpg', 0, NOW(), NOW()),
+-- (14, 'Lambayeque', 'lambayeque', 'location_14.jpg', 0, NOW(), NOW()),
+-- (15, 'Lima', 'lima', 'location_15.jpg', 0, NOW(), NOW()),
+-- (16, 'Loreto', 'loreto', 'location_16.jpg', 0, NOW(), NOW()),
+-- (17, 'Madre de Dios', 'madre-de-dios', 'location_17.jpg', 0, NOW(), NOW()),
+-- (18, 'Moquegua', 'moquegua', 'location_18.jpg', 0, NOW(), NOW()),
+-- (19, 'Pasco', 'pasco', 'location_19.jpg', 0, NOW(), NOW()),
+-- (20, 'Piura', 'piura', 'location_20.jpg', 0, NOW(), NOW()),
+-- (21, 'Puno', 'puno', 'location_21.jpg', 0, NOW(), NOW()),
+-- (22, 'San Martín', 'san-martin', 'location_22.jpg', 0, NOW(), NOW()),
+-- (23, 'Tacna', 'tacna', 'location_23.jpg', 0, NOW(), NOW()),
+-- (24, 'Tumbes', 'tumbes', 'location_24.jpg', 0, NOW(), NOW()),
+-- (25, 'Ucayali', 'ucayali', 'location_25.jpg', 0, NOW(), NOW());
+
 
 -- --------------------------------------------------------
 
@@ -152,11 +179,9 @@ INSERT INTO `testimonials` (`id`, `name`, `designation`, `photo`, `comment`, `cr
 -- --------------------------------------------------------
 
 INSERT INTO `types` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Apartment', '2025-04-22 07:42:34', '2025-04-22 07:42:34'),
-(2, 'Bungalow', '2025-04-22 07:42:45', '2025-04-22 07:42:45'),
-(3, 'Cabin', '2025-04-22 07:42:55', '2025-04-22 07:42:55'),
-(4, 'Cottage', '2025-04-22 07:43:03', '2025-04-22 07:43:03'),
-(5, 'Villa', '2025-04-22 07:43:11', '2025-04-22 07:43:11');
+(1, 'Departamento', '2025-04-22 07:42:34', '2025-04-22 07:42:34'),
+(2, 'Terreno', '2025-04-22 07:42:45', '2025-04-22 07:42:45'),
+(3, 'Villa', '2025-04-22 07:43:11', '2025-04-22 07:43:11');
 
 -- --------------------------------------------------------
 

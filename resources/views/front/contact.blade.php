@@ -20,23 +20,23 @@
                     <form action="{{ route('contact_submit') }}" method="post" class="form_contact">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">Name</label>
+                            <label for="" class="form-label">Nombre</label>
                             <input type="text" class="form-control" name="name">
                             <span class="text-danger error-text name_error"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Email Address</label>
+                            <label for="" class="form-label">Correo electrónico</label>
                             <input type="text" class="form-control" name="email">
                             <span class="text-danger error-text email_error"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Message</label>
+                            <label for="" class="form-label">Mensaje</label>
                             <textarea class="form-control" rows="3" name="message"></textarea>
                             <span class="text-danger error-text message_error"></span>
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary bg-website">
-                                Send Message
+                                Enviar mensaje
                             </button>
                         </div>
                     </form>
@@ -44,7 +44,15 @@
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799198932!2d-74.25987701513004!3d40.69767006272707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1645362221879!5m2!1sen!2sbd" width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.635987877565!2d-77.0238138!3d-12.0961306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c86563beaea5%3A0x42aa1828ef456521!2sOf.%20302%2C%20C.%20German%20Schreiber%20Gulsmanco%20272%2C%20San%20Isidro%2015047%2C%20Peru!5e0!3m2!1ses!2spe!4v1725916800000!5m2!1ses!2spe"
+                        width="600"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </div>
