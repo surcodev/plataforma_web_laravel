@@ -4,9 +4,9 @@ INSERT INTO `settings` (`id`, `logo`, `favicon`, `banner`, `footer_address`, `fo
 -- --------------------------------------------------------
 
 INSERT INTO `users` (`id`, `name`, `email`, `photo`, `password`, `token`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Smith Cooper', 'smith@gmail.com', 'user_1745146600.jpg', '$2y$12$rKfT/zi/ag/ZshXNvh3D.eIGJcwJU0ZAW.bPh84KloYrL3GL6pUGW', '', '1', '2025-04-18 20:31:03', '2025-04-20 04:56:40'),
-(3, 'David', 'david@gmail.com', 'user_1745556312.jpg', '$2y$12$L4PXkkzwQFFiBhtEJ1v3..1Dgej0w2LbkVrMOy.hQn.cGn/NxEK4K', '', '1', '2025-04-18 20:33:17', '2025-04-24 22:45:12'),
-(4, 'John Green', 'john@gmail.com', NULL, '$2y$12$Xh5EvDKwMVBk1d5ZTK8X7O4MWuVD0icHZCJEo9w2bL6bkkSNkLIgy', '', '1', '2025-04-20 04:29:00', '2025-04-20 04:29:19');
+(2, 'Smith Cooper', 'smith@gmail.com', 'user_1745146600.jpg', '$2y$12$s9r9RbigUAZiQk/4qTfmYOPjYv.odoIp3l9GURNd8XyBUew3h5aO.', '', '1', '2025-04-18 20:31:03', '2025-04-20 04:56:40'),
+(3, 'David', 'david@gmail.com', 'user_1745556312.jpg', '$2y$12$s9r9RbigUAZiQk/4qTfmYOPjYv.odoIp3l9GURNd8XyBUew3h5aO.', '', '1', '2025-04-18 20:33:17', '2025-04-24 22:45:12'),
+(4, 'John Green', 'john@gmail.com', NULL, '$2y$12$s9r9RbigUAZiQk/4qTfmYOPjYv.odoIp3l9GURNd8XyBUew3h5aO.', '', '1', '2025-04-20 04:29:00', '2025-04-20 04:29:19');
 
 -- --------------------------------------------------------
 

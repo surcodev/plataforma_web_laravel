@@ -47,7 +47,7 @@ class AdminController extends Controller
         ];
 
         if(Auth::guard('admin')->attempt($data)){
-            return redirect()->route('admin_dashboard')->with('success', 'Logged in successfully');
+            return redirect()->route('admin_dashboard')->with('success', 'Inició sesión correctamente');
         } else {
             return redirect()->back()->with('error', 'Invalid credentials');
         }
@@ -56,7 +56,7 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect()->route('admin_login')->with('success', 'Logged out successfully');
+        return redirect()->route('admin_login')->with('success', 'Se cerró sesión correctamente');
     }
 
     public function forget_password()
