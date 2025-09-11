@@ -29,7 +29,7 @@ class AdminSettingController extends Controller
         $setting->logo = $final_name;
         $setting->save();
 
-        return redirect()->back()->with('success', 'Logo updated successfully');
+        return redirect()->back()->with('success', 'Logotipo actualizado exitosamente');
     }
 
     public function favicon()
@@ -53,7 +53,7 @@ class AdminSettingController extends Controller
         $setting->favicon = $final_name;
         $setting->save();
 
-        return redirect()->back()->with('success', 'Favicon updated successfully');
+        return redirect()->back()->with('success', 'Favicon actualizado exitosamente');
     }
 
     public function banner()
@@ -77,7 +77,7 @@ class AdminSettingController extends Controller
         $setting->banner = $final_name;
         $setting->save();
 
-        return redirect()->back()->with('success', 'Banner updated successfully');
+        return redirect()->back()->with('success', 'Banner actualizado exitosamente');
     }
 
     public function footer()
@@ -103,6 +103,6 @@ class AdminSettingController extends Controller
         $setting->footer_copyright = $request->footer_copyright;
         $setting->save();
 
-        return redirect()->back()->with('success', 'Footer updated successfully');
+        return redirect()->back()->with('success', 'Footer actualizado correctamente');
     }
 }
