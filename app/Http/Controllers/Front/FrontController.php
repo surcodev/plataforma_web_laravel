@@ -76,15 +76,15 @@ class FrontController extends Controller
         } else {
             
             // Send email
-            $subject = 'Contact Form Message';
-            $message = 'Sender Information:<br>';
-            $message .= '<b>Name:</b><br>'.$request->name.'<br><br>';
-            $message .= '<b>Email:</b><br>'.$request->email.'<br><br>';
-            $message .= '<b>Message:</b><br>'.nl2br($request->message);
+            $subject = 'Mensaje del formulario de contacto';
+            $message = 'Información del remitente:<br>';
+            $message .= '<b>Nombre:</b><br>'.$request->name.'<br><br>';
+            $message .= '<b>Correo Electrónico:</b><br>'.$request->email.'<br><br>';
+            $message .= '<b>Mensaje:</b><br>'.nl2br($request->message);
 
             \Mail::to($request->email)->send(new Websitemail($subject,$message));
 
-            return response()->json(['code'=>1,'success_message'=>'Message is sent successfully']);
+            return response()->json(['code'=>1,'success_message'=>'El mensaje se envió correctamente']);
         }
     }
 
@@ -98,7 +98,7 @@ class FrontController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         if (!$post) {
-            return redirect()->route('blog')->with('error', 'Post not found');
+            return redirect()->route('blog')->with('error', 'Publicación no encontrada');
         }
 
         $new_view = $post->total_views + 1;
@@ -129,7 +129,7 @@ class FrontController extends Controller
     {
         $property = Property::where('slug', $slug)->first();
         if (!$property) {
-            return redirect()->route('front.home')->with('error', 'Property not found');
+            return redirect()->route('front.home')->with('error', 'Propiedad no encontrada');
         }
 
         return view('front.property_detail', compact('property'));
@@ -139,21 +139,21 @@ class FrontController extends Controller
     {
         $property = Property::where('id',$id)->first();
         if (!$property) {
-            return redirect()->route('home')->with('error', 'Property not found');
+            return redirect()->route('home')->with('error', 'Propiedad no encontrada');
         }
 
         // Send Email
-        $subject = 'Property Inquiry';
-        $message = 'You have received a new inquiry for the property: ' . $property->name.'<br><br>';
-        $message .= 'Visitor Name:<br>'.$request->name.'<br><br>';
-        $message .= 'Visitor Email:<br>'.$request->email.'<br><br>';
-        $message .= 'Visitor Phone:<br>'.$request->phone.'<br><br>';
-        $message .= 'Visitor Message:<br>'.nl2br($request->message);
+        $subject = 'Consulta de propiedad';
+        $message = 'Has recibido una nueva consulta para la propiedad: ' . $property->name.'<br><br>';
+        $message .= 'Nombre del visitante:<br>'.$request->name.'<br><br>';
+        $message .= 'Correo electrónico del visitante:<br>'.$request->email.'<br><br>';
+        $message .= 'Teléfono del visitante:<br>'.$request->phone.'<br><br>';
+        $message .= 'Mensaje del visitante:<br>'.nl2br($request->message);
 
         $agent_email = $property->agent->email;
         \Mail::to($agent_email)->send(new Websitemail($subject, $message));
 
-        return redirect()->back()->with('success', 'Message sent successfully to agent');
+        return redirect()->back()->with('success', 'Mensaje enviado con éxito al agente');
     }
 
     public function locations()
@@ -177,7 +177,7 @@ class FrontController extends Controller
     {
         $location = Location::where('slug', $slug)->first();
         if (!$location) {
-            return redirect()->route('front.locations')->with('error', 'Location not found');
+            return redirect()->route('front.locations')->with('error', 'Ubicación no encontrada');
         }
 
         $properties = Property::where('location_id', $location->id)
@@ -205,7 +205,7 @@ class FrontController extends Controller
     {
         $agent = Agent::where('id', $id)->first();
         if (!$agent) {
-            return redirect()->route('home')->with('error', 'Agent not found');
+            return redirect()->route('home')->with('error', 'Agente no encontrado');
         }
 
         $properties = Property::where('agent_id', $agent->id)
@@ -293,7 +293,7 @@ class FrontController extends Controller
     public function wishlist_add($id)
     {
         if(!Auth::guard('web')->check()) {
-            return redirect()->route('login')->with('error', 'Please login to add property to wishlist');
+            return redirect()->route('login')->with('error', 'Inicie sesión para agregar una propiedad a su lista de deseos');
         }
 
         // Check if the property is already in the wishlist
@@ -301,7 +301,7 @@ class FrontController extends Controller
             ->where('property_id', $id)
             ->first();
         if($existingWishlist) {
-            return redirect()->back()->with('error', 'Property already in wishlist');
+            return redirect()->back()->with('error', 'Propiedad ya en la lista de deseos');
         }
 
         $obj = new Wishlist();
@@ -309,7 +309,7 @@ class FrontController extends Controller
         $obj->property_id = $id;
         $obj->save();
 
-        return redirect()->back()->with('success', 'Property added to wishlist');
+        return redirect()->back()->with('success', 'Propiedad añadida a la lista de deseos');
     }
 
     public function subscriber_send_email(Request $request)
@@ -333,15 +333,15 @@ class FrontController extends Controller
             $verification_link = url('subscriber/verify/'.$request->email.'/'.$token);
             
             // Send email
-            $subject = 'Subscriber Verification';
-            $message = 'Please click on the link below to confirm subscription:<br>';
+            $subject = 'Verificación del suscriptor';
+            $message = 'Haga clic en el enlace a continuación para confirmar la suscripción:<br>';
             $message .= '<a href="'.$verification_link.'">';
             $message .= $verification_link;
             $message .= '</a>';
 
             \Mail::to($request->email)->send(new Websitemail($subject,$message));
 
-            return response()->json(['code'=>1,'success_message'=>'Please check your email to confirm subscription']);
+            return response()->json(['code'=>1,'success_message'=>'Por favor revise su correo electrónico para confirmar la suscripción.']);
         }
     }
 
@@ -355,7 +355,7 @@ class FrontController extends Controller
             $subscriber_data->status = 1;
             $subscriber_data->update();
 
-            return redirect()->route('home')->with('success', 'Your subscription is verified successfully!');
+            return redirect()->route('home')->with('success', '¡Su suscripción ha sido verificada exitosamente!');
 
         } else {
             return redirect()->route('home');

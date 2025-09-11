@@ -67,33 +67,33 @@ class AdminAgentController extends Controller
             $status = 'Suspended';
         }
         $link = route('agent_login');
-        $subject = 'Your account is created';
-        $message = '<h3>Account Information:</h3>';
-        $message .= '<b>Name: </b><br>' . $request->name . '<br><br>';
-        $message .= '<b>Email: </b><br>' . $request->email . '<br><br>';
+        $subject = 'Tu cuenta ha sido creada';
+        $message = '<h3>Información de la cuenta:</h3>';
+        $message .= '<b>Nombre: </b><br>' . $request->name . '<br><br>';
+        $message .= '<b>Correo electrónico: </b><br>' . $request->email . '<br><br>';
         $message .= '<b>Password: </b><br>' . $request->password . '<br><br>';
-        $message .= '<b>Company: </b><br>' . $request->company . '<br><br>';
-        $message .= '<b>Designation: </b><br>' . $request->designation . '<br><br>';
-        $message .= '<b>Phone: </b><br>' . $request->phone . '<br><br>';
-        $message .= '<b>Address: </b><br>' . $request->address . '<br><br>';
-        $message .= '<b>Country: </b><br>' . $request->country . '<br><br>';
-        $message .= '<b>State: </b><br>' . $request->state . '<br><br>';
-        $message .= '<b>City: </b><br>' . $request->city . '<br><br>';
-        $message .= '<b>Zip: </b><br>' . $request->zip . '<br><br>';
+        $message .= '<b>Empresa: </b><br>' . $request->company . '<br><br>';
+        $message .= '<b>Cargo: </b><br>' . $request->designation . '<br><br>';
+        $message .= '<b>Teléfono: </b><br>' . $request->phone . '<br><br>';
+        $message .= '<b>Dirección: </b><br>' . $request->address . '<br><br>';
+        $message .= '<b>País: </b><br>' . $request->country . '<br><br>';
+        $message .= '<b>Estado: </b><br>' . $request->state . '<br><br>';
+        $message .= '<b>Ciudad: </b><br>' . $request->city . '<br><br>';
+        $message .= '<b>Código Postal: </b><br>' . $request->zip . '<br><br>';
         $message .= '<b>Facebook: </b><br>' . $request->facebook . '<br><br>';
         $message .= '<b>Twitter: </b><br>' . $request->twitter . '<br><br>';
         $message .= '<b>LinkedIn: </b><br>' . $request->linkedin . '<br><br>';
         $message .= '<b>Instagram: </b><br>' . $request->instagram . '<br><br>';
-        $message .= '<b>Website: </b><br>' . $request->website . '<br><br>';
-        $message .= '<b>Biography: </b><br>' . $request->biography . '<br><br>';
-        $message .= '<b>Status: </b><br>' . $status . '<br><br>';
-        $message .= 'Please go to login page:<br><a href="' . $link . '">' . $link . '</a><br><br>';
-        $message .= 'Best Regards<br>';
+        $message .= '<b>Sitio Web: </b><br>' . $request->website . '<br><br>';
+        $message .= '<b>Biografía: </b><br>' . $request->biography . '<br><br>';
+        $message .= '<b>Estado: </b><br>' . $status . '<br><br>';
+        $message .= 'Por favor, vaya a la página de inicio de sesión:<br><a href="' . $link . '">' . $link . '</a><br><br>';
+        $message .= 'Atentamente<br>';
         $message .= 'Admin<br>';
 
         \Mail::to($request->email)->send(new Websitemail($subject, $message));
 
-        return redirect()->route('admin_agent_index')->with('success', 'Agent created successfully');
+        return redirect()->route('admin_agent_index')->with('success', 'Agente creado con éxito');
     }
 
     public function edit($id)
@@ -152,15 +152,15 @@ class AdminAgentController extends Controller
         $agent->status = $request->status;
         $agent->save();
 
-        return redirect()->route('admin_agent_index')->with('success', 'Agent updated successfully');
+        return redirect()->route('admin_agent_index')->with('success', 'Agente actualizado exitosamente');
     }
 
     public function delete($id)
     {
-        // If agent has any property associated with it, you can not delete this agent
+        // Si el agente tiene alguna propiedad asociada, no puedes eliminarlo
         $property = Property::where('agent_id',$id)->first();
         if($property) {
-            return redirect()->route('admin_agent_index')->with('error', 'Agent cannot be deleted as it is associated with a property');
+            return redirect()->route('admin_agent_index')->with('error', 'El agente no se puede eliminar porque está asociado a una propiedad. Primero elimine todas las propiedades asociadas a este agente.');
         }
 
         $agent = Agent::where('id',$id)->first();
@@ -169,6 +169,6 @@ class AdminAgentController extends Controller
         }
         $agent->delete();
         
-        return redirect()->route('admin_agent_index')->with('success', 'Agent deleted successfully');
+        return redirect()->route('admin_agent_index')->with('success', 'Agente eliminado exitosamente');
     }
 }

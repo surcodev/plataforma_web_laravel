@@ -88,14 +88,14 @@ class UserController extends Controller
         if(Auth::guard('web')->attempt($data)){
             return redirect()->route('dashboard')->with('success', 'Logged in successfully');
         } else {
-            return redirect()->back()->with('error', 'Invalid credentials');
+            return redirect()->back()->with('error', 'Credenciales inválidas');
         }
     }
 
     public function logout()
     {
         Auth::guard('web')->logout();
-        return redirect()->route('login')->with('success', 'Logged out successfully');
+        return redirect()->route('login')->with('success', 'Se cerró sesión correctamente');
     }
 
     public function forget_password()

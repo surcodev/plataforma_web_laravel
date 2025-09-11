@@ -105,7 +105,7 @@ class AgentController extends Controller
         if(Auth::guard('agent')->attempt($data)){
             return redirect()->route('agent_dashboard')->with('success', 'Logged in successfully');
         } else {
-            return redirect()->back()->with('error', 'Invalid credentials');
+            return redirect()->back()->with('error', 'Credenciales inválidas');
         }
     }
 

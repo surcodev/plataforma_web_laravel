@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Forget Password</h2>
+                <h2>Agente Olvidó su contraseña</h2>
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ class AdminController extends Controller
         if(Auth::guard('admin')->attempt($data)){
             return redirect()->route('admin_dashboard')->with('success', 'Inició sesión correctamente');
         } else {
-            return redirect()->back()->with('error', 'Invalid credentials');
+            return redirect()->back()->with('error', 'Credenciales inválidas');
         }
     }
 

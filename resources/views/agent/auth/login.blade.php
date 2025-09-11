@@ -31,10 +31,10 @@
                             <button type="submit" class="btn btn-primary bg-website">
                                 Login
                             </button>
-                            <a href="{{ route('agent_forget_password') }}" class="primary-color">Forget Password?</a>
+                            <a href="{{ route('agent_forget_password') }}" class="primary-color">¿Olvidó su contraseña?</a>
                         </div>
                         <div class="mb-3">
-                            <a href="{{ route('agent_registration') }}" class="primary-color">Don't have an account? Create Account</a>
+                            <a href="{{ route('agent_registration') }}" class="primary-color">¿No tienes una cuenta? Crear una cuenta</a>
                         </div>
                     </form>
                 </div>

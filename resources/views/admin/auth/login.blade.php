@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <div>
                                     <a href="{{ route('admin_forget_password') }}">
-                                        Forget Password?
+                                        ¿Olvidó su contraseña?
                                     </a>
                                 </div>
                             </div>
