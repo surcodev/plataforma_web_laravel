@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Payment</h2>
+                <h2>Realizar pago</h2>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <h4>Current Plan</h4>
+                <h4>Plan actual</h4>
 
                 @if($total_current_order > 0)
                 <div class="row box-items mb-4">
@@ -34,11 +34,11 @@
                 </div>
                 @else 
                 <div class="alert alert-danger mb_20">
-                    You did not purchase any plan yet
+                    Aún no has comprado ningún plan
                 </div>
                 @endif
 
-                <h4>Upgrade Plan (Make Payment)</h4>
+                <h4>Plan de actualización (Realizar pago)</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered upgrade-plan-table">
                         <tr>
@@ -52,7 +52,7 @@
                                 </select>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-secondary btn-sm buy-button">Pay with PayPal</button>
+                                <button type="submit" class="btn btn-secondary btn-sm buy-button">Pagar con PayPal</button>
                                 </form>
                             </td>
                         </tr>
@@ -67,7 +67,7 @@
                                 </select>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-secondary btn-sm buy-button">Pay with Stripe</button>
+                                <button type="submit" class="btn btn-secondary btn-sm buy-button">Pagar con Stripe</button>
                                 </form>
                             </td>
                         </tr>

@@ -21,43 +21,43 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <h3>Hello, {{ Auth::guard('agent')->user()->name }}</h3>
-                <p>See all the statistics at a glance:</p>
+                <h3>Hola, {{ Auth::guard('agent')->user()->name }}</h3>
+                <p>Vea todas las estadísticas de un vistazo:</p>
 
                 <div class="row box-items">
                     <div class="col-md-4">
                         <div class="box1">
                             <h4>{{ $total_active_properties }}</h4>
-                            <p>Active Properties</p>
+                            <p>Propiedades activas</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="box2">
                             <h4>{{ $total_pending_properties }}</h4>
-                            <p>Pending Properties</p>
+                            <p>Propiedades pendientes</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="box3">
                             <h4>{{ $total_featured_properties }}</h4>
-                            <p>Featured Properties</p>
+                            <p>Propiedades Destacadas</p>
                         </div>
                     </div>
                 </div>
 
-                <h3 class="mt-5">Recent Properties</h3>
+                <h3 class="mt-5">Propiedades recientes</h3>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>SL</th>
-                                <th>Name</th>
-                                <th>Location</th>
-                                <th>Type</th>
-                                <th>Purpose</th>
-                                <th>Price</th>
-                                <th>Is Featured?</th>
-                                <th>Created Date</th>
+                                <th>Item</th>
+                                <th>Nombre</th>
+                                <th>Ubicación</th>
+                                <th>Tipo</th>
+                                <th>Propósito</th>
+                                <th>Precio</th>
+                                <th>Is ¿Destacado?</th>
+                                <th>Fecha de creación</th>
                             </tr>
                             @foreach($recent_properties as $item)
                             <tr>
@@ -69,7 +69,7 @@
                                 <td>${{ $item->price }}</td>
                                 <td>
                                     @if($item->is_featured == 'Yes')
-                                        <span class="badge bg-success">Yes</span>
+                                        <span class="badge bg-success">Sí</span>
                                     @else
                                         <span class="badge bg-danger">No</span>
                                     @endif

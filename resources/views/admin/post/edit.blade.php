@@ -19,17 +19,17 @@
                             <form action="{{ route('admin_post_update',$post->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Existing Photo</label>
+                                    <label>Foto existente</label>
                                     <div>
                                         <img src="{{ asset('uploads/'.$post->photo) }}" alt="" class="w_200">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Change Photo</label>
+                                    <label>Cambiar foto</label>
                                     <div><input type="file" name="photo"></div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Title *</label>
+                                    <label>Título *</label>
                                     <input type="text" class="form-control" name="title" value="{{ $post->title }}">
                                 </div>
                                 <div class="form-group mb-3">
@@ -37,15 +37,15 @@
                                     <input type="text" class="form-control" name="slug" value="{{ $post->slug }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Short Description *</label>
+                                    <label>Descripción breve *</label>
                                     <textarea name="short_description" class="form-control h_100" cols="30" rows="10">{{ $post->short_description }}</textarea>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Description *</label>
+                                    <label>Descripción *</label>
                                     <textarea name="description" class="form-control editor" cols="30" rows="10">{{ $post->description }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

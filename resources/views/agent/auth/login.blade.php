@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Login</h2>
+                <h2>Inicio de sesión como agente</h2>
             </div>
         </div>
     </div>
@@ -20,16 +20,16 @@
                     <form action="{{ route('agent_login_submit') }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">Email Address *</label>
+                            <label for="" class="form-label">Correo Electrónico *</label>
                             <input type="text" name="email" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Password *</label>
+                            <label for="" class="form-label">Contraseña *</label>
                             <input type="password" name="password" class="form-control">
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary bg-website">
-                                Login
+                                Iniciar Sesión
                             </button>
                             <a href="{{ route('agent_forget_password') }}" class="primary-color">¿Olvidó su contraseña?</a>
                         </div>

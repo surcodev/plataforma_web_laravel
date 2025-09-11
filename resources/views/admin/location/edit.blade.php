@@ -19,17 +19,17 @@
                             <form action="{{ route('admin_location_update',$location->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Existing Photo</label>
+                                    <label>Foto existente</label>
                                     <div>
                                         <img src="{{ asset('uploads/'.$location->photo) }}" alt="" class="w_200">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Change Photo</label>
+                                    <label>Cambiar foto</label>
                                     <div><input type="file" name="photo"></div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Name *</label>
+                                    <label>Nombre *</label>
                                     <input type="text" class="form-control" name="name" value="{{ $location->name }}">
                                 </div>
                                 <div class="form-group mb-3">
@@ -37,7 +37,7 @@
                                     <input type="text" class="form-control" name="slug" value="{{ $location->slug }}">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

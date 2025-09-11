@@ -24,17 +24,17 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>SL</th>
-                                <th>Invoice Id</th>
-                                <th>Package Name</th>
-                                <th>Price</th>
-                                <th>Payent Date</th>
-                                <th>Expire Date</th>
+                                <th>Item</th>
+                                <th>Identificación de la factura</th>
+                                <th>Nombre del paquete</th>
+                                <th>Precio</th>
+                                <th>Fecha de pago</th>
+                                <th>Fecha de vencimiento</th>
                                 <th>
-                                    Payment Method & Transaction Id
+                                    Método de pago e ID de transacción
                                 </th>
-                                <th>Status</th>
-                                <th>Print Invoice</th>
+                                <th>Estado</th>
+                                <th>Imprimir factura</th>
                             </tr>
                             @foreach($orders as $order)
                             <tr>
@@ -42,7 +42,7 @@
                                 <td>
                                     {{ $order->invoice_no }}<br>
                                     @if($order->currently_active == 1)
-                                    <span class="badge bg-success">Currently Active</span>
+                                    <span class="badge bg-success">Actualmente activo</span>
                                     @endif
                                 </td>
                                 <td>{{ $order->package->name }}</td>

@@ -37,7 +37,7 @@ class FrontController extends Controller
         ->take(3)
         ->get();
 
-        // get the total propertywise locations. which location has more property, that will come first and in this way.
+        // Obtenga la totalidad de ubicaciones por propiedad. ¿Qué ubicación tiene más propiedades? Aparecerá primero y de esta manera.
         $locations = Location::withCount(['properties' => function ($query) {
             $query->where('status', 'Active')
             ->whereHas('agent', function($q) {
@@ -75,7 +75,7 @@ class FrontController extends Controller
             return response()->json(['code'=>0,'error_message'=>$validator->errors()->toArray()]);
         } else {
             
-            // Send email
+            // Enviar correo electrónico
             $subject = 'Mensaje del formulario de contacto';
             $message = 'Información del remitente:<br>';
             $message .= '<b>Nombre:</b><br>'.$request->name.'<br><br>';
@@ -142,7 +142,7 @@ class FrontController extends Controller
             return redirect()->route('home')->with('error', 'Propiedad no encontrada');
         }
 
-        // Send Email
+        // Enviar correo electrónico
         $subject = 'Consulta de propiedad';
         $message = 'Has recibido una nueva consulta para la propiedad: ' . $property->name.'<br><br>';
         $message .= 'Nombre del visitante:<br>'.$request->name.'<br><br>';
@@ -158,7 +158,7 @@ class FrontController extends Controller
 
     public function locations()
     {
-        // get the total propertywise locations. which location has more property, that will come first and in this way.
+        // Obtenga la totalidad de ubicaciones por propiedad. ¿Qué ubicación tiene más propiedades? Aparecerá primero y de esta manera.
         $locations = Location::withCount(['properties' => function ($query) {
             $query->where('status', 'Active')
             ->whereHas('agent', function($q) {

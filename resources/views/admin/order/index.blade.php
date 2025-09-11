@@ -6,7 +6,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header d-flex justify-content-between">
-            <h1>Orders</h1>
+            <h1>Pedidos</h1>
         </div>
         <div class="section-body">
             <div class="row">
@@ -17,16 +17,16 @@
                                 <table class="table table-bordered" id="example1">
                                     <thead>
                                         <tr>
-                                            <th>SL</th>
-                                            <th>Invoice Id</th>
-                                            <th>Agent Info</th>
-                                            <th>Package Name</th>
-                                            <th>Price</th>
-                                            <th>Payent Date</th>
-                                            <th>Expire Date</th>
-                                            <th>Payment Method & Transaction Id</th>
-                                            <th>Status</th>
-                                            <th>Print Invoice</th>
+                                            <th>Item</th>
+                                            <th>Identificación de la factura</th>
+                                            <th>Información del agente</th>
+                                            <th>Nombre del paquete</th>
+                                            <th>Precio</th>
+                                            <th>Fecha de pago</th>
+                                            <th>Fecha de vencimiento</th>
+                                            <th>Método de pago e ID de transacción</th>
+                                            <th>Estado</th>
+                                            <th>Imprimir factura</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -36,7 +36,7 @@
                                             <td>
                                                 {{ $order->invoice_no }}<br>
                                                 @if($order->currently_active == 1)
-                                                <span class="badge bg-success">Currently Active</span>
+                                                <span class="badge bg-success">Actualmente activo</span>
                                                 @endif
                                             </td>
                                             <td>

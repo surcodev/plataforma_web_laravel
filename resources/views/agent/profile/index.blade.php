@@ -25,7 +25,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <label for="">Existing Photo</label>
+                            <label for="">Foto existente</label>
                             <div class="form-group">
                                 @if(Auth::guard('agent')->user()->photo == null)
                                 <img src="{{ asset('uploads/default.png') }}" alt="" class="user-photo">
@@ -35,67 +35,67 @@
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="">Change Photo</label>
+                            <label for="">Cambiar foto</label>
                             <div class="form-group">
                                 <input type="file" name="photo">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Name *</label>
+                            <label for="">Nombre *</label>
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" value="{{ Auth::guard('agent')->user()->name }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Email *</label>
+                            <label for="">Correo electrónico *</label>
                             <div class="form-group">
                                 <input type="text" name="email" class="form-control" value="{{ Auth::guard('agent')->user()->email }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Company *</label>
+                            <label for="">Empresa *</label>
                             <div class="form-group">
                                 <input type="text" name="company" class="form-control" value="{{ Auth::guard('agent')->user()->company }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Designation *</label>
+                            <label for="">Cargo *</label>
                             <div class="form-group">
                                 <input type="text" name="designation" class="form-control" value="{{ Auth::guard('agent')->user()->designation }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Phone</label>
+                            <label for="">Teléfono</label>
                             <div class="form-group">
                                 <input type="text" name="phone" class="form-control" value="{{ Auth::guard('agent')->user()->phone }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Address</label>
+                            <label for="">Dirección</label>
                             <div class="form-group">
                                 <input type="text" name="address" class="form-control" value="{{ Auth::guard('agent')->user()->address }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Country</label>
+                            <label for="">País</label>
                             <div class="form-group">
                                 <input type="text" name="country" class="form-control" value="{{ Auth::guard('agent')->user()->country }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">State</label>
+                            <label for="">Estado</label>
                             <div class="form-group">
                                 <input type="text" name="state" class="form-control" value="{{ Auth::guard('agent')->user()->state }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">City</label>
+                            <label for="">Ciudad</label>
                             <div class="form-group">
                                 <input type="text" name="city" class="form-control" value="{{ Auth::guard('agent')->user()->city }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Zip</label>
+                            <label for="">Código Postal</label>
                             <div class="form-group">
                                 <input type="text" name="zip" class="form-control" value="{{ Auth::guard('agent')->user()->zip }}">
                             </div>
@@ -113,7 +113,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Linkedin</label>
+                            <label for="">LinkedIn</label>
                             <div class="form-group">
                                 <input type="text" name="linkedin" class="form-control" value="{{ Auth::guard('agent')->user()->linkedin }}">
                             </div>
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="">Website</label>
+                            <label for="">Sitio Web</label>
                             <div class="form-group">
                                 <input type="text" name="website" class="form-control" value="{{ Auth::guard('agent')->user()->website }}">
                             </div>
@@ -133,19 +133,19 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="">Password</label>
+                            <label for="">Contraseña</label>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Confirm Password</label>
+                            <label for="">Confirmar contraseña</label>
                             <div class="form-group">
                                 <input type="password" name="confirm_password" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="">Biography</label>
+                            <label for="">Biografía</label>
                             <div class="form-group">
                                 <textarea name="biography" class="form-control h-300" rows="5">{{ Auth::guard('agent')->user()->biography }}</textarea>
                             </div>

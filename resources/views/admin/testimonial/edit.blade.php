@@ -19,29 +19,29 @@
                             <form action="{{ route('admin_testimonial_update',$testimonial->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Existing Photo</label>
+                                    <label>Foto existente</label>
                                     <div>
                                         <img src="{{ asset('uploads/'.$testimonial->photo) }}" alt="" class="w_100">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Change Photo</label>
+                                    <label>Cambiar foto</label>
                                     <div><input type="file" name="photo"></div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Name *</label>
+                                    <label>Nombre *</label>
                                     <input type="text" class="form-control" name="name" value="{{ $testimonial->name }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Designation *</label>
+                                    <label>Cargo *</label>
                                     <input type="text" class="form-control" name="designation" value="{{ $testimonial->designation }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Comment *</label>
+                                    <label>Comentario *</label>
                                     <textarea name="comment" class="form-control h_100" cols="30" rows="10">{{ $testimonial->comment }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

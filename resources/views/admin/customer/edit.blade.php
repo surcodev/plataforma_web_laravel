@@ -19,41 +19,41 @@
                             <form action="{{ route('admin_customer_update',$customer->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Existing Photo</label>
+                                    <label>Foto existente</label>
                                     <div>
                                         <img src="{{ asset('uploads/'.$customer->photo) }}" alt="" class="w_100">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Change Photo</label>
+                                    <label>Cambiar imágen</label>
                                     <div><input type="file" name="photo"></div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Name *</label>
+                                    <label>Nombre *</label>
                                     <input type="text" class="form-control" name="name" value="{{ $customer->name }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Email *</label>
+                                    <label>Correo electrónico *</label>
                                     <input type="text" class="form-control" name="email" value="{{ $customer->email }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Password</label>
+                                    <label>Contraseña</label>
                                     <input type="password" class="form-control" name="password">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Confirm Password</label>
+                                    <label>Confirmar contraseña</label>
                                     <input type="password" class="form-control" name="confirm_password">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Status *</label>
+                                    <label>Estado *</label>
                                     <select name="status" class="form-select">
-                                        <option value="0" {{ $customer->status == 0 ? 'selected' : '' }}>Pending</option>
-                                        <option value="1" {{ $customer->status == 1 ? 'selected' : '' }}>Active</option>
-                                        <option value="2" {{ $customer->status == 2 ? 'selected' : '' }}>Suspended</option>
+                                        <option value="0" {{ $customer->status == 0 ? 'selected' : '' }}>Pendiente</option>
+                                        <option value="1" {{ $customer->status == 1 ? 'selected' : '' }}>Activo</option>
+                                        <option value="2" {{ $customer->status == 2 ? 'selected' : '' }}>Suspendido</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

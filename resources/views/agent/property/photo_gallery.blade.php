@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Property Photo Gallery</h2>
+                <h2>Galería de fotos de propiedades del Agente</h2>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <h4>Add Photo</h4>
+                <h4>Añadir foto</h4>
                 <form action="{{ route('agent_property_photo_gallery_store',$property->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
@@ -37,13 +37,13 @@
                     </div>
                 </form>
 
-                <h4 class="mt-4">Existing Photos</h4>
+                <h4 class="mt-4">Foto existente</h4>
                 <div class="photo-all">
                     <div class="row">
                         @if($photos->isEmpty())
                             <div class="col-md-12">
                                 <div class="alert alert-danger">
-                                    No photos found.
+                                    No se encontraron fotos.
                                 </div>
                             </div>
                         @else

@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Customer Profile</h2>
+                <h2>Perfil del Cliente</h2>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <label for="">Existing Photo</label>
+                            <label for="">Foto existente</label>
                             <div class="form-group">
                                 @if(Auth::guard('web')->user()->photo == null)
                                 <img src="{{ asset('uploads/default.png') }}" alt="" class="user-photo">
@@ -35,31 +35,31 @@
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="">Change Photo</label>
+                            <label for="">Cambiar foto</label>
                             <div class="form-group">
                                 <input type="file" name="photo">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Name *</label>
+                            <label for="">Nombre *</label>
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" value="{{ Auth::guard('web')->user()->name }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Email *</label>
+                            <label for="">Correo electrónico *</label>
                             <div class="form-group">
                                 <input type="text" name="email" class="form-control" value="{{ Auth::guard('web')->user()->email }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Password</label>
+                            <label for="">Contraseña</label>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Confirm Password</label>
+                            <label for="">Confirmar contraseña</label>
                             <div class="form-group">
                                 <input type="password" name="confirm_password" class="form-control">
                             </div>

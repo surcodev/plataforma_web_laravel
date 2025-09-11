@@ -534,7 +534,7 @@ class AgentController extends Controller
         $order = Order::where('agent_id', Auth::guard('agent')->user()->id)->where('currently_active',1)->first();
         if($request->is_featured == 'Yes') {
             if($order->package->allowed_featured_properties <= Property::where('agent_id', Auth::guard('agent')->user()->id)->where('is_featured','Yes')->count()){
-                return redirect()->back()->with('error', 'You have reached the maximum number of featured properties allowed in your package. Please purchase a new package to create more featured properties.');
+                return redirect()->back()->with('error', 'Has alcanzado el número máximo de propiedades destacadas permitidas en tu paquete. Compra un nuevo paquete para añadir más propiedades destacadas.');
             }
         }
 
@@ -580,20 +580,20 @@ class AgentController extends Controller
         $admin_data = Admin::where('id',1)->first();
         $admin_email = $admin_data->email;
         $link = route('admin_property_index');
-        $subject = 'A new property has been added';
-        $message = 'Please check the following link to see the pending property that is currently added to the system:<br>';
+        $subject = 'Se ha añadido una nueva propiedad';
+        $message = 'Consulte el siguiente enlace para ver la propiedad pendiente que actualmente está agregada al sistema:<br>';
         $message .= '<a href="'.$link.'">'.$link.'</a><br><br>';
 
         \Mail::to($admin_email)->send(new Websitemail($subject, $message));
 
-        return redirect()->route('agent_property_index')->with('success', 'Property created successfully');
+        return redirect()->route('agent_property_index')->with('success', 'Propiedad creada exitosamente');
     }
 
     public function property_edit($id) 
     {
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
         if(!$property){
-            return redirect()->back()->with('error', 'Property not found');
+            return redirect()->back()->with('error', 'Propiedad no encontrada');
         }
         $existing_amenities = explode(',', $property->amenities);
         $locations = Location::orderBy('id','asc')->get();
@@ -606,7 +606,7 @@ class AgentController extends Controller
     {
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
         if(!$property){
-            return redirect()->back()->with('error', 'Property not found');
+            return redirect()->back()->with('error', 'propiedad no encontrada');
         }
 
         $request->validate([
@@ -651,14 +651,14 @@ class AgentController extends Controller
         $property->is_featured = $request->is_featured;
         $property->update();
 
-        return redirect()->route('agent_property_index')->with('success', 'Property updated successfully');
+        return redirect()->route('agent_property_index')->with('success', 'Propiedad actualizada exitosamente');
     }
 
     public function property_delete($id)
     {
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
         if(!$property){
-            return redirect()->back()->with('error', 'Property not found');
+            return redirect()->back()->with('error', 'Propiedad no encontrada');
         }
         if($property->featured_photo != '') {
             unlink(public_path('uploads/'.$property->featured_photo));
@@ -671,14 +671,14 @@ class AgentController extends Controller
         }
         $property->delete();
 
-        return redirect()->back()->with('success', 'Property deleted successfully');
+        return redirect()->back()->with('success', 'Propiedad eliminada exitosamente');
     }
 
     public function property_photo_gallery($id)
     {
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
         if(!$property){
-            return redirect()->back()->with('error', 'Property not found');
+            return redirect()->back()->with('error', 'Propiedad no encontrada');
         }
 
         $photos = PropertyPhoto::where('property_id',$property->id)->get();
@@ -688,28 +688,28 @@ class AgentController extends Controller
 
     public function property_photo_gallery_store(Request $request, $id)
     {
-        // Check in orders table if this agent has any package purchased
+        // Consultar en la tabla de pedidos si este agente tiene algún paquete comprado
         $order = Order::where('agent_id', Auth::guard('agent')->user()->id)->where('currently_active',1)->first();
         if(!$order){
-            return redirect()->route('agent_payment')->with('error', 'You have not purchased any package yet. Please purchase a package to create properties.');
+            return redirect()->route('agent_payment')->with('error', 'Aún no has comprado ningún paquete. Compra un paquete para crear propiedades.');
         }
 
 
-        // Check if the agent has reached the maximum number of properties allowed in the package
+        // Verificar si el agente ha alcanzado el número máximo de propiedades permitidas en el paquete
         if($order->package->allowed_properties <= Property::where('agent_id', Auth::guard('agent')->user()->id)->count()){
-            return redirect()->route('agent_payment')->with('error', 'You have reached the maximum number of properties allowed in your package. Please purchase a new package to create more properties.');
+            return redirect()->route('agent_payment')->with('error', 'Has alcanzado el número máximo de propiedades permitidas en tu paquete. Compra un nuevo paquete para crear más propiedades.');
         }
 
 
         // Check if the agent has reached the maximum number of photos allowed in the package
         if($order->package->allowed_photos <= PropertyPhoto::where('property_id',$id)->count()){
-            return redirect()->back()->with('error', 'You have reached the maximum number of photos allowed in your package. Please purchase a new package to add more photos.');
+            return redirect()->back()->with('error', 'Has alcanzado el número máximo de fotos permitidas en tu paquete. Compra un nuevo paquete para añadir más fotos.');
         }
 
 
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
         if(!$property){
-            return redirect()->back()->with('error', 'Property not found');
+            return redirect()->back()->with('error', 'Propiedad no encontrada');
         }
 
         $request->validate([
@@ -725,20 +725,20 @@ class AgentController extends Controller
         $obj->photo = $final_name;
         $obj->save();
 
-        return redirect()->back()->with('success', 'Photo added successfully');
+        return redirect()->back()->with('success', 'Foto añadida con éxito');
     }
 
     public function property_photo_gallery_delete($id)
     {
         $photo = PropertyPhoto::where('id',$id)->first();
         if(!$photo){
-            return redirect()->back()->with('error', 'Photo not found');
+            return redirect()->back()->with('error', 'Foto no encontrada');
         }
         if($photo->photo != '') {
             unlink(public_path('uploads/'.$photo->photo));
         }
         $photo->delete();
-        return redirect()->back()->with('success', 'Photo deleted successfully');
+        return redirect()->back()->with('success', 'Foto eliminada exitosamente');
     }
 
 
@@ -746,7 +746,7 @@ class AgentController extends Controller
     {
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
         if(!$property){
-            return redirect()->back()->with('error', 'Property not found');
+            return redirect()->back()->with('error', 'Propiedad no encontrada');
         }
 
         $videos = PropertyVideo::where('property_id',$property->id)->get();
@@ -756,28 +756,28 @@ class AgentController extends Controller
 
     public function property_video_gallery_store(Request $request, $id)
     {
-        // Check in orders table if this agent has any package purchased
+        // Consultar en la tabla de pedidos si este agente tiene algún paquete comprado
         $order = Order::where('agent_id', Auth::guard('agent')->user()->id)->where('currently_active',1)->first();
         if(!$order){
-            return redirect()->route('agent_payment')->with('error', 'You have not purchased any package yet. Please purchase a package to create properties.');
+            return redirect()->route('agent_payment')->with('error', 'Aún no has comprado ningún paquete. Compra un paquete para crear propiedades.');
         }
 
 
-        // Check if the agent has reached the maximum number of properties allowed in the package
+        // Verificar si el agente ha alcanzado el número máximo de propiedades permitidas en el paquete
         if($order->package->allowed_properties <= Property::where('agent_id', Auth::guard('agent')->user()->id)->count()){
-            return redirect()->route('agent_payment')->with('error', 'You have reached the maximum number of properties allowed in your package. Please purchase a new package to create more properties.');
+            return redirect()->route('agent_payment')->with('error', 'Has alcanzado el número máximo de propiedades permitidas en tu paquete. Compra un nuevo paquete para crear más propiedades.');
         }
 
 
-        // Check if the agent has reached the maximum number of videos allowed in the package
+        // Comprueba si el agente ha alcanzado el número máximo de vídeos permitidos en el paquete
         if($order->package->allowed_videos <= PropertyVideo::where('property_id',$id)->count()){
-            return redirect()->back()->with('error', 'You have reached the maximum number of videos allowed in your package. Please purchase a new package to add more videos.');
+            return redirect()->back()->with('error', 'Has alcanzado el número máximo de vídeos permitidos en tu paquete. Compra un nuevo paquete para añadir más vídeos.');
         }
 
 
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
         if(!$property){
-            return redirect()->back()->with('error', 'Property not found');
+            return redirect()->back()->with('error', 'Propiedad no encontrada');
         }
 
         $request->validate([
@@ -789,17 +789,17 @@ class AgentController extends Controller
         $obj->video = $request->video;
         $obj->save();
 
-        return redirect()->back()->with('success', 'Video added successfully');
+        return redirect()->back()->with('success', 'Vídeo añadido correctamente');
     }
 
     public function property_video_gallery_delete($id)
     {
         $video = PropertyVideo::where('id',$id)->first();
         if(!$video){
-            return redirect()->back()->with('error', 'Video not found');
+            return redirect()->back()->with('error', 'Vídeo no encontrado');
         }
         $video->delete();
-        return redirect()->back()->with('success', 'Video deleted successfully');
+        return redirect()->back()->with('success', 'Vídeo eliminado correctamente');
     }
 
     public function message()
@@ -829,9 +829,9 @@ class AgentController extends Controller
         $reply->reply = $request->reply;
         $reply->save();
 
-        // Send email to agent
-        $subject = 'New Reply from Agent';
-        $message = 'You have received a new reply from agent. Please click on the following link:<br>';
+        // Enviar correo electrónico al agente
+        $subject = 'Nueva respuesta del agente';
+        $message = 'Ha recibido una nueva respuesta del agente. Haga clic en el siguiente enlace.:<br>';
         $link = url('message/reply/'.$m_id);
         $message .= '<a href="'.$link.'">'.$link.'</a>';
 
@@ -839,7 +839,7 @@ class AgentController extends Controller
         
         \Mail::to($user->email)->send(new Websitemail($subject, $message));
 
-        return redirect()->back()->with('success', 'Reply sent successfully');
+        return redirect()->back()->with('success', 'Respuesta enviada exitosamente');
     }
 
 }

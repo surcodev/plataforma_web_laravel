@@ -89,11 +89,11 @@
                                     <table class="table table-bordered invoice-item-table">
                                         <tbody>
                                             <tr>
-                                                <th>SL</th>
-                                                <th>Package Name</th>
-                                                <th>Package Price</th>
-                                                <th>Purchase Date</th>
-                                                <th>Expire Date</th>
+                                                <th>Item</th>
+                                                <th>Nombre del paquete</th>
+                                                <th>Precio del paquete</th>
+                                                <th>Fecha de compra</th>
+                                                <th>Fecha de vencimiento</th>
                                             </tr>
                                             <tr>
                                                 <td>1</td>
@@ -115,7 +115,7 @@
                                     <table class="table table-bordered table-border-0">
                                         <tbody>
                                             <td class="w-70 invoice-bottom-payment">
-                                                <h4>Payment Method</h4>
+                                                <h4>Método de pago</h4>
                                                 <p>{{ $order->payment_method }}</p>
                                             </td>
                                             <td class="w-30 tar invoice-bottom-total-box">

@@ -19,19 +19,19 @@
                             <form action="{{ route('admin_agent_update',$agent->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Existing Photo</label>
+                                    <label></label>
                                     <div>
                                         <img src="{{ asset('uploads/'.$agent->photo) }}" alt="" class="w_100">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Change Photo</label>
+                                    <label>Cambiar foto</label>
                                     <div><input type="file" name="photo"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Name *</label>
+                                            <label>Nombre *</label>
                                             <input type="text" class="form-control" name="name" value="{{ $agent->name }}">
                                         </div>
                                     </div>
@@ -45,13 +45,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Company *</label>
+                                            <label>Empresa *</label>
                                             <input type="text" class="form-control" name="company" value="{{ $agent->company }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Designation *</label>
+                                            <label>Cargo *</label>
                                             <input type="text" class="form-control" name="designation" value="{{ $agent->designation }}">
                                         </div>
                                     </div>
@@ -59,13 +59,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Phone</label>
+                                            <label>Teléfono</label>
                                             <input type="text" class="form-control" name="phone" value="{{ $agent->phone }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Address</label>
+                                            <label>Dirección</label>
                                             <input type="text" class="form-control" name="address" value="{{ $agent->address }}">
                                         </div>
                                     </div>
