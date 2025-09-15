@@ -1,12 +1,12 @@
 INSERT INTO `settings` (`id`, `logo`, `favicon`, `banner`, `footer_address`, `footer_email`, `footer_phone`, `footer_facebook`, `footer_twitter`, `footer_linkedin`, `footer_instagram`, `footer_copyright`, `created_at`, `updated_at`) VALUES
-(1, 'logo_1745742469.png', 'favicon_1745742706.png', 'banner_1745743308.jpg', '34 Antiger Lane, USA, 12937', 'info@bienes-raices-santa-clara-sac.com', '+51 979 785 497', '#', '#', '#', '#', 'Copyright 2025, bienes-raices-santa-clara-sac.com, Todos los derechos reservados.', NULL, '2025-04-27 02:49:01');
+(1, 'logo_1745742469.png', 'favicon_1745742706.png', 'banner_1745743308.jpg', 'Calle Germán Schreiber 272, Of. 302, San Isidro; Lima', 'info@bienes-raices-santa-clara-sac.com', '+51 979 785 497', '#', '#', '#', '#', 'Copyright 2025, bienes-raices-santa-clara-sac.com, Todos los derechos reservados.', NULL, '2025-04-27 02:49:01');
 
 -- --------------------------------------------------------
 
 INSERT INTO `users` (`id`, `name`, `email`, `photo`, `password`, `token`, `status`, `created_at`, `updated_at`) VALUES
 (2, 'Smith Cooper', 'smith@gmail.com', 'user_1745146600.jpg', '$2y$12$s9r9RbigUAZiQk/4qTfmYOPjYv.odoIp3l9GURNd8XyBUew3h5aO.', '', '1', '2025-04-18 20:31:03', '2025-04-20 04:56:40'),
-(3, 'David', 'david@gmail.com', 'user_1745556312.jpg', '$2y$12$s9r9RbigUAZiQk/4qTfmYOPjYv.odoIp3l9GURNd8XyBUew3h5aO.', '', '1', '2025-04-18 20:33:17', '2025-04-24 22:45:12'),
-(4, 'John Green', 'john@gmail.com', NULL, '$2y$12$s9r9RbigUAZiQk/4qTfmYOPjYv.odoIp3l9GURNd8XyBUew3h5aO.', '', '1', '2025-04-20 04:29:00', '2025-04-20 04:29:19');
+(3, 'David', 'david@gmail.com', 'user_1745556312.jpg', '$2y$12$MscyDJ0WuqxX7NOqm7xLiuND.eW9WPWFvGUu2UFLWzrwd5P3JD5Ny', '', '1', '2025-04-18 20:33:17', '2025-04-24 22:45:12'),
+(4, 'John Green', 'john@gmail.com', NULL, '$2y$12$MscyDJ0WuqxX7NOqm7xLiuND.eW9WPWFvGUu2UFLWzrwd5P3JD5Ny', '', '1', '2025-04-20 04:29:00', '2025-04-20 04:29:19');
 
 -- --------------------------------------------------------
 

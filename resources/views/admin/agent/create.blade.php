@@ -19,19 +19,19 @@
                             <form action="{{ route('admin_agent_store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Photo *</label>
+                                    <label>Imágen principal *</label>
                                     <div><input type="file" name="photo"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Name *</label>
+                                            <label>Nombre *</label>
                                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Email *</label>
+                                            <label>Correo electrónico *</label>
                                             <input type="text" class="form-control" name="email" value="{{ old('email') }}">
                                         </div>
                                     </div>
@@ -39,13 +39,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Company *</label>
+                                            <label>Empresa *</label>
                                             <input type="text" class="form-control" name="company" value="{{ old('company') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Designation *</label>
+                                            <label>Cargo *</label>
                                             <input type="text" class="form-control" name="designation" value="{{ old('designation') }}">
                                         </div>
                                     </div>
@@ -53,13 +53,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Phone</label>
+                                            <label>Teléfono</label>
                                             <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Address</label>
+                                            <label>Dirección</label>
                                             <input type="text" class="form-control" name="address" value="{{ old('address') }}">
                                         </div>
                                     </div>
@@ -67,13 +67,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Country</label>
+                                            <label>País</label>
                                             <input type="text" class="form-control" name="country" value="{{ old('country') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>State</label>
+                                            <label>Estado</label>
                                             <input type="text" class="form-control" name="state" value="{{ old('state') }}">
                                         </div>
                                     </div>
@@ -81,13 +81,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>City</label>
+                                            <label>Ciudad</label>
                                             <input type="text" class="form-control" name="city" value="{{ old('city') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Zip</label>
+                                            <label>Código Postal</label>
                                             <input type="text" class="form-control" name="zip" value="{{ old('zip') }}">
                                         </div>
                                     </div>
@@ -121,38 +121,38 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Website</label>
+                                    <label>Sitio Web</label>
                                     <input type="text" class="form-control" name="website" value="{{ old('website') }}">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Password *</label>
+                                            <label>Contraseña *</label>
                                             <input type="password" class="form-control" name="password">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label>Confirm Password *</label>
+                                            <label>Confirmar contraseña *</label>
                                             <input type="password" class="form-control" name="confirm_password">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Biography</label>
+                                    <label>Biografía</label>
                                     <textarea name="biography" class="form-control h_200" cols="30" rows="10">{{ old('biography') }}</textarea>
                                 </div>
                                 
                                 <div class="form-group mb-3">
-                                    <label>Status *</label>
+                                    <label>Estado *</label>
                                     <select name="status" class="form-select">
-                                        <option value="0">Pending</option>
-                                        <option value="1">Active</option>
-                                        <option value="2">Suspended</option>
+                                        <option value="0">Pendiente</option>
+                                        <option value="1">Activo</option>
+                                        <option value="2">Suspendido</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
                                 </div>
                             </form>
                         </div>

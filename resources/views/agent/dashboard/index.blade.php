@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Dashboard</h2>
+                <h2>Panel de control</h2>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
                                 <th>Tipo</th>
                                 <th>Propósito</th>
                                 <th>Precio</th>
-                                <th>Is ¿Destacado?</th>
+                                <th>¿Es Destacado?</th>
                                 <th>Fecha de creación</th>
                             </tr>
                             @foreach($recent_properties as $item)

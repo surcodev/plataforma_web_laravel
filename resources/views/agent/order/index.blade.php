@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Orders</h2>
+                <h2>Órdenes del agente</h2>
             </div>
         </div>
     </div>

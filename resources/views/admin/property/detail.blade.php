@@ -16,13 +16,13 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-sm">
                                     <tr>
-                                        <th class="w_200">Featured Photo</th>
+                                        <th class="w_200">Foto destacado</th>
                                         <td>
                                             <img src="{{ asset('uploads/'.$property->featured_photo) }}" alt="" class="w_200">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Nombre</th>
                                         <td>{{ $property->name }}</td>
                                     </tr>
                                     <tr>
@@ -30,27 +30,27 @@
                                         <td>{{ $property->slug }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Description</th>
+                                        <th>Descripción</th>
                                         <td>{!! $property->description !!}</td>
                                     </tr>
                                     <tr>
-                                        <th>Price</th>
-                                        <td>${{ $property->price }}</td>
+                                        <th>Precio</th>
+                                        <td>$ {{ $property->price }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Agent</th>
+                                        <th>Agente</th>
                                         <td>{{ $property->agent->name }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Location</th>
+                                        <th>Ubicación</th>
                                         <td>{{ $property->location->name }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Type</th>
+                                        <th>Tipo</th>
                                         <td>{{ $property->type->name }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Amenities</th>
+                                        <th>Comodidades</th>
                                         <td>
                                             @php
                                             $amenity_arr = explode(',', $property->amenities);
@@ -62,51 +62,51 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Purpose</th>
+                                        <th>Objetivo</th>
                                         <td>{{ $property->purpose }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Bedrooms</th>
+                                        <th>Habitaciones</th>
                                         <td>{{ $property->bedroom }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Bathrooms</th>
+                                        <th>Baños</th>
                                         <td>{{ $property->bathroom }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Size</th>
-                                        <td>{{ $property->size }} sqft</td>
+                                        <th>Área</th>
+                                        <td>{{ $property->size }} m²</td>
                                     </tr>
                                     <tr>
-                                        <th>Floor</th>
-                                        <td>{{ $property->floor }} sqft</td>
+                                        <th>Número de pisos</th>
+                                        <td>{{ $property->floor }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Garage</th>
+                                        <th>Garaje</th>
                                         <td>{{ $property->garage }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Balcony</th>
+                                        <th>Balcón</th>
                                         <td>{{ $property->balcony }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Address</th>
+                                        <th>Dirección</th>
                                         <td>{{ $property->address }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Built Year</th>
+                                        <th>Años de construcción</th>
                                         <td>{{ $property->built_year }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Map</th>
+                                        <th>Mapa</th>
                                         <td>{!! $property->map !!}</td>
                                     </tr>
                                     <tr>
-                                        <th>Is Featured?</th>
+                                        <th>¿Es destacado?</th>
                                         <td>{{ $property->is_featured }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Photo Gallery</th>
+                                        <th>Galería de fotos</th>
                                         <td>
                                             @foreach($property->photos as $item)
                                             <img src="{{ asset('uploads/'.$item->photo) }}" alt="" class="w_200">
@@ -114,7 +114,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Video Gallery</th>
+                                        <th>Galería de vídeos</th>
                                         <td>
                                             @foreach($property->videos as $item)
                                             <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $item->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

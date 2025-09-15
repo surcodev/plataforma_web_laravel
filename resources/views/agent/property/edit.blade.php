@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Edit Property</h2>
+                <h2>Agente Editar propiedad</h2>
             </div>
         </div>
     </div>
@@ -23,20 +23,20 @@
                 <form action="{{ route('agent_property_update',$property->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-4 mb-3">
-                        <label for="" class="form-label">Existing Featured Photo</label>
+                        <label for="" class="form-label">Foto destacada existente</label>
                         <div>
                             <img src="{{ asset('uploads/' . $property->featured_photo) }}" alt="" class="w-200">
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="" class="form-label">Change Featured Photo</label>
+                        <label for="" class="form-label">Cambiar foto destacada</label>
                         <div>
                             <input type="file" name="featured_photo">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Name *</label>
+                            <label for="" class="form-label">Nombre *</label>
                             <input type="text" name="name" class="form-control" value="{{ $property->name }}">
                         </div>
                         <div class="col-md-4 mb-3">
@@ -44,15 +44,15 @@
                             <input type="text" name="slug" class="form-control" value="{{ $property->slug }}">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Price *</label>
+                            <label for="" class="form-label">Precio *</label>
                             <input type="text" name="price" class="form-control" value="{{ $property->price }}">
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="" class="form-label">Description</label>
+                            <label for="" class="form-label">Descripción</label>
                             <textarea name="description" class="form-control editor" cols="30" rows="10">{{ $property->description }}</textarea>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Location *</label>
+                            <label for="" class="form-label">Localización *</label>
                             <select name="location_id" class="form-control select2">
                                 @foreach($locations as $location)
                                     <option value="{{ $location->id }}" {{ $property->location_id == $location->id ? 'selected' : '' }}>{{ $location->name }}</option>
@@ -60,7 +60,7 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Type *</label>
+                            <label for="" class="form-label">Tipo *</label>
                             <select name="type_id" class="form-control select2">
                                 @foreach($types as $type)
                                     <option value="{{ $type->id }}" {{ $property->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
@@ -68,57 +68,57 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Purpose *</label>
+                            <label for="" class="form-label">Propósito *</label>
                             <select name="purpose" class="form-control select2">
-                                <option value="Sale" {{ $property->purpose == 'Sale' ? 'selected' : '' }}>Sale</option>
-                                <option value="Rent" {{ $property->purpose == 'Rent' ? 'selected' : '' }}>Rent</option>
+                                <option value="Sale" {{ $property->purpose == 'Sale' ? 'selected' : '' }}>Venta</option>
+                                <option value="Rent" {{ $property->purpose == 'Rent' ? 'selected' : '' }}>Alquiler</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Bedrooms *</label>
+                            <label for="" class="form-label">Habitaciones *</label>
                             <input type="number" name="bedroom" class="form-control" value="{{ $property->bedroom }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Bathrooms *</label>
+                            <label for="" class="form-label">Baños *</label>
                             <input type="number" name="bathroom" class="form-control" value="{{ $property->bathroom }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Size (Sqft) *</label>
+                            <label for="" class="form-label">Área (Sqft) *</label>
                             <input type="number" name="size" class="form-control" value="{{ $property->size }}" min="0" max="100000">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Floor</label>
+                            <label for="" class="form-label">Número de pisos</label>
                             <input type="number" name="floor" class="form-control" value="{{ $property->floor }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Garage</label>
+                            <label for="" class="form-label">Garaje</label>
                             <input type="number" name="garage" class="form-control" value="{{ $property->garage }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Balcony</label>
+                            <label for="" class="form-label">Balcón</label>
                             <input type="number" name="balcony" class="form-control" value="{{ $property->balcony }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Address *</label>
+                            <label for="" class="form-label">Dirección *</label>
                             <input type="text" name="address" class="form-control" value="{{ $property->address }}">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Built Year</label>
+                            <label for="" class="form-label">Año de construcción</label>
                             <input type="number" name="built_year" class="form-control" value="{{ $property->built_year }}" min="1900" max="{{ date('Y') }}">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Is Featured?</label>
+                            <label for="" class="form-label">¿Es destacado?</label>
                             <select name="is_featured" class="form-control select2">
-                                <option value="Yes" {{ $property->is_featured == 'Yes' ? 'selected' : '' }}>Yes</option>
+                                <option value="Yes" {{ $property->is_featured == 'Yes' ? 'selected' : '' }}>Sí</option>
                                 <option value="No" {{ $property->is_featured == 'No' ? 'selected' : '' }}>No</option>
                             </select>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="" class="form-label">Location Map</label>
+                            <label for="" class="form-label">Mapa de ubicación</label>
                             <textarea name="map" class="form-control h-150" cols="30" rows="10">{{ $property->map }}</textarea>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="" class="form-label">Amenities</label>
+                            <label for="" class="form-label">Comodidades</label>
                             <div class="row">
                                 @foreach($amenities as $amenity)
                                 <div class="col-md-3">

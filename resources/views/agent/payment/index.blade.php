@@ -28,7 +28,7 @@
                         <div class="box1">
                             <h4>${{ $current_order->package->price }}</h4>
                             <p>{{ $current_order->package->name }}</p>
-                            <p>({{ $days_left }} days remaining)</p>
+                            <p>({{ $days_left }} días restantes)</p>
                         </div>
                     </div>
                 </div>

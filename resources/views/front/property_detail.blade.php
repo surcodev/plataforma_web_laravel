@@ -21,18 +21,18 @@
                         <img src="{{ asset('uploads/'.$property->featured_photo) }}" alt="">
                     </div>
                     <h2>
-                        Description
+                        Descripción
                     </h2>
                     {!! $property->description !!}
                 </div>
                 <div class="left-item">
                     <h2>
-                        Photos
+                        Fotos
                     </h2>
                     <div class="photo-all">
                         <div class="row">
                             @if($property->photos->count() == 0)
-                                <span class="text-danger">No Photos Available</span>
+                                <span class="text-danger">No hay fotos disponibles</span>
                             @else
                                 @foreach($property->photos as $photo)
                                 <div class="col-md-6 col-lg-4">
@@ -58,7 +58,7 @@
                     <div class="video-all">
                         <div class="row">
                             @if($property->videos->count() == 0)
-                                <span class="text-danger">No Videos Available</span>
+                                <span class="text-danger">No hay vídeos disponibles</span>
                             @else
                                 @foreach($property->videos as $video)
                                 <div class="col-md-6 col-lg-4">
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="left-item mb_50">
-                    <h2>Share</h2>
+                    <h2>Compartir</h2>
                     <div class="share">
                         @php
                         $url = url('property/'.$property->slug);
@@ -100,7 +100,7 @@
 
                 <div class="left-item">
                     <h2>
-                        Related Properties
+                        Propiedades relacionadas
                     </h2>
                     <div class="property related-property pt_0 pb_0">
                         <div class="row">
@@ -179,7 +179,7 @@
             <div class="col-lg-4 col-md-12">
 
                 <div class="right-item">
-                    <h2>Agent</h2>
+                    <h2>Agente</h2>
                     <div class="agent-right d-flex justify-content-start">
                         <div class="left">
                             @if($property->agent->photo != null)
@@ -196,19 +196,19 @@
                     <div class="table-responsive mt_25">
                         <table class="table table-bordered">
                             <tr>
-                                <td>Posted On: </td>
+                                <td>Publicado el: </td>
                                 <td>
                                     {{ $property->created_at->format('d M, Y') }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>Email: </td>
+                                <td>Correo electrónico: </td>
                                 <td>{{ $property->agent->email }}</td>
                             </tr>
 
                             @if($property->agent->phone != '')
                             <tr>
-                                <td>Phone: </td>
+                                <td>Teléfono: </td>
                                 <td>{{ $property->agent->phone }}</td>
                             </tr>
                             @endif
@@ -239,60 +239,60 @@
                 </div>
 
                 <div class="right-item">
-                    <h2>Features</h2>
+                    <h2>Caracteristicas</h2>
                     <div class="summary">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td><b>Price</b></td>
+                                    <td><b>Precio</b></td>
                                     <td>${{ $property->price }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Location</b></td>
+                                    <td><b>Departamento</b></td>
                                     <td>
                                         {{ $property->location->name }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><b>Type</b></td>
+                                    <td><b>Tipo</b></td>
                                     <td>
                                         {{ $property->type->name }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><b>Purpose</b></td>
+                                    <td><b>Proósito</b></td>
                                     <td>{{ $property->purpose }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Bedroom:</b></td>
+                                    <td><b>Habitaciones:</b></td>
                                     <td>{{ $property->bedroom }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Bathroom:</b></td>
+                                    <td><b>Baños:</b></td>
                                     <td>{{ $property->bathroom }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Size:</b></td>
-                                    <td>{{ $property->size }} sqft</td>
+                                    <td><b>Áarea:</b></td>
+                                    <td>{{ $property->size }} m²</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Floor:</b></td>
+                                    <td><b>Número de pisos:</b></td>
                                     <td>{{ $property->floor }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Garage:</b></td>
+                                    <td><b>Garaje:</b></td>
                                     <td>{{ $property->garage }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Balcony:</b></td>
+                                    <td><b>Balcón:</b></td>
                                     <td>{{ $property->balcony }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Address:</b></td>
+                                    <td><b>Dirección:</b></td>
                                     <td>{{ $property->address }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Built Year:</b></td>
+                                    <td><b>Año de construcción:</b></td>
                                     <td>{{ $property->built_year }}</td>
                                 </tr>
                             </table>
@@ -301,7 +301,7 @@
                 </div>
 
                 <div class="right-item">
-                    <h2>Amenities</h2>
+                    <h2>Comodidades</h2>
                     <div class="amenity">
                         <ul class="amenity-ul">
                             @php
@@ -317,7 +317,7 @@
 
                 @if($property->map != '')
                 <div class="right-item">
-                    <h2>Location Map</h2>
+                    <h2>Mapa de ubicación</h2>
                     <div class="location-map">
                         {!! $property->map !!}
                     </div>
@@ -325,25 +325,25 @@
                 @endif
 
                 <div class="right-item">
-                    <h2>Enquery Form</h2>
+                    <h2>Formulario de consulta</h2>
                     <div class="enquery-form">
                         <form action="{{ route('property_send_message',$property->id) }}" method="post">
                             @csrf
                             <div class="mb-3">
-                                <input name="name" type="text" class="form-control" placeholder="Full Name">
+                                <input name="name" type="text" class="form-control" placeholder="Nombre completo">
                             </div>
                             <div class="mb-3">
-                                <input name="email" type="email" class="form-control" placeholder="Email Address">
+                                <input name="email" type="email" class="form-control" placeholder="Correo Electrónico">
                             </div>
                             <div class="mb-3">
-                                <input name="phone" type="text" class="form-control" placeholder="Phone Number">
+                                <input name="phone" type="text" class="form-control" placeholder="Número de teléfono">
                             </div>
                             <div class="mb-3">
-                                <textarea name="message" class="form-control h-150" rows="3" placeholder="Message"></textarea>
+                                <textarea name="message" class="form-control h-150" rows="3" placeholder="Mensaje"></textarea>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">
-                                    Submit
+                                    Enviar
                                 </button>
                             </div>
                         </form>

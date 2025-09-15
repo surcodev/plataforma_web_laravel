@@ -8,7 +8,7 @@
         <div class="section-header d-flex justify-content-between">
             <h1>Edit Amenity</h1>
             <div class="ml-auto">
-                <a href="{{ route('admin_amenity_index') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View All</a>
+                <a href="{{ route('admin_amenity_index') }}" class="btn btn-primary"><i class="fas fa-eye"></i> Ver todo</a>
             </div>
         </div>
         <div class="section-body">
@@ -19,11 +19,11 @@
                             <form action="{{ route('admin_amenity_update',$amenity->id) }}" method="post">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Name *</label>
+                                    <label>Nombre *</label>
                                     <input type="text" class="form-control" name="name" value="{{ $amenity->name }}">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

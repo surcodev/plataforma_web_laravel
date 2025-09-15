@@ -6,7 +6,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Edit Profile</h1>
+            <h1>Editar Perfil</h1>
         </div>
         <div class="section-body">
             <div class="row">
@@ -26,24 +26,24 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="mb-4">
-                                            <label class="form-label">Name *</label>
+                                            <label class="form-label">Nombre *</label>
                                             <input type="text" class="form-control" name="name" value="{{ Auth::guard('admin')->user()->name }}">
                                         </div>
                                         <div class="mb-4">
-                                            <label class="form-label">Email *</label>
+                                            <label class="form-label">Correo Electrónico *</label>
                                             <input type="text" class="form-control" name="email" value="{{ Auth::guard('admin')->user()->email }}">
                                         </div>
                                         <div class="mb-4">
-                                            <label class="form-label">Password</label>
+                                            <label class="form-label">Contraseña</label>
                                             <input type="password" class="form-control" name="password">
                                         </div>
                                         <div class="mb-4">
-                                            <label class="form-label">Retype Password</label>
+                                            <label class="form-label">Vuelve a escribir la contraseña</label>
                                             <input type="password" class="form-control" name="confirm_password">
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label"></label>
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Actualizar</button>
                                         </div>
                                     </div>
                                 </div>

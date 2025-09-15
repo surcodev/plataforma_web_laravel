@@ -20,13 +20,13 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <h4>Add Video</h4>
+                <h4>Añadir Video</h4>
                 <form action="{{ route('agent_property_video_gallery_store',$property->id) }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
-                                <input type="text" name="video" class="form-control" placeholder="YouTube Video Id">
+                                <input type="text" name="video" class="form-control" placeholder="YouTube Video ID">
                             </div>
                         </div>
                     </div>
@@ -37,13 +37,13 @@
                     </div>
                 </form>
 
-                <h4 class="mt-4">Existing Videos</h4>
+                <h4 class="mt-4">Vídeos existentes</h4>
                 <div class="photo-all">
                     <div class="row">
                         @if($videos->isEmpty())
                             <div class="col-md-12">
                                 <div class="alert alert-danger">
-                                    No videos found.
+                                    No se encontraron videos.
                                 </div>
                             </div>
                         @else

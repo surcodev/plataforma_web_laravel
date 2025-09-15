@@ -17,16 +17,16 @@
                                 <table class="table table-bordered" id="example1">
                                     <thead>
                                         <tr>
-                                            <th>SL</th>
-                                            <th>Featured Photo</th>
-                                            <th>Name</th>
-                                            <th>Agent</th>
-                                            <th>Location</th>
-                                            <th>Type</th>
-                                            <th>Purpose</th>
-                                            <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Item</th>
+                                            <th>Foto destacada</th>
+                                            <th>Nombre</th>
+                                            <th>Agente</th>
+                                            <th>Ubicación</th>
+                                            <th>Tipo</th>
+                                            <th>Propósito</th>
+                                            <th>Precio</th>
+                                            <th>Estado</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,7 +50,7 @@
                                                 @else
                                                 <span class="badge bg-success">{{ $item->status }}</span>
                                                 @endif
-                                                <div><a href="{{ route('admin_property_change_status',$item->id) }}">Change</a></div>
+                                                <div><a href="{{ route('admin_property_change_status',$item->id) }}">Cambiar</a></div>
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin_property_detail',$item->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>

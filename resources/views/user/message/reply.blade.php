@@ -68,7 +68,7 @@
                                     @if($item->sender == 'Customer')
                                     <span class="badge bg-success">Customer</span>
                                     @else
-                                    <span class="badge bg-primary">Agent</span>
+                                    <span class="badge bg-primary">Agente</span>
                                     @endif
                                 </td>
                                 <td>

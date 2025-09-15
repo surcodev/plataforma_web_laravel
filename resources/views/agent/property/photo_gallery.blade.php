@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Galería de fotos de propiedades del Agente</h2>
+                <h2>Galería de imágenes de la propiedad</h2>
             </div>
         </div>
     </div>

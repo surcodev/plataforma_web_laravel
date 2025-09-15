@@ -19,35 +19,35 @@
                             <form action="{{ route('admin_customer_store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Photo *</label>
+                                    <label>Foto *</label>
                                     <div><input type="file" name="photo"></div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Name *</label>
+                                    <label>Nombre *</label>
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Email *</label>
+                                    <label>Correp Electrónico *</label>
                                     <input type="text" class="form-control" name="email" value="{{ old('email') }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Password *</label>
+                                    <label>Contraseña *</label>
                                     <input type="password" class="form-control" name="password">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Confirm Password *</label>
+                                    <label>Confirmar contraseña *</label>
                                     <input type="password" class="form-control" name="confirm_password">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Status *</label>
+                                    <label>Estado *</label>
                                     <select name="status" class="form-select">
-                                        <option value="0">Pending</option>
-                                        <option value="1">Active</option>
-                                        <option value="2">Suspended</option>
+                                        <option value="0">Pendiente</option>
+                                        <option value="1">Activo</option>
+                                        <option value="2">Suspendido</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
                                 </div>
                             </form>
                         </div>

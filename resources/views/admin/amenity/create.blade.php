@@ -19,11 +19,11 @@
                             <form action="{{ route('admin_amenity_store') }}" method="post">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Name *</label>
+                                    <label>Nombre *</label>
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
                                 </div>
                             </form>
                         </div>
