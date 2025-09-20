@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
         // Create a new admin user
         $admin = new Admin();
         $admin->name = 'Admin';
-        $admin->email = 'admin@gmail.com';
+        $admin->email = 'richar.quispe@unmsm.edu.pe';
         $admin->password = Hash::make('asd123$!A');
         $admin->token = '';
         $admin->save();
