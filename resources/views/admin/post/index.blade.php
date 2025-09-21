@@ -20,12 +20,12 @@
                                 <table class="table table-bordered" id="example1">
                                     <thead>
                                         <tr>
-                                            <th>SL</th>
-                                            <th>Photo</th>
-                                            <th>Title</th>
+                                            <th>Item</th>
+                                            <th>Foto</th>
+                                            <th>Título</th>
                                             <th>Slug</th>
-                                            <th>Total Views</th>
-                                            <th class="w_100">Action</th>
+                                            <th>Vistas totales</th>
+                                            <th class="w_100">Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>

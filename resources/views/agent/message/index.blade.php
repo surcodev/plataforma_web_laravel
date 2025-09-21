@@ -25,11 +25,11 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>SL</th>
-                                <th>Subject</th>
-                                <th>Customer</th>
-                                <th>Date & Time</th>
-                                <th class="w-100">Action</th>
+                                <th>Item</th>
+                                <th>Asunto</th>
+                                <th>Cliente</th>
+                                <th>Fecha y Hora</th>
+                                <th class="w-100">Acción</th>
                             </tr>
                             @foreach ($messages as $item)
                             <tr>

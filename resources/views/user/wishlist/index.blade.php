@@ -25,12 +25,12 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>SL</th>
-                                <th>Photo</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Detail</th>
-                                <th class="w-100">Action</th>
+                                <th>Item</th>
+                                <th>Foto</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Detalle</th>
+                                <th class="w-100">Acción</th>
                             </tr>
                             @foreach ($wishlists as $item)
                             <tr>

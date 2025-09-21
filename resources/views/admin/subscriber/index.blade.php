@@ -21,10 +21,10 @@
                                 <table class="table table-bordered" id="example1">
                                     <thead>
                                         <tr>
-                                            <th>SL</th>
+                                            <th>Item</th>
                                             <th>Email</th>
-                                            <th>Status</th>
-                                            <th class="w_100">Action</th>
+                                            <th>Estado</th>
+                                            <th class="w_100">Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>

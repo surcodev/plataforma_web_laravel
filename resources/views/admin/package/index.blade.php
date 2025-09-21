@@ -20,15 +20,15 @@
                                 <table class="table table-bordered" id="example1">
                                     <thead>
                                         <tr>
-                                            <th>SL</th>
-                                            <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Allowed Days</th>
-                                            <th>Allowed Properties</th>
-                                            <th>Allowed Featured Properties</th>
-                                            <th>Allowed Photos</th>
-                                            <th>Allowed Videos</th>
-                                            <th class="w_100">Action</th>
+                                            <th>Item</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th>Días permitidos</th>
+                                            <th>Propiedades permitidas</th>
+                                            <th>Propiedades destacadas permitidas</th>
+                                            <th>Fotos permitidos</th>
+                                            <th>Vídeos permitidos</th>
+                                            <th class="w_100">Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -30,7 +30,7 @@
                                 <th>Asunto</th>
                                 <th>Agente</th>
                                 <th>Fecha & Hora</th>
-                                <th class="w-100">Action</th>
+                                <th class="w-100">Acción</th>
                             </tr>
                             @foreach ($messages as $item)
                             <tr>
