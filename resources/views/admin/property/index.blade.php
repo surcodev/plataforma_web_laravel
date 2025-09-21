@@ -41,7 +41,7 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->agent->name }}</td>
                                             <td>{{ $item->location->name }}</td>
-                                            <td>{{ $item->type->name }}</td>
+                                            <td>{{ $item->type->name ?? 'Sin tipo' }}</td>
                                             <td>{{ $item->purpose }}</td>
                                             <td>${{ $item->price }}</td>
                                             <td>
