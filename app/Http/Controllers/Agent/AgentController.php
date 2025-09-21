@@ -224,7 +224,7 @@ class AgentController extends Controller
         $agent->biography = $request->biography;
         $agent->update();
 
-        return redirect()->back()->with('success', 'Profile updated successfully');
+        return redirect()->back()->with('success', 'Perfil actualizado exitosamente');
     }
 
     public function order()

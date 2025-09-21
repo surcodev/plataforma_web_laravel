@@ -152,6 +152,6 @@ class AdminController extends Controller
         $admin->email = $request->email;
         $admin->update();
 
-        return redirect()->back()->with('success', 'Profile updated successfully');
+        return redirect()->back()->with('success', 'Perfil actualizado exitosamente');
     }
 }

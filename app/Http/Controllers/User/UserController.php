@@ -191,7 +191,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->update();
 
-        return redirect()->back()->with('success', 'Profile updated successfully');
+        return redirect()->back()->with('success', 'Perfil actualizado exitosamente');
     }
 
     public function wishlist()

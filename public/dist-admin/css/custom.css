@@ -56,7 +56,7 @@ table.t1 tr td {
 }
 
 .c1 {
-    color: #6777ef;
+    color: #BF0909;
 }
 
 .hide {
@@ -138,7 +138,7 @@ table tr td {
 
 .main-sidebar .sidebar-menu li.active a i,
 .main-sidebar .sidebar-menu li.active a span {
-    color: #6777ef!important;
+    color: #BF0909!important;
 }
 
 .sub-sidebar {
@@ -344,7 +344,7 @@ img.template-preview {
 .funkyradio-success input[type="radio"]:checked ~ label:before,
 .funkyradio-success input[type="checkbox"]:checked ~ label:before {
     color: #fff;
-    background-color: #6777ef;
+    background-color: #BF0909;
 }
 
 .funkyradio1 .funkyradio-success {
@@ -373,8 +373,8 @@ img.template-preview {
 
 .razorpay-payment-button {
     box-shadow: 0 2px 6px #acb5f6;
-    background-color: #6777ef;
-    border-color: #6777ef;
+    background-color: #BF0909;
+    border-color: #BF0909;
     font-weight: 600;
     font-size: var(--font-size-common);
     line-height: 24px;
