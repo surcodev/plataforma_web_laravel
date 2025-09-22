@@ -30,7 +30,7 @@ class AdminTypeController extends Controller
         $type->name = $request->name;
         $type->save();
 
-        return redirect()->route('admin_type_index')->with('success', 'Type created successfully');
+        return redirect()->route('admin_type_index')->with('success', 'Registro guardado');
     }
 
     public function edit($id)
@@ -49,7 +49,7 @@ class AdminTypeController extends Controller
         $type->name = $request->name;
         $type->save();
 
-        return redirect()->route('admin_type_index')->with('success', 'Type updated successfully');
+        return redirect()->route('admin_type_index')->with('success', 'Registro actualizado');
     }
 
     public function delete($id)
@@ -57,12 +57,12 @@ class AdminTypeController extends Controller
         // If type has any property associated with it, you can not delete this type
         $property = Property::where('type_id',$id)->first();
         if($property) {
-            return redirect()->route('admin_type_index')->with('error', 'Type cannot be deleted as it is associated with a property');
+            return redirect()->route('admin_type_index')->with('error', 'El tipo no se puede eliminar porque está asociado a una propiedad');
         }
 
         $type = Type::where('id',$id)->first();
         $type->delete();
         
-        return redirect()->route('admin_type_index')->with('success', 'Type deleted successfully');
+        return redirect()->route('admin_type_index')->with('success', 'Registro eliminado exitosamente');
     }
 }
