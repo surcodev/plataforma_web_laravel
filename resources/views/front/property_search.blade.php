@@ -152,29 +152,29 @@
                                         <div class="top">
                                             @if($item->purpose == 'Sale')
                                             <div class="status-sale">
-                                                For Sale
+                                                En venta
                                             </div>
                                             @else
                                             <div class="status-rent">
-                                                For Rent
+                                                En alquiler
                                             </div>
                                             @endif
                                             @if($item->is_featured == 'Yes')
                                             <div class="featured">
-                                                Featured
+                                                destacado
                                             </div>
                                             @endif
                                         </div>
-                                        <div class="price">${{ $item->price }}</div>
+                                        <div class="price">S/ {{ $item->price }}</div>
                                         <div class="wishlist"><a href=""><i class="far fa-heart"></i></a></div>
                                     </div>
                                     <div class="text">
                                         <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
                                         <div class="detail">
                                             <div class="stat">
-                                                <div class="i1">{{ $item->size }} sqft</div>
-                                                <div class="i2">{{ $item->bedroom }} Bed</div>
-                                                <div class="i3">{{ $item->bathroom }} Bath</div>
+                                                <div class="i1">{{ $item->size }} m²</div>
+                                                <div class="i2">{{ $item->bedroom }} Habitaciones</div>
+                                                <div class="i3">{{ $item->bathroom }} Baños</div>
                                             </div>
                                             <div class="address">
                                                 <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
