@@ -63,24 +63,24 @@ class AgentController extends Controller
         $agent->save();
 
         $link = url('agent/registration-verify/'.$token.'/'.$request->email);
-        $subject = 'Registration Verification';
-        $message = 'Click on the following link to verify your email: <br><a href="' . $link . '">' . $link . '</a>';
+        $subject = 'Verificación de registro';
+        $message = 'Haga clic en el siguiente enlace para verificar su correo electrónico: <br><a href="' . $link . '">' . $link . '</a>';
 
         \Mail::to($request->email)->send(new Websitemail($subject, $message));
-        return redirect()->back()->with('success', 'Registration successful. Please check your email to verify your account.');
+        return redirect()->back()->with('success', 'Registro exitoso. Por favor, revise su correo electrónico para verificar su cuenta.');
     }
 
     public function registration_verify($token, $email)
     {
         $agent = Agent::where('email', $email)->where('token', $token)->first();
         if (!$agent) {
-            return redirect()->route('agent_login')->with('error', 'Invalid token or email');
+            return redirect()->route('agent_login')->with('error', 'Token o correo electrónico no válido');
         }
         $agent->token = '';
         $agent->status = 1;
         $agent->update();
 
-        return redirect()->route('agent_login')->with('success', 'Email verified successfully. You can now login.');
+        return redirect()->route('agent_login')->with('success', 'Correo electrónico verificado correctamente. Ya puedes iniciar sesión.');
     }
 
     public function login()
@@ -103,7 +103,7 @@ class AgentController extends Controller
         ];
 
         if(Auth::guard('agent')->attempt($data)){
-            return redirect()->route('agent_dashboard')->with('success', 'Logged in successfully');
+            return redirect()->route('agent_dashboard')->with('success', '"Sesión iniciada correctamente');
         } else {
             return redirect()->back()->with('error', 'Credenciales inválidas');
         }
@@ -112,7 +112,7 @@ class AgentController extends Controller
     public function logout()
     {
         Auth::guard('agent')->logout();
-        return redirect()->route('agent_login')->with('success', 'Logged out successfully');
+        return redirect()->route('agent_login')->with('success', 'La sesión se ha cerrado correctamente');
     }
 
     public function forget_password()
@@ -128,7 +128,7 @@ class AgentController extends Controller
 
         $agent = Agent::where('email', $request->email)->first();
         if(!$agent){
-            return redirect()->back()->with('error', 'Email not found');
+            return redirect()->back()->with('error', 'Correo electrónico no encontrado');
         }
 
         $token = hash('sha256', time());
@@ -136,13 +136,13 @@ class AgentController extends Controller
         $agent->update();
 
         $link = route('agent_reset_password', [$token,$request->email]);
-        $subject = 'Reset Password';
-        $message = 'Click on the following link to reset your password: <br>';
+        $subject = 'Restablecer contraseña';
+        $message = 'Haga clic en el siguiente enlace para restablecer su contraseña: <br>';
         $message .= '<a href="'.$link.'">'.$link.'</a>';
 
         \Mail::to($request->email)->send(new Websitemail($subject,$message));
 
-        return redirect()->back()->with('success', 'Reset password link sent to your email');
+        return redirect()->back()->with('success', 'Enlace para restablecer contraseña enviado a tu correo electrónico');
 
     }
 
@@ -150,7 +150,7 @@ class AgentController extends Controller
     {
         $agent = Agent::where('email', $email)->where('token', $token)->first();
         if(!$agent){
-            return redirect()->route('agent_login')->with('error', 'Invalid token or email');
+            return redirect()->route('agent_login')->with('error', 'Token o correo electrónico no válido');
         }
         return view('agent.auth.reset_password', compact('token', 'email'));
     }
@@ -167,7 +167,7 @@ class AgentController extends Controller
         $agent->token = '';
         $agent->update();
 
-        return redirect()->route('agent_login')->with('success', 'Password reset successfully');
+        return redirect()->route('agent_login')->with('success', 'Restablecimiento de contraseña exitoso');
     }
 
     public function profile()
@@ -237,7 +237,7 @@ class AgentController extends Controller
     {
         $order = Order::where('id',$id)->first();
         if(!$order){
-            return redirect()->back()->with('error', 'Order not found');
+            return redirect()->back()->with('error', 'Pedido no encontrado');
         }
         return view('agent.order.invoice', compact('order'));
     }
@@ -291,7 +291,7 @@ class AgentController extends Controller
                 }
             }
         } else {
-            return redirect()->route('agent_payment')->with('error', 'Payment failed. Please try again.');
+            return redirect()->route('agent_payment')->with('error', 'Pago fallido. Inténtalo de nuevo..');
         }
     }
 

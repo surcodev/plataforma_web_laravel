@@ -28,42 +28,69 @@ class UserController extends Controller
     }
 
     public function registration_submit(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|max:255|email|unique:users,email',
-            'password' => 'required',
-            'confirm_password' => 'required|same:password',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|max:255|email|unique:users,email',
+        'password' => 'required',
+        'confirm_password' => 'required|same:password',
+    ]);
 
-        $token = hash('sha256', time());
+    $token = hash('sha256', time());
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->token = $token;
-        $user->save();
+    $user = new User();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    $user->token = $token;
+    $user->save();
 
-        $link = url('registration-verify/'.$token.'/'.$request->email);
-        $subject = 'Registration Verification';
-        $message = 'Click on the following link to verify your email: <br><a href="' . $link . '">' . $link . '</a>';
+    $link = url('registration-verify/'.$token.'/'.$request->email);
+    $subject = 'Verificación de registro';
 
-        \Mail::to($request->email)->send(new Websitemail($subject, $message));
-        return redirect()->back()->with('success', 'Registration successful. Please check your email to verify your account.');
-    }
+    // Plantilla HTML
+    $message = '
+    <div style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 40px; text-align: center;">
+        <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+            
+            <div style="padding: 30px; background-color: #f0f5fa;">
+                <h2 style="color: #333333;">Hola, '.$user->name.'</h2>
+                <p style="color: #555555; font-size: 16px;">
+                    Gracias por registrarse. Para completar el proceso, verifique su correo electrónico haciendo clic en el botón a continuación:
+                </p>
+                <a href="'.$link.'" 
+                   style="display: inline-block; margin-top: 20px; padding: 12px 25px; 
+                          font-size: 16px; font-weight: bold; color: #ffffff; 
+                          background-color: #000C1A; text-decoration: none; 
+                          border-radius: 5px;">
+                    VERIFICAR CORREO
+                </a>
+            </div>
+
+            <div style="background-color: #0041D9; padding: 15px; color: #ffffff; font-size: 13px;">
+                © '.date("Y").' Bienes Raíces Santa Clara S.A.C. Todos los derechos reservados. <br>
+                <a href="'.url('/').'" style="color: #ffffff; text-decoration: underline;">Visite nuestro sitio web</a>
+            </div>
+        </div>
+    </div>';
+
+    \Mail::to($request->email)->send(new Websitemail($subject, $message));
+
+    return redirect()->back()->with('success', 'Registro exitoso. Por favor, revise su correo electrónico para verificar su cuenta.');
+}
+
 
     public function registration_verify($token, $email)
     {
         $user = User::where('email', $email)->where('token', $token)->first();
         if (!$user) {
-            return redirect()->route('login')->with('error', 'Invalid token or email');
+            return redirect()->route('login')->with('error', 'Token o correo electrónico no válido');
         }
         $user->token = '';
         $user->status = 1;
         $user->update();
 
-        return redirect()->route('login')->with('success', 'Email verified successfully. You can now login.');
+        return redirect()->route('login')->with('success', 'Correo electrónico verificado correctamente. Ya puedes iniciar sesión.');
     }
 
     public function login()
@@ -86,7 +113,7 @@ class UserController extends Controller
         ];
 
         if(Auth::guard('web')->attempt($data)){
-            return redirect()->route('dashboard')->with('success', 'Logged in successfully');
+            return redirect()->route('dashboard')->with('success', 'Sesión iniciada exitosamente');
         } else {
             return redirect()->back()->with('error', 'Credenciales inválidas');
         }
@@ -111,7 +138,7 @@ class UserController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if(!$user){
-            return redirect()->back()->with('error', 'Email not found');
+            return redirect()->back()->with('error', 'Correo electrónico no encontrado');
         }
 
         $token = hash('sha256', time());

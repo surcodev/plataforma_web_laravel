@@ -6,7 +6,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header d-flex justify-content-between">
-            <h1>Edit Banner</h1>
+            <h1>Editar Banner</h1>
         </div>
         <div class="section-body">
             <div class="row">
@@ -16,17 +16,17 @@
                             <form action="{{ route('admin_setting_banner_update') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Existing Banner</label>
+                                    <label>Banner existente</label>
                                     <div>
                                         <img src="{{ asset('uploads/'.$setting->banner) }}" alt="" class="w_300">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Change Banner</label>
+                                    <label>Cambiar Banner</label>
                                     <div><input type="file" name="banner"></div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

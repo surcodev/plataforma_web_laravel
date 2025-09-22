@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="" class="form-label">Precio *</label>
-                            <input type="text" name="price" class="form-control" value="{{ $property->price }}">
+                            <input type="number" name="price" class="form-control" value="{{ $property->price }}">
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="" class="form-label">Descripción</label>
@@ -83,7 +83,7 @@
                             <input type="number" name="bathroom" class="form-control" value="{{ $property->bathroom }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Área (Sqft) *</label>
+                            <label for="" class="form-label">Área (m²) *</label>
                             <input type="number" name="size" class="form-control" value="{{ $property->size }}" min="0" max="100000">
                         </div>
                         <div class="col-md-4 mb-3">
@@ -107,7 +107,7 @@
                             <input type="number" name="built_year" class="form-control" value="{{ $property->built_year }}" min="1900" max="{{ date('Y') }}">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">¿Es destacado?</label>
+                            <label for="" class="form-label">¿Destacar aviso?</label>
                             <select name="is_featured" class="form-control select2">
                                 <option value="Yes" {{ $property->is_featured == 'Yes' ? 'selected' : '' }}>Sí</option>
                                 <option value="No" {{ $property->is_featured == 'No' ? 'selected' : '' }}>No</option>

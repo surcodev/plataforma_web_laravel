@@ -28,7 +28,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label>Precio *</label>
-                                            <input type="text" class="form-control" name="price" value="{{ old('price') }}">
+                                            <input type="number" class="form-control" name="price" value="{{ old('price') }}">
                                         </div>
                                     </div>
                                 </div>

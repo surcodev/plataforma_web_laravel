@@ -16,7 +16,7 @@
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a href="{{ route('home') }}" class="nav-link">Home</a>
+                            <a href="{{ route('home') }}" class="nav-link">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('property-search') }}" class="nav-link">Propiedades</a>

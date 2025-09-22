@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="" class="form-label">Precio *</label>
-                            <input type="text" name="price" class="form-control" value="{{ old('price') }}">
+                            <input type="number" name="price" class="form-control" value="{{ old('price') }}">
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="" class="form-label">Descripción</label>
@@ -67,15 +67,15 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">habitaciones *</label>
+                            <label for="" class="form-label">Habitaciones *</label>
                             <input type="number" name="bedroom" class="form-control" value="{{ old('bedroom') }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">baños *</label>
+                            <label for="" class="form-label">Baños *</label>
                             <input type="number" name="bathroom" class="form-control" value="{{ old('bathroom') }}" min="0" max="100">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Área (Sqft) *</label>
+                            <label for="" class="form-label">Área (m²) *</label>
                             <input type="number" name="size" class="form-control" value="{{ old('size') }}" min="0" max="100000">
                         </div>
                         <div class="col-md-4 mb-3">
@@ -95,11 +95,11 @@
                             <input type="text" name="address" class="form-control" value="{{ old('address') }}">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Años de contrucción</label>
+                            <label for="" class="form-label">Año de contrucción</label>
                             <input type="number" name="built_year" class="form-control" value="{{ old('built_year') }}" min="1900" max="{{ date('Y') }}">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Se destaca?</label>
+                            <label for="" class="form-label">¿Destacar aviso?</label>
                             <select name="is_featured" class="form-control select2">
                                 <option value="Yes" {{ old('is_featured') == 'Yes' ? 'selected' : '' }}>Sí</option>
                                 <option value="No" {{ old('is_featured') == 'No' ? 'selected' : '' }}>No</option>
