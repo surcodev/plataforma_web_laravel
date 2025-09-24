@@ -113,7 +113,7 @@
                                 ->get();    
                             @endphp
                             @if($related_properties->count() == 0)
-                                <span class="text-danger">No Related Properties Found</span>
+                                <span class="text-danger">No se encontraron propiedades relacionadas</span>
                             @else
                                 @foreach($related_properties as $item)
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -136,7 +136,7 @@
                                                 </div>
                                                 @endif
                                             </div>
-                                            <div class="price">${{ $item->price }}</div>
+                                            <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
                                             <div class="wishlist"><a href=""><i class="far fa-heart"></i></a></div>
                                         </div>
                                         <div class="text">
@@ -245,7 +245,7 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <td><b>Precio</b></td>
-                                    <td>${{ $property->price }}</td>
+                                    <td>S/ {{ rtrim(rtrim(number_format($property->price, 2, '.', ','), '0'), '.') }}</td>
                                 </tr>
                                 <tr>
                                     <td><b>Departamento</b></td>

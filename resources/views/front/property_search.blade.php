@@ -165,7 +165,7 @@
                                             </div>
                                             @endif
                                         </div>
-                                        <div class="price">S/ {{ $item->price }}</div>
+                                        <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
                                         <div class="wishlist"><a href=""><i class="far fa-heart"></i></a></div>
                                     </div>
                                     <div class="text">

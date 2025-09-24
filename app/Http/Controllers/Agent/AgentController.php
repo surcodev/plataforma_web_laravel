@@ -633,7 +633,7 @@ class AgentController extends Controller
 
         $property->location_id = $request->location_id;
         $property->type_id = $request->type_id;
-        $property->amenities = implode(',', $request->amenity);
+        $property->amenities = implode(',', (array) $request->amenity);
         $property->name = $request->name;
         $property->slug = $request->slug;
         $property->description = $request->description;

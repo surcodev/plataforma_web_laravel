@@ -22,7 +22,7 @@
                     </div>
                     <div class="text">
                         <h2><a href="{{ route('location',$item->slug) }}">{{ $item->name }}</a></h2>
-                        <h4>({{ $item->properties_count }} Properties)</h4>
+                        <h4>({{ $item->properties_count }} Propiedades)</h4>
                     </div>
                 </div>
             </div>
