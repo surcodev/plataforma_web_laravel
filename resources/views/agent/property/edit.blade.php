@@ -70,8 +70,8 @@
                         <div class="col-md-4 mb-3">
                             <label for="" class="form-label">Propósito *</label>
                             <select name="purpose" class="form-control select2">
-                                <option value="Sale" {{ $property->purpose == 'Sale' ? 'selected' : '' }}>Venta</option>
-                                <option value="Rent" {{ $property->purpose == 'Rent' ? 'selected' : '' }}>Alquiler</option>
+                                <option value="Venta" {{ $property->purpose == 'Venta' ? 'selected' : '' }}>Venta</option>
+                                <option value="Alquiler" {{ $property->purpose == 'Alquiler' ? 'selected' : '' }}>Alquiler</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">

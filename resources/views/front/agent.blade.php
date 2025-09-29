@@ -83,7 +83,7 @@
                         <div class="photo">
                             <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
                             <div class="top">
-                                @if($item->purpose == 'Sale')
+                                @if($item->purpose == 'Venta')
                                 <div class="status-sale">
                                     En venta
                                 </div>
