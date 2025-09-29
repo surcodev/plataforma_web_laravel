@@ -6,9 +6,9 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header d-flex justify-content-between">
-            <h1>Edit Location</h1>
+            <h1>Editar ubicación</h1>
             <div class="ml-auto">
-                <a href="{{ route('admin_location_index') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View All</a>
+                <a href="{{ route('admin_location_index') }}" class="btn btn-primary"><i class="fas fa-eye"></i> Ver todo</a>
             </div>
         </div>
         <div class="section-body">
