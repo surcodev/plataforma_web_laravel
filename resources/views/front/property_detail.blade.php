@@ -123,16 +123,16 @@
                                             <div class="top">
                                                 @if($item->purpose == 'Sale')
                                                 <div class="status-sale">
-                                                    For Sale
+                                                    En venta
                                                 </div>
                                                 @else
                                                 <div class="status-rent">
-                                                    For Rent
+                                                    En alquiler
                                                 </div>
                                                 @endif
                                                 @if($item->is_featured == 'Yes')
                                                 <div class="featured">
-                                                    Featured
+                                                    Destacado
                                                 </div>
                                                 @endif
                                             </div>
@@ -143,9 +143,9 @@
                                             <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
                                             <div class="detail">
                                                 <div class="stat">
-                                                    <div class="i1">{{ $item->size }} sqft</div>
-                                                    <div class="i2">{{ $item->bedroom }} Bed</div>
-                                                    <div class="i3">{{ $item->bathroom }} Bath</div>
+                                                    <div class="i1">{{ $item->size }} m²</div>
+                                                    <div class="i2">{{ $item->bedroom }} Habitaciones</div>
+                                                    <div class="i3">{{ $item->bathroom }} Baños</div>
                                                 </div>
                                                 <div class="address">
                                                     <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
@@ -260,33 +260,43 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><b>Proósito</b></td>
+                                    <td><b>Propósito</b></td>
                                     <td>{{ $property->purpose }}</td>
                                 </tr>
+                                @if($property->bedroom > 0)
+                                    <tr>
+                                        <td><b>Habitaciones:</b></td>
+                                        <td>{{ $property->bedroom }}</td>
+                                    </tr>
+                                @endif
+                                @if($property->bathroom > 0)
+                                    <tr>
+                                        <td><b>Baños:</b></td>
+                                        <td>{{ $property->bathroom }}</td>
+                                    </tr>
+                                @endif
                                 <tr>
-                                    <td><b>Habitaciones:</b></td>
-                                    <td>{{ $property->bedroom }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Baños:</b></td>
-                                    <td>{{ $property->bathroom }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Áarea:</b></td>
+                                    <td><b>Área:</b></td>
                                     <td>{{ $property->size }} m²</td>
                                 </tr>
-                                <tr>
-                                    <td><b>Número de pisos:</b></td>
-                                    <td>{{ $property->floor }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Garaje:</b></td>
-                                    <td>{{ $property->garage }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Balcón:</b></td>
-                                    <td>{{ $property->balcony }}</td>
-                                </tr>
+                                @if($property->floor > 0)
+                                    <tr>
+                                        <td><b>Número de pisos:</b></td>
+                                        <td>{{ $property->floor }}</td>
+                                    </tr>
+                                @endif
+                                @if($property->garage > 0)
+                                    <tr>
+                                        <td><b>Garaje:</b></td>
+                                        <td>{{ $property->garage }}</td>
+                                    </tr>
+                                @endif
+                                @if($property->balcony > 0)
+                                    <tr>
+                                        <td><b>Balcón:</b></td>
+                                        <td>{{ $property->balcony }}</td>
+                                    </tr>
+                                @endif
                                 <tr>
                                     <td><b>Dirección:</b></td>
                                     <td>{{ $property->address }}</td>

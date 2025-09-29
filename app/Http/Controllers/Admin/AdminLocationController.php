@@ -88,6 +88,6 @@ class AdminLocationController extends Controller
         }
         $location->delete();
         
-        return redirect()->route('admin_location_index')->with('success', 'Location deleted successfully');
+        return redirect()->route('admin_location_index')->with('success', 'Ubicación eliminada exitosamente');
     }
 }

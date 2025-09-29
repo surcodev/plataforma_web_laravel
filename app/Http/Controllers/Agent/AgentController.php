@@ -103,7 +103,7 @@ class AgentController extends Controller
         ];
 
         if(Auth::guard('agent')->attempt($data)){
-            return redirect()->route('agent_dashboard')->with('success', '"Sesión iniciada correctamente');
+            return redirect()->route('agent_dashboard')->with('success', 'Sesión iniciada correctamente');
         } else {
             return redirect()->back()->with('error', 'Credenciales inválidas');
         }
@@ -327,7 +327,7 @@ class AgentController extends Controller
 
             // Sending email to user
             $link = route('agent_order');
-            $subject = 'Payment Successful';
+            $subject = 'Pago exitoso';
             $message = 'Dear '.Auth::guard('agent')->user()->name.', <br><br>';
             $message .= 'Your payment has been successfully processed. Payment information is given below:<br><br>';
             $message .= 'Invoice No: '.$invoice_no.'<br>';
@@ -371,9 +371,9 @@ class AgentController extends Controller
 
             session()->forget('package_id');
 
-            return redirect()->route('agent_order')->with('success', 'Payment successful. Your order has been placed.');
+            return redirect()->route('agent_order')->with('success', 'Pago realizado correctamente. Su pedido se ha realizado');
         } else {
-            return redirect()->route('agent_payment')->with('error', 'Payment failed. Please try again.');
+            return redirect()->route('agent_payment')->with('error', 'Pago fallido. Inténtalo de nuevo.');
         }
     }
 
@@ -439,7 +439,7 @@ class AgentController extends Controller
             
             // Sending email to user
             $link = route('agent_order');
-            $subject = 'Payment Successful';
+            $subject = 'Pago exitoso';
             $message = 'Dear '.Auth::guard('agent')->user()->name.', <br><br>';
             $message .= 'Your payment has been successfully processed. Payment information is given below:<br><br>';
             $message .= 'Invoice No: '.$invoice_no.'<br>';
@@ -485,9 +485,9 @@ class AgentController extends Controller
 
             session()->forget('package_id');
 
-            return redirect()->route('agent_order')->with('success', 'Payment successful. Your order has been placed.');
+            return redirect()->route('agent_order')->with('success', 'Pago realizado correctamente. Su pedido se ha realizado.');
         } else {
-            return redirect()->route('agent_payment')->with('error', 'Payment failed. Please try again.');
+            return redirect()->route('agent_payment')->with('error', 'Pago fallido. Inténtalo de nuevo.');
         }
     }
 

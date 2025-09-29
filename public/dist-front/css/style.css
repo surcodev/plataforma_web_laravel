@@ -1956,15 +1956,15 @@ p {font-weight: 400;}
 }
 
 .user-panel .box1 {
-    background: #c0d5ff;
+    background: rgb(220, 237, 255);
 }
 
 .user-panel .box2 {
-    background: #ffc3c8;
+    background: rgb(255, 228, 225);
 }
 
 .user-panel .box3 {
-    background: #dcffe2;
+    background: rgb(218 250 206);
 }
 
 .user-panel input[type="submit"] {
