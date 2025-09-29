@@ -6,7 +6,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header d-flex justify-content-between">
-            <h1>Edit Favicon</h1>
+            <h1>Editar Favicon</h1>
         </div>
         <div class="section-body">
             <div class="row">
@@ -16,17 +16,17 @@
                             <form action="{{ route('admin_setting_favicon_update') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label>Existing Favicon</label>
+                                    <label>Favicon existente</label>
                                     <div>
                                         <img src="{{ asset('uploads/'.$setting->favicon) }}" alt="" class="w_100">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Change Favicon</label>
+                                    <label>Cambiar Favicon</label>
                                     <div><input type="file" name="favicon"></div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

@@ -43,14 +43,14 @@
                         </select>
                     </div>
 
-                    <div class="widget">
+                    {{-- <div class="widget d-none">
                         <h2>Propósito</h2>
                         <select name="purpose" class="form-control select2" onchange="this.form.submit()">
                             <option value="Seleccionar propósito"></option>
                             <option value="Rent" @if($form_purpose == 'Rent') selected @endif>En alquiler</option>
                             <option value="Sale" @if($form_purpose == 'Sale') selected @endif>En venta</option>
                         </select>
-                    </div>
+                    </div> --}}
 
                     <div class="widget">
                         <h2>Comodidades</h2>
@@ -65,7 +65,7 @@
                     <div class="widget">
                         <h2>Habitaciones</h2>
                         <select name="bedroom" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Némuero de habitaciones</option>
+                            <option value="">Número de habitaciones</option>
                             @for($i=1;$i<=50;$i++)
                                 <option value="{{ $i }}" @if($form_bedroom == $i) selected @endif>{{ $i }}</option>
                             @endfor
