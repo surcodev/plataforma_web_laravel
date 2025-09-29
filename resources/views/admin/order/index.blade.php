@@ -41,8 +41,9 @@
                                             </td>
                                             <td>
                                                 {{-- <b>{{ $order->agent->name }}</b><br> --}}
+                                                {{-- {{ $order->agent->email }} --}}
                                                 <b>{{ optional($order->package)->name ?? 'Sin paquete' }}</b><br>
-                                                {{ $order->agent->email }}
+                                                {{ optional($order->agent)->email ?? '' }}
                                             </td>
                                             <td>{{ $order->package->name }}</td>
                                             <td>${{ $order->paid_amount }}</td>
