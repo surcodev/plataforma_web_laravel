@@ -10,7 +10,7 @@
                     <div class="text">
                         <h2>Descubre tu nuevo hogar</h2>
                         <p>
-                            Encuentra las mejores propiedades, casas, departamentos y más, por nombre, categoría o ubicación.
+                            Descubre las mejores oportunidades inmobiliarias — casas, departamentos y terrenos — según nombre, categoría o ubicación.
                         </p>
                     </div>
                     <div class="search-section">
