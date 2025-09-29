@@ -106,8 +106,16 @@
                             <div class="detail">
                                 <div class="stat">
                                     <div class="i1">{{ $item->size }} m²</div>
-                                    <div class="i2">{{ $item->bedroom }} Habitaciones</div>
-                                    <div class="i3">{{ $item->bathroom }} Baños</div>
+                                    @if($item->bedroom > 0)
+                                        <div class="i2">
+                                            {{ $item->bedroom }} {{ $item->bedroom == 1 ? 'Habitación' : 'Habitaciones' }}
+                                        </div>
+                                    @endif
+                                    @if($item->bedroom > 0)
+                                        <div class="i3">
+                                            {{ $item->bathroom }} {{ $item->bathroom == 1 ? 'Baño' : 'Baños' }}
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="address">
                                     <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
