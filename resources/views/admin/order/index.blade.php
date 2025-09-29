@@ -40,7 +40,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <b>{{ $order->agent->name }}</b><br>
+                                                {{-- <b>{{ $order->agent->name }}</b><br> --}}
+                                                <b>{{ optional($order->package)->name ?? 'Sin paquete' }}</b><br>
                                                 {{ $order->agent->email }}
                                             </td>
                                             <td>{{ $order->package->name }}</td>
