@@ -121,7 +121,7 @@
                                     <i class="fas fa-location-arrow"></i> {{ $item->location->name }}
                                 </div>
                             </div>
-                            <div class="agent-section">
+                            <div class="agent-section d-none">
                                 @if($item->agent->photo != null)
                                 <img class="agent-photo" src="{{ asset('uploads/'.$item->agent->photo) }}" alt="">
                                 @else

@@ -5,7 +5,7 @@
                 <div class="item">
                     <h2 class="heading">Secciones clave</h2>
                     <ul class="useful-links">
-                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('home') }}">Inicio</a></li>
                         <li><a href="{{ route('property_search') }}">Propiedades</a></li>
                         <li><a href="{{ route('agents') }}">Agentes</a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
@@ -63,25 +63,25 @@
                     <ul class="social">
                         @if($global_setting->footer_facebook != '')
                         <li>
-                            <a href="{{ $global_setting->footer_facebook }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $global_setting->footer_facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         </li>
                         @endif
 
                         @if($global_setting->footer_twitter != '')
                         <li>
-                            <a href="{{ $global_setting->footer_twitter }}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ $global_setting->footer_twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
                         </li>
                         @endif
 
                         @if($global_setting->footer_linkedin != '')
                         <li>
-                            <a href="{{ $global_setting->footer_linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{ $global_setting->footer_linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         </li>
                         @endif
 
                         @if($global_setting->footer_instagram != '')
                         <li>
-                            <a href="{{ $global_setting->footer_instagram }}"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $global_setting->footer_instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
                         </li>
                         @endif
                     </ul>
