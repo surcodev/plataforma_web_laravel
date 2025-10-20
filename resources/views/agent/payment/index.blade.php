@@ -56,7 +56,7 @@
                                 </form>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="d-none">
                             <td>
                                 <form action="{{ route('agent_stripe') }}" method="post">
                                 @csrf
