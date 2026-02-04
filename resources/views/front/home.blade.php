@@ -140,7 +140,7 @@
 </div>
 
 
-<div class="why-choose" style="background-image: url({{ asset('uploads/why-choose.jpg') }})">
+<div class="why-choose">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
