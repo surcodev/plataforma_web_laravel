@@ -197,7 +197,7 @@
 </div>
 
 
-<div class="agent">
+<div class="agent d-none">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -262,7 +262,7 @@
 
 
 
-<div class="testimonial" style="background-image: url({{ asset('uploads/testimonial-bg.jpg') }})">
+<div class="testimonial d-none" style="background-image: url({{ asset('uploads/testimonial-bg.jpg') }})">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
