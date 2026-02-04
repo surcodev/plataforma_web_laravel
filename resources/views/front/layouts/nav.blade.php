@@ -16,10 +16,10 @@
 
                     <!-- Texto del logo -->
                     <div class="ml-3 d-flex flex-column justify-content-center text-center">
-                        <span style="font-family: 'Cinzel Decorative', serif; font-weight: 600; font-size: 24px; line-height: 1; color:#e8d8b3;">
+                        <span style="font-family: 'Cinzel Decorative', serif; font-weight: 600; font-size: 24px; line-height: 1; color:#fff;">
                             SANTA CLARA
                         </span>
-                        <span style="font-size: 14px; letter-spacing: 1px; color:#e8d8b3; text-transform: uppercase;">
+                        <span style="font-size: 14px; letter-spacing: 1px; color:#fff; text-transform: uppercase;">
                             Bienes Raíces
                         </span>
                     </div>
