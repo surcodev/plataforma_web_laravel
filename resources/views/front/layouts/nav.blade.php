@@ -34,11 +34,11 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a href="{{ route('home') }}" class="nav-link">Inicio</a></li>
                         <li class="nav-item"><a href="{{ url('property-search') }}" class="nav-link">Propiedades</a></li>
-                        <li class="nav-item"><a href="{{ route('agents') }}" class="nav-link">Agentes</a></li>
+                        {{-- <li class="nav-item"><a href="{{ route('agents') }}" class="nav-link">Agentes</a></li> --}}
                         <li class="nav-item"><a href="{{ route('locations') }}" class="nav-link">Ubicaciones</a></li>
-                        <li class="nav-item"><a href="{{ route('pricing') }}" class="nav-link">Precios</a></li>
-                        <li class="nav-item"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li>
-                        <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Blog</a></li>
+                        {{-- <li class="nav-item"><a href="{{ route('pricing') }}" class="nav-link">Precios</a></li>
+                        <li class="nav-item"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li> --}}
+                        <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Noticias</a></li>
                         <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contacto</a></li>
 
                         @if(Auth::guard('web')->check())

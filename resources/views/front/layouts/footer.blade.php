@@ -7,8 +7,8 @@
                     <ul class="useful-links">
                         <li><a href="{{ route('home') }}">Inicio</a></li>
                         <li><a href="{{ route('property_search') }}">Propiedades</a></li>
-                        <li><a href="{{ route('agents') }}">Agentes</a></li>
-                        <li><a href="{{ route('blog') }}">Blog</a></li>
+                        {{-- <li><a href="{{ route('agents') }}">Agentes</a></li> --}} 
+                        <li><a href="{{ route('blog') }}">Noticias</a></li>
                     </ul>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     {{ $global_setting->footer_copyright }}
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
+            {{-- <div class="col-lg-6 col-md-6">
                 <div class="right">
                     <ul>
                         <li><a href="{{ route('terms') }}">Términos de uso</a></li>
@@ -129,7 +129,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

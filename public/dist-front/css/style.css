@@ -158,8 +158,9 @@ p {font-weight: 400;}
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:hover,
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:focus,
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active,
+/* color de transicion del navbar */
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li:hover a {
-    color: #0041d9;
+    color: #c0ae85;
 }
 
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li a:hover {
@@ -898,7 +899,7 @@ p {font-weight: 400;}
 
 /* Footer */
 .footer {
-    background: #222;
+    background: #071e3d;
     color: #fff;
     padding-top: 40px;
     padding-bottom: 20px;
@@ -1864,7 +1865,7 @@ p {font-weight: 400;}
 
 /* Footer Bottom */
 .footer-bottom {
-    background: #071e3d;
+    background: #ffffff;
     color: #fff;
     border-top: 1px solid #3c3c3c;
     padding-top: 20px;
@@ -1872,10 +1873,11 @@ p {font-weight: 400;}
 }
 
 .footer-bottom .copyright {
-    background: #222;
-    color: #fff;
+    background: #fffdfd;
+    color: #000000;
     text-align: left;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .footer-bottom .right ul {
@@ -1890,7 +1892,7 @@ p {font-weight: 400;}
 }
 
 .footer-bottom .right ul li a {
-    color: #fff;
+    color: #000000;
     font-size: 14px;
 }
 
