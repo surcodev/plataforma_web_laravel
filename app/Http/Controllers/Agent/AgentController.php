@@ -377,6 +377,18 @@ class AgentController extends Controller
         }
     }
 
+    public function paypal_cancel()
+    {
+        // Limpiar el package_id de sesión si existe
+        if(session()->has('package_id')) {
+            session()->forget('package_id');
+        }
+
+        return redirect()
+            ->route('agent_payment')
+            ->with('error', 'El pago fue cancelado. No se realizó ningún cargo.');
+    }
+
     public function stripe(Request $request)
     {
         $package_data = Package::where('id',$request->package_id)->first();
@@ -740,7 +752,6 @@ class AgentController extends Controller
         $photo->delete();
         return redirect()->back()->with('success', 'Foto eliminada exitosamente');
     }
-
 
     public function property_video_gallery($id)
     {

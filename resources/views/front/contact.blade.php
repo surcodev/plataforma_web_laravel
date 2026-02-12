@@ -6,7 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Contacto</h2>
+                <h2>Contáctanos</h2>
+                <h6 style="margin-top: 20px;">Desea más información sobre nuestros proyectos o propiedades? No dude en contactarnos, estaremos encantados de atenderle.</h6>
             </div>
         </div>
     </div>

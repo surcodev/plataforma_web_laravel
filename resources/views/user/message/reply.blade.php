@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Subject: {{ $message->subject }}</h2>
+                <h2>Asunto: {{ $message->subject }}</h2>
             </div>
         </div>
     </div>
@@ -24,13 +24,13 @@
                 <form action="{{ route('message_reply_submit',[$message->id,$message->agent_id]) }}" method="post" class="mb_30">
                     @csrf
                     <div class="mb-3">
-                        <label for="">Reply *</label>
+                        <label for="">Respuesta *</label>
                         <div class="form-group">
                             <textarea name="reply" class="form-control h-150" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Enviar">
                     </div>
                 </form>
                 <div class="table-responsive">
@@ -42,8 +42,8 @@
                                 </td>
                                 <td class="w-200">
                                     <b>{{ $message->user->name }}</b><br>
-                                    Posted On: {{ $message->created_at->format('d M Y') }}<br>
-                                    <span class="badge bg-success">Customer</span>
+                                    Publicado el: {{ $message->created_at->format('d M Y') }}<br>
+                                    <span class="badge bg-success">Cliente</span>
                                 </td>
                                 <td>
                                     {{ $message->message }}
@@ -64,9 +64,9 @@
                                     @else
                                     <b>{{ $message->agent->name }}</b><br>
                                     @endif
-                                    Posted On: {{ $message->created_at->format('d M Y') }}<br>
+                                    Publicado el: {{ $message->created_at->format('d M Y') }}<br>
                                     @if($item->sender == 'Customer')
-                                    <span class="badge bg-success">Customer</span>
+                                    <span class="badge bg-success">Cliente</span>
                                     @else
                                     <span class="badge bg-primary">Agente</span>
                                     @endif

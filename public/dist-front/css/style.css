@@ -324,6 +324,19 @@ p {font-weight: 400;}
     color: #0041d9;
 }
 
+.property-section a.btn {
+    background: #0041d9;
+    border: 1px solid #0041d9;
+    font-weight: 400;
+    color: #fff;
+}
+
+.property-section a.btn:hover {
+    background: #fff;
+    border: 1px solid #0041d9;
+    color: #0041d9;
+}
+
 @media (max-width: 991px) {
     .search-section .form-control,
     .search-section .form-select,
@@ -1031,7 +1044,8 @@ p {font-weight: 400;}
     position: relative;
 }
 
-.page-top h2 {
+.page-top h1,
+.page-top h2{
     position: relative;
     z-index: 99;
     color: #fff;
@@ -1039,6 +1053,15 @@ p {font-weight: 400;}
     text-align: center;
     font-weight: 700;
 }
+
+.page-top h6 {
+    position: relative;
+    z-index: 99;
+    color: #fff;
+    opacity: 1;
+    text-align: center;
+}
+
 
 .page-top .button {
     position: relative;
@@ -1874,8 +1897,8 @@ p {font-weight: 400;}
 }
 
 .footer-bottom .copyright {
-    background: #fffdfd;
-    color: #000000;
+    background: #fffdfd00;
+    color: #797979;
     text-align: left;
     font-size: 14px;
     font-weight: bold;

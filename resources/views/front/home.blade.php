@@ -61,6 +61,7 @@
 
 <div class="property">
     <div class="container">
+        {{-- Heading --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
@@ -69,6 +70,7 @@
                 </div>
             </div>
         </div>
+        {{-- Carrucel de propiedades --}}
         <div class="row">
             @foreach($properties as $item)
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -92,7 +94,7 @@
                             @endif
                         </div>
                         <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
-                        <div class="wishlist"><a href="{{ route('wishlist_add',$item->id) }}"><i class="far fa-heart"></i></a></div>
+                        {{-- <div class="wishlist"><a href="{{ route('wishlist_add',$item->id) }}"><i class="far fa-heart"></i></a></div> --}}
                     </div>
                     <div class="text">
                         <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
@@ -121,20 +123,29 @@
                                     <i class="fas fa-location-arrow"></i> {{ $item->location->name }}
                                 </div>
                             </div>
-                            <div class="agent-section d-none">
+                            {{-- <div class="agent-section">
                                 @if($item->agent->photo != null)
                                 <img class="agent-photo" src="{{ asset('uploads/'.$item->agent->photo) }}" alt="">
                                 @else
                                 <img class="agent-photo" src="{{ asset('uploads/default.png') }}" alt="">
                                 @endif
                                 <a href="{{ route('agent',$item->agent->id) }}">{{ $item->agent->name }} ({{ $item->agent->company }})</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
 
+        </div>
+        {{-- Boton --}}
+        <div class="row mt-4 property-section">
+            <div class="col-12 text-center">
+                <a href="{{ url('/property-search') }}" class="btn btn-primary">
+                    <span style="font-size: 18px;">Ver todas las propiedades</span>
+                    <i class="fas fa-angle-double-right" style="font-size: 18px;"></i> 
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -184,7 +195,7 @@
                     <div class="icon">
                         <i class="fas fa-share-alt"></i>
                     </div>
-                    <div class="text">
+                    <div class="text" style="text-align: left;">
                         <h2>Comunicación receptiva</h2>
                         <p>
                             Nuestros agentes receptivos están aquí para responder sus preguntas y abordar sus inquietudes, garantizando una experiencia de compra de vivienda fluida y sin estrés.
@@ -237,7 +248,7 @@
                 <div class="heading">
                     <h2>Ubicaciones</h2>
                     <p>
-                        Consulta todas las propiedades de lugares importantes
+                        Conoce nuestras ubicaciones más populares y encuentra tu próximo hogar en el lugar perfecto para ti
                     </p>
                 </div>
             </div>

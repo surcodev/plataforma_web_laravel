@@ -1,20 +1,20 @@
 <div class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="item">
                     <h2 class="heading">Secciones clave</h2>
                     <ul class="useful-links">
                         <li><a href="{{ route('home') }}">Inicio</a></li>
                         <li><a href="{{ route('property_search') }}">Propiedades</a></li>
                         {{-- <li><a href="{{ route('agents') }}">Agentes</a></li> --}} 
-                        <li><a href="{{ route('blog') }}">Noticias</a></li>
+                        <li><a href="{{ route('blog') }}">Proyectos</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="item">
-                    <h2 class="heading">Ubicación</h2>
+                    <h2 class="heading">Nuestras ubicaciones</h2>
                     <ul class="useful-links">
                         @php
                             $locations = \App\Models\Location::take(4)->get();
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="item">
                     <h2 class="heading">Contáctanos</h2>
 
@@ -89,12 +89,12 @@
 
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6">
+            
+            {{-- <div class="col-lg-3 col-md-6">
                 <div class="item">
-                    <h2 class="heading">Noticias</h2>
+                    <h2 class="heading">Invierte en nosotros</h2>
                     <p>
-                        Para recibir las últimas noticias de nuestra web, suscríbete aquí:
+                        Si está interesado en invertir en nuestros proyectos, regístre su correo y le enviaremos más información.
                     </p>
                     <form action="{{ route('subscriber_send_email') }}" method="post" class="form_subscribe_ajax">
                         @csrf
@@ -107,18 +107,16 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
 
 <div class="footer-bottom">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="copyright">
-                    {{ $global_setting->footer_copyright }}
-                </div>
+        <div class="row"">
+            <div class="copyright">
+                {{ $global_setting->footer_copyright }}
             </div>
             {{-- <div class="col-lg-6 col-md-6">
                 <div class="right">

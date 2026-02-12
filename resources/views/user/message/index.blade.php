@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Customer Messages</h2>
+                <h2>Mensajes</h2>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <a href="{{ route('message_create') }}" class="btn btn-primary btn-sm mb_10">New Message</a>
+                <a href="{{ route('message_create') }}" class="btn btn-primary btn-sm mb_10">Nuevo mensaje</a>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>

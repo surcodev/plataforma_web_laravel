@@ -44,9 +44,9 @@
                         @if(Auth::guard('web')->check())
                             <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Cliente Dashboard</a></li>
                         @elseif(Auth::guard('agent')->check())
-                            <li class="nav-item"><a href="{{ route('agent_dashboard') }}" class="nav-link">Agente Dashboard</a></li>
+                            <li class="nav-item"><a href="{{ route('agent_dashboard') }}" class="nav-link">Dashboard</a></li>
                         @else
-                            <li class="nav-item"><a href="{{ route('select_user') }}" class="nav-link">Login</a></li>
+                            <li class="nav-item"><a href="{{ route('agent_login') }}" class="nav-link">Login</a></li>
                         @endif
                     </ul>
                 </div>

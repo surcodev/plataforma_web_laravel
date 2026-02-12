@@ -5,8 +5,9 @@
     <div class="bg"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2>Inicio de sesión como agente</h2>
+            <div class="col-md-12" Style="text-align: center;">
+                <h2>Iniciar sesión como</h2>
+                <h1>AGENTE</h1>
             </div>
         </div>
     </div>
@@ -27,11 +28,14 @@
                             <label for="" class="form-label">Contraseña *</label>
                             <input type="password" name="password" class="form-control">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <a href="{{ route('agent_forget_password') }}" class="primary-color">
+                                ¿Olvidó su contraseña?
+                            </a>
                             <button type="submit" class="btn btn-primary bg-website">
                                 Iniciar Sesión
                             </button>
-                            <a href="{{ route('agent_forget_password') }}" class="primary-color">¿Olvidó su contraseña?</a>
+
                         </div>
                         <div class="mb-3">
                             <a href="{{ route('agent_registration') }}" class="primary-color">¿No tienes una cuenta? Crear una cuenta</a>

@@ -21,23 +21,23 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <a href="{{ route('message') }}" class="btn btn-primary btn-sm mb_10">All Messages</a>
+                <a href="{{ route('message') }}" class="btn btn-primary btn-sm mb_10">Todos los mensajes</a>
                 <form action="{{ route('message_store') }}" method="post">
                     @csrf
                     <div class="mb-3">
-                        <label for="">Subject *</label>
+                        <label for="">Asunto *</label>
                         <div class="form-group">
                             <input type="text" name="subject" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="">Message *</label>
+                        <label for="">Mensaje *</label>
                         <div class="form-group">
                             <textarea name="message" class="form-control h-200" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="">Select Agent *</label>
+                        <label for="">Selecciona un agente *</label>
                         <div class="form-group">
                             <select name="agent_id" class="form-select">
                                 @foreach ($agents as $item)

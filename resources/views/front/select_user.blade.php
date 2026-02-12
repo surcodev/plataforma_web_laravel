@@ -17,7 +17,7 @@
         <div class="row justify-content-center g-4">
 
             {{-- CLIENTE --}}
-            <div class="col-md-5">
+            {{-- <div class="col-md-5">
                 <div class="card shadow-lg border-0 rounded-4 text-center p-4 hover-scale bg-light-blue">
                     <div class="icon-circle mb-3 mx-auto">
                         <i class="fa-solid fa-user fa-3x text-primary"></i>
@@ -33,7 +33,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- AGENTE --}}
             <div class="col-md-5">

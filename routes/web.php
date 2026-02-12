@@ -26,21 +26,21 @@ use App\Http\Controllers\Admin\AdminSettingController;
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::post('/contact-submit', [FrontController::class, 'contact_submit'])->name('contact_submit');
-Route::get('/select-user', [FrontController::class, 'select_user'])->name('select_user');
+// Route::get('/select-user', [FrontController::class, 'select_user'])->name('select_user');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('pricing');
 Route::get('/property/{slug}', [FrontController::class, 'property_detail'])->name('property_detail');
 Route::post('/property/message/{id}', [FrontController::class, 'property_send_message'])->name('property_send_message');
 Route::get('/locations', [FrontController::class, 'locations'])->name('locations');
 Route::get('/location/{slug}', [FrontController::class, 'location'])->name('location');
-Route::get('/agents', [FrontController::class, 'agents'])->name('agents');
+// Route::get('/agents', [FrontController::class, 'agents'])->name('agents');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent'])->name('agent');
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
 Route::get('/post/{slug}', [FrontController::class, 'post'])->name('post');
-Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
-Route::get('/terms', [FrontController::class, 'terms'])->name('terms');
-Route::get('/privacy', [FrontController::class, 'privacy'])->name('privacy');
+// Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
+// Route::get('/terms', [FrontController::class, 'terms'])->name('terms');
+// Route::get('/privacy', [FrontController::class, 'privacy'])->name('privacy');
 
-Route::get('/wishlist-add/{id}', [FrontController::class, 'wishlist_add'])->name('wishlist_add');
+// Route::get('/wishlist-add/{id}', [FrontController::class, 'wishlist_add'])->name('wishlist_add');
 
 Route::get('/property-search', [FrontController::class, 'property_search'])->name('property_search');
 
@@ -49,30 +49,30 @@ Route::get('/subscriber/verify/{email}/{token}', [FrontController::class, 'subsc
 
 
 // User Section
-Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::post('/profile', [UserController::class, 'profile_submit'])->name('profile_submit');
-    Route::get('/wishlist', [UserController::class, 'wishlist'])->name('wishlist');
-    Route::get('/wishlist-delete/{id}', [UserController::class, 'wishlist_delete'])->name('wishlist_delete');
-    Route::get('/message/index', [UserController::class, 'message'])->name('message');
-    Route::get('/message/create', [UserController::class, 'message_create'])->name('message_create');
-    Route::post('/message/store', [UserController::class, 'message_store'])->name('message_store');
-    Route::get('/message/reply/{id}', [UserController::class, 'message_reply'])->name('message_reply');
-    Route::post('/message/reply-submit/{message_id}/{agent_id}', [UserController::class, 'message_reply_submit'])->name('message_reply_submit');
-    Route::get('/message/delete/{id}', [UserController::class, 'message_delete'])->name('message_delete');
-});
+// Route::middleware('auth')->group(function(){
+//     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+//     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+//     Route::post('/profile', [UserController::class, 'profile_submit'])->name('profile_submit');
+//     // Route::get('/wishlist', [UserController::class, 'wishlist'])->name('wishlist');
+//     // Route::get('/wishlist-delete/{id}', [UserController::class, 'wishlist_delete'])->name('wishlist_delete');
+//     Route::get('/message/index', [UserController::class, 'message'])->name('message');
+//     Route::get('/message/create', [UserController::class, 'message_create'])->name('message_create');
+//     Route::post('/message/store', [UserController::class, 'message_store'])->name('message_store');
+//     Route::get('/message/reply/{id}', [UserController::class, 'message_reply'])->name('message_reply');
+//     Route::post('/message/reply-submit/{message_id}/{agent_id}', [UserController::class, 'message_reply_submit'])->name('message_reply_submit');
+//     Route::get('/message/delete/{id}', [UserController::class, 'message_delete'])->name('message_delete');
+// });
 
-Route::get('/registration', [UserController::class, 'registration'])->name('registration');
-Route::post('/registration', [UserController::class, 'registration_submit'])->name('registration_submit');
-Route::get('/registration-verify/{token}/{email}', [UserController::class, 'registration_verify'])->name('registration_verify');
-Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::post('/login', [UserController::class, 'login_submit'])->name('login_submit');
-Route::get('/forget-password', [UserController::class, 'forget_password'])->name('forget_password');
-Route::post('/forget-password', [UserController::class, 'forget_password_submit'])->name('forget_password_submit');
-Route::get('/reset-password/{token}/{email}', [UserController::class, 'reset_password'])->name('reset_password');
-Route::post('/reset-password/{token}/{email}', [UserController::class, 'reset_password_submit'])->name('reset_password_submit');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+// Route::get('/registration', [UserController::class, 'registration'])->name('registration');
+// Route::post('/registration', [UserController::class, 'registration_submit'])->name('registration_submit');
+// Route::get('/registration-verify/{token}/{email}', [UserController::class, 'registration_verify'])->name('registration_verify');
+// Route::get('/login', [UserController::class, 'login'])->name('login');
+// Route::post('/login', [UserController::class, 'login_submit'])->name('login_submit');
+// Route::get('/forget-password', [UserController::class, 'forget_password'])->name('forget_password');
+// Route::post('/forget-password', [UserController::class, 'forget_password_submit'])->name('forget_password_submit');
+// Route::get('/reset-password/{token}/{email}', [UserController::class, 'reset_password'])->name('reset_password');
+// Route::post('/reset-password/{token}/{email}', [UserController::class, 'reset_password_submit'])->name('reset_password_submit');
+// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 // Agent Section
@@ -107,9 +107,9 @@ Route::middleware('agent')->prefix('agent')->group(function(){
     Route::post('/property/video-gallery/{property_id}', [AgentController::class, 'property_video_gallery_store'])->name('agent_property_video_gallery_store');
     Route::get('/property/video-gallery-delete/{property_video_id}', [AgentController::class, 'property_video_gallery_delete'])->name('agent_property_video_gallery_delete');
 
-    Route::get('/message/index', [AgentController::class, 'message'])->name('agent_message');
-    Route::get('/message/reply/{id}', [AgentController::class, 'message_reply'])->name('agent_message_reply');
-    Route::post('/message/reply-submit/{message_id}/{agent_id}', [AgentController::class, 'message_reply_submit'])->name('agent_message_reply_submit');
+    // Route::get('/message/index', [AgentController::class, 'message'])->name('agent_message');
+    // Route::get('/message/reply/{id}', [AgentController::class, 'message_reply'])->name('agent_message_reply');
+    // Route::post('/message/reply-submit/{message_id}/{agent_id}', [AgentController::class, 'message_reply_submit'])->name('agent_message_reply_submit');
 });
 
 Route::prefix('agent')->group(function(){
