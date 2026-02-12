@@ -16,124 +16,98 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-12">
-                <form action="{{ route('property_search') }}" method="get">
-                <div class="property-filter">
-                    <div class="widget">
-                        <h2>Accede a lo que necesites</h2>
-                        <input type="text" name="name" class="form-control" placeholder="Buscar por nombre ..." value="{{ $form_name }}">
-                    </div>
+                <form action="{{ route('property_search') }}" method="get" id="property-filter-form">
+                    <div class="property-filter">
 
-                    <div class="widget">
-                        <h2>Ubicación</h2>
-                        <select name="location" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Seleccionar ubicación</option>
-                            @foreach($locations as $location)
-                                <option value="{{ $location->id }}" @if($form_location == $location->id) selected @endif>{{ $location->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                        <div class="widget">
+                            <h2>Filtra por lo que estas buscando</h2>
+                            <input type="text" name="name" class="form-control" placeholder="Buscar por nombre ..." value="{{ $form_name }}">
+                        </div>
 
-                    <div class="widget">
-                        <h2>Tipo</h2>
-                        <select name="type" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Seleccionar tipo</option>
-                            @foreach($types as $type)
-                                <option value="{{ $type->id }}" @if($form_type == $type->id) selected @endif>{{ $type->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                        <div class="widget">
+                            <h2>Ubicación</h2>
+                            <select name="location" class="form-control select2">
+                                <option value="">Seleccionar ubicación</option>
+                                @foreach($locations as $location)
+                                    <option value="{{ $location->id }}" @if($form_location == $location->id) selected @endif>{{ $location->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    {{-- <div class="widget d-none">
-                        <h2>Propósito</h2>
-                        <select name="purpose" class="form-control select2" onchange="this.form.submit()">
-                            <option value="Seleccionar propósito"></option>
-                            <option value="Rent" @if($form_purpose == 'Rent') selected @endif>En alquiler</option>
-                            <option value="Sale" @if($form_purpose == 'Sale') selected @endif>En venta</option>
-                        </select>
-                    </div> --}}
+                        <div class="widget">
+                            <h2>Tipo</h2>
+                            <select name="type" class="form-control select2">
+                                <option value="">Seleccionar tipo</option>
+                                @foreach($types as $type)
+                                    <option value="{{ $type->id }}" @if($form_type == $type->id) selected @endif>{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    <div class="widget">
-                        <h2>Comodidades</h2>
-                        <select name="amenity" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Seleccionar comodidad</option>
-                            @foreach($amenities as $amenity)
-                                <option value="{{ $amenity->id }}" @if($form_amenity == $amenity->id) selected @endif>{{ $amenity->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                        {{-- <div class="widget d-none">
+                            <h2>Propósito</h2>
+                            <select name="purpose" class="form-control select2" onchange="this.form.submit()">
+                                <option value="Seleccionar propósito"></option>
+                                <option value="Rent" @if($form_purpose == 'Rent') selected @endif>En alquiler</option>
+                                <option value="Sale" @if($form_purpose == 'Sale') selected @endif>En venta</option>
+                            </select>
+                        </div> --}}
 
-                    <div class="widget">
-                        <h2>Habitaciones</h2>
-                        <select name="bedroom" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Número de habitaciones</option>
-                            @for($i=1;$i<=50;$i++)
-                                <option value="{{ $i }}" @if($form_bedroom == $i) selected @endif>{{ $i }}</option>
-                            @endfor
-                        </select>
-                    </div>
+                        {{-- <div class="widget">
+                            <h2>Comodidades</h2>
+                            <select name="amenity" class="form-control select2" onchange="this.form.submit()">
+                                <option value="">Seleccionar comodidad</option>
+                                @foreach($amenities as $amenity)
+                                    <option value="{{ $amenity->id }}" @if($form_amenity == $amenity->id) selected @endif>{{ $amenity->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    <div class="widget">
-                        <h2>Baños</h2>
-                        <select name="bathroom" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Número de baños</option>
-                            @for($i=1;$i<=50;$i++)
-                                <option value="{{ $i }}" @if($form_bathroom == $i) selected @endif>{{ $i }}</option>
-                            @endfor
-                        </select>
-                    </div>
+                        <div class="widget">
+                            <h2>Habitaciones</h2>
+                            <select name="bedroom" class="form-control select2" onchange="this.form.submit()">
+                                <option value="">Número de habitaciones</option>
+                                @for($i=1;$i<=50;$i++)
+                                    <option value="{{ $i }}" @if($form_bedroom == $i) selected @endif>{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
 
-                    <div class="widget">
-                        <h2>Precio mínimo</h2>
-                        <select name="min_price" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Seleccione Precio Mínimo</option>
-                            <option value="1" @if($form_min_price == '1') selected @endif>1</option>
-                            <option value="1000" @if($form_min_price == '1000') selected @endif>1000</option>
-                            <option value="2000" @if($form_min_price == '2000') selected @endif>2000</option>
-                            <option value="3000" @if($form_min_price == '3000') selected @endif>3000</option>
-                            <option value="5000" @if($form_min_price == '5000') selected @endif>5000</option>
-                            <option value="10000" @if($form_min_price == '10000') selected @endif>10000</option>
-                            <option value="20000" @if($form_min_price == '20000') selected @endif>20000</option>
-                            <option value="30000" @if($form_min_price == '30000') selected @endif>30000</option>
-                            <option value="50000" @if($form_min_price == '50000') selected @endif>50000</option>
-                            <option value="60000" @if($form_min_price == '60000') selected @endif>60000</option>
-                            <option value="70000" @if($form_min_price == '70000') selected @endif>70000</option>
-                            <option value="80000" @if($form_min_price == '80000') selected @endif>80000</option>
-                            <option value="90000" @if($form_min_price == '90000') selected @endif>90000</option>
-                            <option value="100000" @if($form_min_price == '100000') selected @endif>100000</option>
-                            <option value="500000" @if($form_min_price == '500000') selected @endif>500000</option>
-                            <option value="1000000" @if($form_min_price == '1000000') selected @endif>1000000</option>
-                            <option value="2000000" @if($form_min_price == '2000000') selected @endif>2000000</option>
-                        </select>
-                    </div>
+                        <div class="widget">
+                            <h2>Baños</h2>
+                            <select name="bathroom" class="form-control select2" onchange="this.form.submit()">
+                                <option value="">Número de baños</option>
+                                @for($i=1;$i<=50;$i++)
+                                    <option value="{{ $i }}" @if($form_bathroom == $i) selected @endif>{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div> --}}
 
-                    <div class="widget">
-                        <h2>Precio máximo</h2>
-                        <select name="max_price" class="form-control select2" onchange="this.form.submit()">
-                            <option value="">Seleccionar precio máximo</option>
-                            <option value="1" @if($form_min_price == '1') selected @endif>1</option>
-                            <option value="1000" @if($form_max_price == '1000') selected @endif>1000</option>
-                            <option value="2000" @if($form_max_price == '2000') selected @endif>2000</option>
-                            <option value="3000" @if($form_max_price == '3000') selected @endif>3000</option>
-                            <option value="5000" @if($form_max_price == '5000') selected @endif>5000</option>
-                            <option value="10000" @if($form_max_price == '10000') selected @endif>10000</option>
-                            <option value="20000" @if($form_max_price == '20000') selected @endif>20000</option>
-                            <option value="30000" @if($form_max_price == '30000') selected @endif>30000</option>
-                            <option value="50000" @if($form_max_price == '50000') selected @endif>50000</option>
-                            <option value="60000" @if($form_max_price == '60000') selected @endif>60000</option>
-                            <option value="70000" @if($form_max_price == '70000') selected @endif>70000</option>
-                            <option value="80000" @if($form_max_price == '80000') selected @endif>80000</option>
-                            <option value="90000" @if($form_max_price == '90000') selected @endif>90000</option>
-                            <option value="100000" @if($form_max_price == '100000') selected @endif>100000</option>
-                            <option value="500000" @if($form_max_price == '500000') selected @endif>500000</option>
-                            <option value="1000000" @if($form_max_price == '1000000') selected @endif>1000000</option>
-                            <option value="2000000" @if($form_max_price == '2000000') selected @endif>2000000</option>
-                        </select>
-                    </div>
+                        <div class="widget">
+                            <h2>Rango de Precio</h2>
+                            <div class="d-flex align-items-center gap-2">
+                                <!-- Precio mínimo -->
+                                <input type="text"
+                                    name="min_price"
+                                    class="form-control price-input"
+                                    placeholder="Precio mínimo"
+                                    value="{{ $form_min_price ?? '' }}">
 
-                    <div class="filter-button">
-                        <button type="submit" class="btn btn-primary">Filtros</button>
+                                <span class="mx-1">-</span>
+
+                                <!-- Precio máximo -->
+                                <input type="text"
+                                    name="max_price"
+                                    class="form-control price-input"
+                                    placeholder="Precio máximo"
+                                    value="{{ $form_max_price ?? '' }}">
+                            </div>
+                        </div>
+
+                        <div class="filter-button">
+                            <button type="submit" class="btn btn-primary">Filtros</button>
+                        </div>
                     </div>
-                </div>
                 </form>
             </div>
             <div class="col-lg-8 col-md-12">
@@ -220,3 +194,65 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function formatNumberWithCommas(input) {
+        // Guardamos la posición del cursor
+        let caret = input.selectionStart;
+
+        // Guardamos el valor anterior
+        let oldValue = input.value;
+
+        // Eliminamos todo lo que no sea número
+        let value = oldValue.replace(/[^\d]/g, '');
+        if(value === '') {
+            input.value = '';
+            return;
+        }
+
+        // Formateamos con comas
+        let formatted = Number(value).toLocaleString('en-US');
+        input.value = formatted;
+
+        // Restauramos la posición del cursor
+        let diff = formatted.length - oldValue.length;
+        input.selectionStart = input.selectionEnd = caret + diff;
+    }
+
+    // Seleccionamos los inputs de precio
+    document.querySelectorAll('.price-input').forEach(function(input){
+        // Formatea al cargar si hay valor
+        if(input.value) input.value = Number(input.value).toLocaleString('en-US');
+
+        // Formateo mientras escribes
+        input.addEventListener('input', function(){
+            formatNumberWithCommas(input);
+        });
+    });
+
+    function formatNumberWithCommas(input) {    
+        let caret = input.selectionStart;
+        let oldValue = input.value;
+
+        let value = oldValue.replace(/[^\d]/g,'');
+        if(value === '') {
+            input.value = '';
+            return;
+        }
+
+        let formatted = Number(value).toLocaleString('en-US');
+        input.value = formatted;
+
+        let diff = formatted.length - oldValue.length;
+        input.selectionStart = input.selectionEnd = caret + diff;
+    }
+
+    // Antes de enviar, quitamos las comas
+    document.getElementById('property-filter-form').addEventListener('submit', function(e){
+        this.querySelectorAll('.price-input').forEach(function(input){
+            input.value = input.value.replace(/,/g,'');
+        });
+    });
+</script>
+@endpush

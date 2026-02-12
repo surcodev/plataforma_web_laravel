@@ -32,5 +32,6 @@
     </div>
 
     @include('front.layouts.script_footer')
+    @stack('scripts')
 </body>
 </html>

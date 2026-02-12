@@ -47,7 +47,11 @@ class FrontController extends Controller
                         ->where('expire_date', '>=', now());
                 });
             });
-        }])->orderBy('properties_count', 'desc')->take(4)->get();
+        }])
+        ->having('properties_count', '>', 0) // Solo mostrar ubicaciones que tengan al menos una propiedad activa
+        ->orderBy('properties_count', 'desc')
+        ->take(4)
+        ->get();
 
         $search_locations = Location::orderBy('name', 'asc')->get();
         $search_types = Type::orderBy('name', 'asc')->get();
@@ -90,6 +94,14 @@ class FrontController extends Controller
 
     public function blog()
     {
+        $postCount = Post::count(); // Contamos todos los posts
+
+        if ($postCount === 1) {
+            $post = Post::first(); // Traemos el único post
+            return redirect()->route('post', $post->slug);
+        }
+
+        // Si hay más de uno, paginamos normalmente
         $posts = Post::orderBy('id','desc')->paginate(15);
         return view('front.blog', compact('posts'));
     }
@@ -168,7 +180,10 @@ class FrontController extends Controller
                         ->where('expire_date', '>=', now());
                 });
             });
-        }])->orderBy('properties_count', 'desc')->paginate(20);
+        }])
+        ->having('properties_count', '>', 0) // Solo mostrar ubicaciones que tengan al menos una propiedad activa
+        ->orderBy('properties_count', 'desc')
+        ->paginate(20);
 
         return view('front.locations', compact('locations'));
     }
@@ -189,6 +204,7 @@ class FrontController extends Controller
                         ->where('expire_date', '>=', now());
                 });
             })
+        
         ->orderBy('id', 'asc')
         ->paginate(6);
         
@@ -233,7 +249,7 @@ class FrontController extends Controller
         $form_bathroom = $request->bathroom;
         $form_min_price = $request->min_price;
         $form_max_price = $request->max_price;
-        $form_amenity = $request->amenity;
+        $form_amenity = $request->amenity; 
 
         $properties = Property::where('status', 'Active')
             ->whereHas('agent', function($query) {

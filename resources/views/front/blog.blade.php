@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Noticias del día</h2>
+                <h2>Proyectos Destacados</h2>
             </div>
         </div>
     </div>

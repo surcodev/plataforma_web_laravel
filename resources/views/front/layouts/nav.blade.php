@@ -15,14 +15,14 @@
                     <img src="{{ asset('uploads/'.$global_setting->logo) }}" alt="Santa Clara" style="height:60px;">
 
                     <!-- Texto del logo -->
-                    <div class="ml-3 d-flex flex-column justify-content-center text-center">
+                    {{-- <div class="ml-3 d-flex flex-column justify-content-center text-center">
                         <span style="font-family: 'Cinzel Decorative', serif; font-weight: 600; font-size: 24px; line-height: 1; color:#fff;">
                             SANTA CLARA
                         </span>
                         <span style="font-size: 14px; letter-spacing: 1px; color:#fff; text-transform: uppercase;">
                             Bienes Raíces
                         </span>
-                    </div>
+                    </div> --}}
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -38,7 +38,7 @@
                         <li class="nav-item"><a href="{{ route('locations') }}" class="nav-link">Ubicaciones</a></li>
                         {{-- <li class="nav-item"><a href="{{ route('pricing') }}" class="nav-link">Precios</a></li>
                         <li class="nav-item"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li> --}}
-                        <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Noticias</a></li>
+                        <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Nuestros Proyectos</a></li>
                         <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contacto</a></li>
 
                         @if(Auth::guard('web')->check())

@@ -160,7 +160,9 @@ p {font-weight: 400;}
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active,
 /* color de transicion del navbar */
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li:hover a {
-    color: #c0ae85;
+    color: inherit; /* Mantiene el color original del texto */
+    text-decoration: underline; /* Agrega subrayado al texto */
+    text-underline-offset: 2px; /* Opcional: separa un poco la línea del texto */
 }
 
 .main-nav nav .navbar-nav .nav-item .dropdown-menu li a:hover {
