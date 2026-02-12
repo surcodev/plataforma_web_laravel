@@ -41,10 +41,10 @@
                         <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Nuestros Proyectos</a></li>
                         <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contacto</a></li>
 
-                        @if(Auth::guard('web')->check())
-                            <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Cliente Dashboard</a></li>
-                        @elseif(Auth::guard('agent')->check())
+                        @if(Auth::guard('agent')->check())
                             <li class="nav-item"><a href="{{ route('agent_dashboard') }}" class="nav-link">Dashboard</a></li>
+                        {{-- @elseif(Auth::guard('web')->check())
+                            <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Cliente Dashboard</a></li> --}}
                         @else
                             <li class="nav-item"><a href="{{ route('agent_login') }}" class="nav-link">Login</a></li>
                         @endif

@@ -44,8 +44,8 @@ Route::get('/post/{slug}', [FrontController::class, 'post'])->name('post');
 
 Route::get('/property-search', [FrontController::class, 'property_search'])->name('property_search');
 
-Route::post('/subscriber/send-email', [FrontController::class, 'subscriber_send_email'])->name('subscriber_send_email');
-Route::get('/subscriber/verify/{email}/{token}', [FrontController::class, 'subscriber_verify'])->name('subscriber_verify');
+// Route::post('/subscriber/send-email', [FrontController::class, 'subscriber_send_email'])->name('subscriber_send_email');
+// Route::get('/subscriber/verify/{email}/{token}', [FrontController::class, 'subscriber_verify'])->name('subscriber_verify');
 
 
 // User Section
@@ -63,6 +63,7 @@ Route::get('/subscriber/verify/{email}/{token}', [FrontController::class, 'subsc
 //     Route::get('/message/delete/{id}', [UserController::class, 'message_delete'])->name('message_delete');
 // });
 
+// User Login, Logout, Forget Password, Reset Password
 // Route::get('/registration', [UserController::class, 'registration'])->name('registration');
 // Route::post('/registration', [UserController::class, 'registration_submit'])->name('registration_submit');
 // Route::get('/registration-verify/{token}/{email}', [UserController::class, 'registration_verify'])->name('registration_verify');
@@ -112,6 +113,7 @@ Route::middleware('agent')->prefix('agent')->group(function(){
     // Route::post('/message/reply-submit/{message_id}/{agent_id}', [AgentController::class, 'message_reply_submit'])->name('agent_message_reply_submit');
 });
 
+// Agent Login, Logout, Forget Password, Reset Password
 Route::prefix('agent')->group(function(){
     Route::get('/', function () {return redirect()->route('agent_login');});
     Route::get('/registration', [AgentController::class, 'registration'])->name('agent_registration');
@@ -228,6 +230,7 @@ Route::middleware('admin')->prefix('admin')->group(function(){
 
 });
 
+// Admin Login, Logout, Forget Password, Reset Password
 Route::prefix('admin')->group(function(){
     Route::get('/', function () {return redirect()->route('admin_login');});
     Route::get('/login', [AdminController::class, 'login'])->name('admin_login');
