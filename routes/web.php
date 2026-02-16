@@ -26,23 +26,21 @@ use App\Http\Controllers\Admin\AdminSettingController;
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::post('/contact-submit', [FrontController::class, 'contact_submit'])->name('contact_submit');
-// Route::get('/select-user', [FrontController::class, 'select_user'])->name('select_user');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('pricing');
 Route::get('/property/{slug}', [FrontController::class, 'property_detail'])->name('property_detail');
 Route::post('/property/message/{id}', [FrontController::class, 'property_send_message'])->name('property_send_message');
 Route::get('/locations', [FrontController::class, 'locations'])->name('locations');
 Route::get('/location/{slug}', [FrontController::class, 'location'])->name('location');
-// Route::get('/agents', [FrontController::class, 'agents'])->name('agents');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent'])->name('agent');
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
 Route::get('/post/{slug}', [FrontController::class, 'post'])->name('post');
+Route::get('/property-search', [FrontController::class, 'property_search'])->name('property_search');
+// Route::get('/agents', [FrontController::class, 'agents'])->name('agents');
+// Route::get('/select-user', [FrontController::class, 'select_user'])->name('select_user');
 // Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
 // Route::get('/terms', [FrontController::class, 'terms'])->name('terms');
 // Route::get('/privacy', [FrontController::class, 'privacy'])->name('privacy');
-
 // Route::get('/wishlist-add/{id}', [FrontController::class, 'wishlist_add'])->name('wishlist_add');
-
-Route::get('/property-search', [FrontController::class, 'property_search'])->name('property_search');
 
 // Route::post('/subscriber/send-email', [FrontController::class, 'subscriber_send_email'])->name('subscriber_send_email');
 // Route::get('/subscriber/verify/{email}/{token}', [FrontController::class, 'subscriber_verify'])->name('subscriber_verify');
@@ -240,4 +238,32 @@ Route::prefix('admin')->group(function(){
     Route::get('/reset-password/{token}/{email}', [AdminController::class, 'reset_password'])->name('admin_reset_password');
     Route::post('/reset-password/{token}/{email}', [AdminController::class, 'reset_password_submit'])->name('admin_reset_password_submit');
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin_logout');
+});
+
+// Site.map
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use App\Models\Property;
+
+Route::get('/sitemap.xml', function () {
+
+    $sitemap = Sitemap::create();
+
+    // Página principal
+    $sitemap->add(Url::create('/'));
+
+    // Página listado
+    $sitemap->add(Url::create('/property-search'));
+
+    // Propiedades individuales
+    $properties = Property::all();
+
+    foreach ($properties as $property) {
+        $sitemap->add(
+            Url::create("/property/{$property->slug}")
+        );
+    }
+
+    return $sitemap->toResponse(request());
+
 });
