@@ -113,13 +113,17 @@ class AdminAgentController extends Controller
 
         $agent = Agent::where('id',$id)->first();
 
-        if($request->hasFile('photo')){
+        if ($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            $final_name = 'agent_'.time().'.'.$request->photo->extension();
-            if($agent->photo != '') {
-                unlink(public_path('uploads/'.$agent->photo));
+            $final_name = 'agent_' . time() . '.' . $request->photo->extension();
+            // Eliminar imagen anterior si existe
+            if ($agent->photo) {
+                $oldPath = public_path('uploads/' . $agent->photo);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
             $request->photo->move(public_path('uploads'), $final_name);
             $agent->photo = $final_name;
@@ -157,18 +161,21 @@ class AdminAgentController extends Controller
 
     public function delete($id)
     {
-        // Si el agente tiene alguna propiedad asociada, no puedes eliminarlo
-        $property = Property::where('agent_id',$id)->first();
-        if($property) {
-            return redirect()->route('admin_agent_index')->with('error', 'El agente no se puede eliminar porque está asociado a una propiedad. Primero elimine todas las propiedades asociadas a este agente.');
+        $property = Property::where('agent_id', $id)->first();
+        if ($property) {
+            return redirect()->route('admin_agent_index')
+                ->with('error', 'El agente no se puede eliminar porque está asociado a una propiedad.');
         }
+        $agent = Agent::find($id);
+        if ($agent && $agent->photo) {
+            $path = public_path('uploads/' . $agent->photo);
 
-        $agent = Agent::where('id',$id)->first();
-        if($agent->photo != '') {
-            unlink(public_path('uploads/'.$agent->photo));
+            if (file_exists($path)) {
+                unlink($path);
+            }
         }
-        $agent->delete();
-        
-        return redirect()->route('admin_agent_index')->with('success', 'Agente eliminado exitosamente');
+        $agent?->delete();
+        return redirect()->route('admin_agent_index')
+            ->with('success', 'Agente eliminado exitosamente');
     }
 }
