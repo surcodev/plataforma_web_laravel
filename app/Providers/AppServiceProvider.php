@@ -29,5 +29,15 @@ class AppServiceProvider extends ServiceProvider
             $setting_data = Setting::where('id', 1)->first();
             view()->share('global_setting', $setting_data);
         }
+
+        // Forzar dominio principal
+        $mainDomain = 'brsantaclara.com';
+
+        if (request()->getHost() !== $mainDomain) {
+            // Redirige a https://brsantaclara.com manteniendo la misma ruta
+            redirect()->to('https://' . $mainDomain . request()->getRequestUri())->send();
+            exit;
+        }
+
     }
 }
