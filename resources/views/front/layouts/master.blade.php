@@ -7,6 +7,9 @@
     <meta name="description" content="">
     <title>{{ env('APP_NAME') }}</title>
 
+    <!-- CANONICAL -->
+    <link rel="canonical" href="{{ url()->current() }}" />
+
     <link rel="icon" type="image/png" href="{{ asset('uploads/'.$global_setting->favicon) }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link

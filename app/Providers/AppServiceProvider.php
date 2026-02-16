@@ -33,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
         // Forzar dominio principal
         $mainDomain = 'brsantaclara.com';
 
+        $allowedDomains = [
+            'brsantaclara.com',
+            'www.brsantaclara.com',
+            'sdi.brsantaclara.com', // para que tu otro subdominio siga funcionando
+        ];
+
         if (request()->getHost() !== $mainDomain) {
             // Redirige a https://brsantaclara.com manteniendo la misma ruta
             redirect()->to('https://' . $mainDomain . request()->getRequestUri())->send();
