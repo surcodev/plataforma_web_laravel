@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
             ];
 
             if (!in_array(request()->getHost(), $allowedDomains)) {
-                redirect()->to(config('app.url') . request()->getRequestUri())->send();
+                abort(410);
                 exit;
             }
         }
