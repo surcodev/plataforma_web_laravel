@@ -31,19 +31,19 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // Forzar dominio principal
-        $mainDomain = 'brsantaclara.com';
+        if (app()->environment('production') && !app()->runningInConsole()) {
 
-        $allowedDomains = [
-            'brsantaclara.com',
-            'www.brsantaclara.com',
-            'sdi.brsantaclara.com', // para que tu otro subdominio siga funcionando
-        ];
+            $mainDomain = parse_url(config('app.url'), PHP_URL_HOST);
+            $allowedDomains = [
+                'brsantaclara.com',
+                'www.brsantaclara.com',
+                'sdi.brsantaclara.com',
+            ];
 
-        if (request()->getHost() !== $mainDomain) {
-            // Redirige a https://brsantaclara.com manteniendo la misma ruta
-            redirect()->to('https://' . $mainDomain . request()->getRequestUri())->send();
-            exit;
+            if (!in_array(request()->getHost(), $allowedDomains)) {
+                redirect()->to(config('app.url') . request()->getRequestUri())->send();
+                exit;
+            }
         }
-
     }
 }
