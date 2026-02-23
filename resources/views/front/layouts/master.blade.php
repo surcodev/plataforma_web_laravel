@@ -4,8 +4,9 @@
     <meta name="google-site-verification" content="r7Kc-XJGUubRs8-l7eIMaPYQlN9SsTLoWfdR48qfZ_M" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <title>{{ config('app.name') }}</title>
+    <meta name="description" content="@yield('meta_description', 'Descubre las mejores oportunidades inmobiliarias. Casas, terrenos y departamentos al mejor precio.')">
+    {{-- <title>{{ config('app.name') }}</title> --}}
+    <title>@yield('title', 'Bienes Raíces Santa Clara S.A.C.| Compra y Venta de Propiedades')</title>
 
     <!-- CANONICAL -->
     <link rel="canonical" href="{{ url()->current() }}" />
