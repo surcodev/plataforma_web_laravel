@@ -184,6 +184,7 @@
                 <div class="right-item">
                     <h2>Agente</h2>
                     <div class="agent-right d-flex justify-content-start">
+                        <a href="{{ url('agent/detail/'.$property->agent->id) }}">
                         <div class="left">
                             @if($property->agent->photo != null)
                             <img src="{{ asset('uploads/'.$property->agent->photo) }}" alt="">
@@ -192,7 +193,8 @@
                             @endif
                         </div>
                         <div class="right">
-                            <h3><a href="">{{ $property->agent->name }}</a></h3>
+                            <a href="{{ url('agent/detail/'.$property->agent->id) }}">
+                            <h3>{{ $property->agent->name }}</h3>
                             <h4>{{ $property->agent->designation }}</h4>
                         </div>
                     </div>
