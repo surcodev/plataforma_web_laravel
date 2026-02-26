@@ -1,5 +1,9 @@
 @extends('front.layouts.master')
 
+@section('title', 'Nuestros Proyectos')
+
+@section('meta_description', 'Explora nuestros proyectos inmobiliarios. Encuentra oportunidades en casas, terrenos y desarrollos con gran potencial de inversión.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

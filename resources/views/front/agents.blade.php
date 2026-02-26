@@ -1,5 +1,9 @@
 @extends('front.layouts.master')
 
+@section('title', 'Nuestros Agentes')
+
+@section('meta_description', 'Conoce a nuestros agentes inmobiliarios. Profesionales listos para ayudarte a comprar tu propiedad.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

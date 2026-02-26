@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Información de propiedad: '.$property->name)
+@section('meta_description', 'Información de la propiedad '.$property->name.'. Encuentra detalles, precio y ubicación.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

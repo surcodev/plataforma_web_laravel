@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Nuestras Ubicaciones')
+@section('meta_description', 'Descubre nuestras ubicaciones disponibles. Encuentra propiedades en las mejores zonas y oportunidades inmobiliarias con asesoría profesional.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

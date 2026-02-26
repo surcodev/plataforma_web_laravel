@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Información de Contacto')
+@section('meta_description', 'Información de contacto. Escríbenos o llámanos para resolver tus dudas sobre nuestros servicios inmobiliarios.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

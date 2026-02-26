@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Nuestros Planes')    
+@section('meta_description', 'Explora nuestros planes para ser Agente. Ofrecemos soluciones adaptadas a tus necesidades con opciones flexibles y beneficios diseñados para ti.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

@@ -1,12 +1,15 @@
 @extends('front.layouts.master')
 
+@section('title', 'Restablecer Contraseña')
+@section('meta_description', 'Restablece tu contraseña para recuperar el acceso a tu cuenta de forma segura.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Agent Reset Password</h2>
+                <h2>Restablecer contraseña</h2>
             </div>
         </div>
     </div>
@@ -19,11 +22,11 @@
                     <form action="{{ route('agent_reset_password_submit',[$token,$email]) }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">Password</label>
+                            <label for="" class="form-label">Contraseña</label>
                             <input type="password" name="password" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Confirm Password</label>
+                            <label for="" class="form-label">Confirmar Contraseña</label>
                             <input type="password" name="confirm_password" class="form-control">
                         </div>
                         <div class="mb-3">

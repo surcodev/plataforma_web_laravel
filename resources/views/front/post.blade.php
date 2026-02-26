@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', $post->title)
+@section('meta_description', trim(Str::limit(strip_tags($post->short_description), 160)))
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

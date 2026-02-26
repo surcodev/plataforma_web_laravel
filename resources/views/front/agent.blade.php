@@ -1,5 +1,9 @@
 @extends('front.layouts.master')
 
+@section('title', 'Información de Agente: ' . $agent->name)
+
+@section('meta_description', 'Perfil del agente ' .$agent->name. '. Casas, departamentos y terrenos.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>
@@ -11,6 +15,7 @@
         </div>
     </div>
 </div>
+
 <div class="agent-detail">
     <div class="container">
         <div class="row">
@@ -148,4 +153,5 @@
         </div>
     </div>
 </div>
+
 @endsection

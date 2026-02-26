@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Inicia sesión como Agente')
+@section('meta_description', 'Accede al panel de agentes. Inicia sesión para gestionar tus propiedades')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

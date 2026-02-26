@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Registrate como Agente')
+@section('meta_description', 'Regístrate como agente y gestiona propiedades. Accede a herramientas para publicar y administrar tus anuncios.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

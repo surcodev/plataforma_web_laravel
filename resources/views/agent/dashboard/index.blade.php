@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Mi Dashboard de Agente')
+@section('meta_description', 'Panel de agente inmobiliario. Gestiona propiedades desde tu dashboard.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

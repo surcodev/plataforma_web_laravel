@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Listado de Propiedades')
+@section('meta_description', 'Explora nuestro listado de propiedades. Encuentra casas, departamentos y terrenos con las mejores oportunidades inmobiliarias.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>

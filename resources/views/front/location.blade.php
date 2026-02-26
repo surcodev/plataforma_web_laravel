@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 
+@section('title', 'Información de Ubicación: ' . $location->name)
+@section('meta_description', 'Descubre información sobre '. $location->name. '. Casas, terrenos y oportunidades inmobiliarias en esta ubicación.')
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>
