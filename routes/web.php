@@ -30,7 +30,9 @@ Route::post('/contact-submit', [FrontController::class, 'contact_submit'])
     ->middleware('throttle:5,1'); // Limite de 5 intentos por minuto
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('pricing');
 Route::get('/property/{slug}', [FrontController::class, 'property_detail'])->name('property_detail');
-Route::post('/property/message/{id}', [FrontController::class, 'property_send_message'])->name('property_send_message');
+Route::post('/property/message/{id}', [FrontController::class, 'property_send_message'])
+    ->name('property_send_message')
+    ->middleware('throttle:5,1'); // Limite de 5 intentos por minuto
 Route::get('/locations', [FrontController::class, 'locations'])->name('locations');
 Route::get('/location/{slug}', [FrontController::class, 'location'])->name('location');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent'])->name('agent');

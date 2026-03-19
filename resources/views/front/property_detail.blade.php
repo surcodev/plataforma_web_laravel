@@ -344,19 +344,26 @@
                 <div class="right-item">
                     <h2>Formulario de consulta</h2>
                     <div class="enquery-form">
-                        <form action="{{ route('property_send_message',$property->id) }}" method="post">
+                        <form action="{{ route('property_send_message',$property->id) }}" method="post" class="form_agent_message">
                             @csrf
+                            <div style="position:absolute; left:-9999px;"> {{-- Input oculto --}}
+                                <input type="text" name="website" tabindex="-1" autocomplete="off">
+                            </div>
                             <div class="mb-3">
-                                <input name="name" type="text" class="form-control" placeholder="Nombre completo">
+                                <input name="name" type="text" class="form-control" placeholder="Nombre">
+                                <span class="text-danger error-text name_error"></span>
                             </div>
                             <div class="mb-3">
                                 <input name="email" type="email" class="form-control" placeholder="Correo Electrónico">
-                            </div>
-                            <div class="mb-3">
-                                <input name="phone" type="text" class="form-control" placeholder="Número de teléfono">
+                                <span class="text-danger error-text email_error"></span>
                             </div>
                             <div class="mb-3">
                                 <textarea name="message" class="form-control h-150" rows="3" placeholder="Mensaje"></textarea>
+                                <span class="text-danger error-text message_error"></span>
+                            </div>
+                            <div class="mb-3">
+                                <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="light"></div>
+                                <span class="text-danger error-text captcha_error"></span>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">
@@ -372,4 +379,60 @@
         </div>
     </div>
 </div>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+    (function($){
+        $(".form_agent_message").on('submit', function(e){
+            e.preventDefault();
+            $('#loader').show();
+            var form = this;
+            $.ajax({
+                url:$(form).attr('action'),
+                method:$(form).attr('method'),
+                data:new FormData(form),
+                processData:false,
+                dataType:'json',
+                contentType:false,
+                beforeSend:function(){
+                    $(form).find('span.error-text').text('');
+                },
+                success:function(data)
+                {
+                    $('#loader').hide();
+                    if(data.code == 0)
+                    {
+                        $.each(data.error_message, function(prefix, val) {
+                            $(form).find('span.'+prefix+'_error').text(val[0]);
+                        });
+                    }
+                    else if(data.code == 1)
+                    {
+                        $(form)[0].reset();
+                        if (typeof turnstile !== 'undefined') {
+                            turnstile.reset();
+                        }
+                        iziToast.success({
+                            message: data.success_message,
+                            position: 'topRight',
+                            timeout: 5000,
+                            progressBarColor: '#00FF00',
+                        });
+                    }
+                },
+                error: function(xhr)
+                {
+                    $('#loader').hide();
+
+                    if (xhr.status === 429) {
+                        iziToast.error({
+                            message: 'Demasiados intentos. Intenta nuevamente en unos momentos.',
+                            position: 'topRight',
+                        });
+                    }
+                }
+            });
+        });
+    })(jQuery);
+</script>
+<div id="loader"></div>
 @endsection

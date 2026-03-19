@@ -184,23 +184,70 @@ class FrontController extends Controller
 
     public function property_send_message(Request $request,$id)
     {
+        // 1.Validar id de la propiedad
         $property = Property::where('id',$id)->first();
         if (!$property) {
             return redirect()->route('home')->with('error', 'Propiedad no encontrada');
         }
 
-        // Enviar correo electrónico
-        $subject = 'Consulta de propiedad';
-        $message = 'Has recibido una nueva consulta para la propiedad: ' . $property->name.'<br><br>';
-        $message .= 'Nombre del visitante:<br>'.$request->name.'<br><br>';
-        $message .= 'Correo electrónico del visitante:<br>'.$request->email.'<br><br>';
-        $message .= 'Teléfono del visitante:<br>'.$request->phone.'<br><br>';
-        $message .= 'Mensaje del visitante:<br>'.nl2br($request->message);
+        // 2.Validar llenado de input oculto
+        if ($request->filled('website')) {
+            return response()->json(['code' => 1]);
+        }
 
-        $agent_email = $property->agent->email;
-        \Mail::to($agent_email)->send(new Websitemail($subject, $message));
+        // 3.Validar CAPTCHA (Turnstile)
+        $turnstile = Http::asForm()->post(
+            'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+            [
+                'secret' => env('TURNSTILE_SECRET_KEY'),
+                'response' => $request->input('cf-turnstile-response'),
+                'remoteip' => $request->ip(),
+            ]
+        );
+        if (!$turnstile->json('success')) {
+            return response()->json([
+                'code' => 0,
+                'error_message' => ['captcha' => 'Captcha inválido']
+            ]);
+        }
 
-        return redirect()->back()->with('success', 'Mensaje enviado con éxito al agente');
+        // 4.Validaciones de campos
+        $validator = \Validator::make($request->all(),[
+            'name' => ['required'],
+            'email' => ['required','email:rfc,dns'], //rfc,dns para validar formato y validez del correo
+            'message' => ['required'],
+        ], [
+            'name.required' => '*El nombre es obligatorio',
+            'email.required' => '*El correo es obligatorio',
+            'email.email' => '*Ingresa un correo válido',
+            'message.required' => '*El mensaje es obligatorio',
+        ]);
+        if(!$validator->passes()) {
+            return response()->json([
+                'code'=>0,
+                'error_message'=>$validator->errors()->toArray()
+            ]);
+        } else {
+            // Enviar correo electrónico
+            $subject = 'Consulta de propiedad: '. $property->name;;
+
+            $message = '<b>Consulta para la propiedad:</b><br>';
+            $message .= e($property->name).'<br><br>';
+            $message .= '<a href="'.route('property_detail',$property->id).'">Ver propiedad</a><br><br>';
+            $message .= '<b>Mensaje:</b><br>';
+            $message .= nl2br(e($request->message)).'<br><br>';
+            $message .= '<b>Enviado por:</b><br>';
+            $message .= e($request->name).' &lt;'.e($request->email).'&gt;';
+
+            $agent_email = $property->agent->email;
+
+            \Mail::to($agent_email)->send(new Websitemail($subject, $message));
+
+            return response()->json([
+                'code'=>1,
+                'success_message'=>'El mensaje se envió correctamente al agente'
+            ]);
+        }
     }
 
     public function locations()
