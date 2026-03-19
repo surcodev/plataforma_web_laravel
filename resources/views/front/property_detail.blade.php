@@ -184,17 +184,19 @@
                 <div class="right-item">
                     <h2>Agente</h2>
                     <div class="agent-right d-flex justify-content-start">
-                        <a href="{{ url('agent/detail/'.$property->agent->id) }}">
                         <div class="left">
-                            @if($property->agent->photo != null)
-                            <img src="{{ asset('uploads/'.$property->agent->photo) }}" alt="">
-                            @else
-                            <img src="{{ asset('uploads/default.png') }}" alt="">
-                            @endif
+                            <a href="{{ url('agent/detail/'.$property->agent->id) }}">
+                                @if($property->agent->photo != null)
+                                <img src="{{ asset('uploads/'.$property->agent->photo) }}" alt="">
+                                @else
+                                <img src="{{ asset('uploads/default.png') }}" alt="">
+                                @endif
+                            </a>
                         </div>
                         <div class="right">
                             <a href="{{ url('agent/detail/'.$property->agent->id) }}">
-                            <h3>{{ $property->agent->name }}</h3>
+                                <h3>{{ $property->agent->name }}</h3>
+                            </a>
                             <h4>{{ $property->agent->designation }}</h4>
                         </div>
                     </div>
