@@ -233,7 +233,7 @@ class FrontController extends Controller
 
             $message = '<b>Consulta para la propiedad:</b><br>';
             $message .= e($property->name).'<br><br>';
-            $message .= '<a href="'.route('property_detail',$property->id).'">Ver propiedad</a><br><br>';
+            $message .= '<a href="'.route('property_detail',$property->slug).'">Ver propiedad</a><br><br>';
             $message .= '<b>Mensaje:</b><br>';
             $message .= nl2br(e($request->message)).'<br><br>';
             $message .= '<b>Enviado por:</b><br>';
