@@ -35,6 +35,8 @@ return [
     |
     */
 
+    'contact_address' => env('CONTACT_EMAIL'),
+
     'mailers' => [
 
         'smtp' => [

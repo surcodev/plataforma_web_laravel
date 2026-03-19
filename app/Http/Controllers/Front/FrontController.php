@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Location;
 use App\Models\Type;
 use App\Models\Amenity;
@@ -69,26 +71,59 @@ class FrontController extends Controller
 
     public function contact_submit(Request $request)
     {
+        //1. Validar llenado de input oculto
+        if ($request->filled('website')) {
+            return response()->json(['code' => 1]);
+        }
+        //2. Validar CAPTCHA (Turnstile)
+        $turnstile = Http::asForm()->post(
+            'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+            [
+                'secret' => env('TURNSTILE_SECRET_KEY'),
+                'response' => $request->input('cf-turnstile-response'),
+                'remoteip' => $request->ip(),
+            ]
+        );
+        if (!$turnstile->json('success')) {
+            return response()->json([
+                'code' => 0,
+                'error_message' => ['captcha' => 'Captcha inválido']
+            ]);
+        }
+        // 3. Validaciones de campos
         $validator = \Validator::make($request->all(),[
             'name' => ['required'],
-            'email' => ['required','email','unique:subscribers,email'],
+            'email' => ['required','email:rfc,dns'], //rfc,dns para validar formato y validez del correo
             'message' => ['required'],
+        ], [
+            'name.required' => '*El nombre es obligatorio',
+            'email.required' => '*El correo es obligatorio',
+            'email.email' => '*Ingresa un correo válido',
+            'message.required' => '*El mensaje es obligatorio',
         ]);
-
         if(!$validator->passes()) {
-            return response()->json(['code'=>0,'error_message'=>$validator->errors()->toArray()]);
+            return response()->json([
+                'code'=>0,
+                'error_message'=>$validator->errors()->toArray()
+            ]);
         } else {
-            
             // Enviar correo electrónico
             $subject = 'Mensaje del formulario de contacto';
-            $message = 'Información del remitente:<br>';
-            $message .= '<b>Nombre:</b><br>'.$request->name.'<br><br>';
-            $message .= '<b>Correo Electrónico:</b><br>'.$request->email.'<br><br>';
-            $message .= '<b>Mensaje:</b><br>'.nl2br($request->message);
-
-            \Mail::to($request->email)->send(new Websitemail($subject,$message));
-
-            return response()->json(['code'=>1,'success_message'=>'El mensaje se envió correctamente']);
+            $message = '<b>Mensaje:</b><br>';
+            $message .= nl2br(e($request->message)).'<br><br>';
+            $message .= '<b>Enviado por:</b><br>';
+            $message .= e($request->name).' &lt;'.e($request->email).'&gt;'; //nombre <correo>
+            
+            // Enviar el correo a nuestro contacto
+            \Mail::to(config('mail.contact_address'))
+            ->send(
+                new Websitemail($subject,$message, $request->email)
+            );
+            
+            return response()->json([
+                'code'=>1,
+                'success_message'=>'El mensaje se envió correctamente'
+            ]);
         }
     }
 

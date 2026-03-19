@@ -23,6 +23,9 @@
                 <div class="contact-form">
                     <form action="{{ route('contact_submit') }}" method="post" class="form_contact">
                         @csrf
+                        <div style="position:absolute; left:-9999px;">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Nombre</label>
                             <input type="text" class="form-control" name="name">
@@ -37,6 +40,10 @@
                             <label for="" class="form-label">Mensaje</label>
                             <textarea class="form-control" rows="3" name="message"></textarea>
                             <span class="text-danger error-text message_error"></span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="light"></div>
+                            <span class="text-danger error-text captcha_error"></span>
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary bg-website">
@@ -63,6 +70,7 @@
     </div>
 </div>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
     (function($){
         $(".form_contact").on('submit', function(e){
@@ -91,6 +99,9 @@
                     else if(data.code == 1)
                     {
                         $(form)[0].reset();
+                        if (typeof turnstile !== 'undefined') {
+                            turnstile.reset();
+                        }
                         iziToast.success({
                             message: data.success_message,
                             position: 'topRight',
@@ -98,7 +109,17 @@
                             progressBarColor: '#00FF00',
                         });
                     }
-                    
+                },
+                error: function(xhr)
+                {
+                    $('#loader').hide();
+
+                    if (xhr.status === 429) {
+                        iziToast.error({
+                            message: 'Demasiados intentos. Intenta nuevamente en unos momentos.',
+                            position: 'topRight',
+                        });
+                    }
                 }
             });
         });

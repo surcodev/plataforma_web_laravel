@@ -25,7 +25,9 @@ use App\Http\Controllers\Admin\AdminSettingController;
 // Front End
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
-Route::post('/contact-submit', [FrontController::class, 'contact_submit'])->name('contact_submit');
+Route::post('/contact-submit', [FrontController::class, 'contact_submit'])
+    ->name('contact_submit')
+    ->middleware('throttle:5,1'); // Limite de 5 intentos por minuto
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('pricing');
 Route::get('/property/{slug}', [FrontController::class, 'property_detail'])->name('property_detail');
 Route::post('/property/message/{id}', [FrontController::class, 'property_send_message'])->name('property_send_message');

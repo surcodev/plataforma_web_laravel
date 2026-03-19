@@ -8,20 +8,22 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
 class Websitemail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject, $body;
+    public $subject, $body, $replyEmail;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($subject,$body)
+    public function __construct($subject, $body, $replyEmail = null)
     {
         $this->subject = $subject;
         $this->body = $body;
+        $this->replyEmail = $replyEmail;
     }
 
     /**
@@ -31,6 +33,9 @@ class Websitemail extends Mailable
     {
         return new Envelope(
             subject: $this->subject,
+            replyTo: $this->replyEmail 
+                ? [new Address($this->replyEmail)]
+                : [],
         );
     }
 
