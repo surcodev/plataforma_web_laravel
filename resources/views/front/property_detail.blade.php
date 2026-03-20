@@ -338,9 +338,7 @@
                     <div class="location-map">
                         <iframe 
                             src="{{ $property->map }}"
-                            width="100%" 
-                            height="400"
-                            style="border:0;" 
+                            style="border:0; height: 300px !important" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
