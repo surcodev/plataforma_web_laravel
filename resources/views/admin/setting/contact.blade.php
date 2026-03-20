@@ -25,6 +25,7 @@
                                             name="contact_map_url" 
                                             value="{{ $setting->contact_map_url }}" 
                                             placeholder="Pega aquí la URL del iframe de Google Maps"
+                                            pattern="https://www\.google\.com/maps/embed\?pb=.*"
                                             required>
 
                                         <a href="{{ route('admin_map_tutorial') }}" 
@@ -33,6 +34,9 @@
                                             ¿Cómo obtener la URL?
                                         </a>
                                     </div>
+                                    <small class="text-danger" id="map_error" style="display:none;">
+                                        *URL inválida. Debe ser un embed de Google Maps.
+                                    </small>
                                     <small class="text-muted">Ej: https://www.google.com/maps/embed?pb=...</small>
                                 </div>
 
@@ -68,9 +72,40 @@
 <script>
     const mapInput = document.getElementById('contact_map_url');
     const mapPreview = document.getElementById('map_preview');
+    const mapError = document.getElementById('map_error');
+
+    function extractSrc(value) {
+        // Si el usuario pegó un iframe completo
+        const match = value.match(/src="([^"]+)"/);
+        return match ? match[1] : value;
+    }
+
+    function isValidGoogleMap(url) {
+        return url.startsWith('https://www.google.com/maps/embed?pb=');
+    }
 
     mapInput.addEventListener('input', function() {
-        mapPreview.src = this.value;
+        let cleaned = extractSrc(this.value);
+
+        if (cleaned !== this.value) {
+            this.value = cleaned; // reemplaza automáticamente
+        }
+
+        if (cleaned === '') {
+            mapPreview.style.display = 'none';
+            mapError.style.display = 'none';
+            return;
+        }
+
+        if (isValidGoogleMap(cleaned)) {
+            mapPreview.src = cleaned;
+            mapPreview.style.display = 'block';
+            mapError.style.display = 'none';
+        } else {
+            mapPreview.src = '';
+            mapPreview.style.display = 'none';
+            mapError.style.display = 'block';
+        }
     });
 </script>
 @endsection

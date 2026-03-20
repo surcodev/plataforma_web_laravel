@@ -116,12 +116,32 @@ class AdminSettingController extends Controller
     // Guardar la URL del mapa
     public function contact_update(Request $request)
     {
-        $request->validate([
-            'contact_map_url' => 'required|url',
+        $url = $request->contact_map_url;
+
+        // 1. Extraer src si el usuario pegó el iframe completo
+        if (preg_match('/src="([^"]+)"/', $url, $matches)) {
+            $url = $matches[1];
+        }
+
+        // 2. Reemplazar el valor en el request ya limpio
+        $request->merge([
+            'contact_map_url' => $url
         ]);
 
+        // 3. Validar ya limpio
+        $request->validate([
+            'contact_map_url' => [
+                'required',
+                'url',
+                'regex:/^https:\/\/www\.google\.com\/maps\/embed\?pb=.+$/'
+            ],
+        ], [
+            'contact_map_url.regex' => 'La URL debe ser un mapa embed de Google Maps válido.'
+        ]);
+
+        // 4. Guardar
         $setting = Setting::where('id',1)->first();
-        $setting->contact_map_url = $request->contact_map_url;
+        $setting->contact_map_url = $url;
         $setting->save();
 
         return redirect()->back()->with('success', 'Mapa de contacto actualizado correctamente');

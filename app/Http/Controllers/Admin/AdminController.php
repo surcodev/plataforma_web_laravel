@@ -154,4 +154,9 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Perfil actualizado exitosamente');
     }
+
+    public function map_tutorial()
+    {
+        return view('admin.tutorials.map_tutorial');
+    }
 }
