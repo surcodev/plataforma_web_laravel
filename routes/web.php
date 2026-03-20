@@ -230,6 +230,11 @@ Route::middleware('admin')->prefix('admin')->group(function(){
     Route::get('/setting/footer/index', [AdminSettingController::class, 'footer'])->name('admin_setting_footer_index');
     Route::post('/setting/footer/update', [AdminSettingController::class, 'footer_update'])->name('admin_setting_footer_update');
 
+    Route::get('/setting/contact/index', [AdminSettingController::class, 'contact'])->name('admin_setting_contact_index');
+    Route::post('/setting/contact/update', [AdminSettingController::class, 'contact_update'])->name('admin_setting_contact_update');
+
+    Route::get('/tutorials/map', [AdminController::class, 'map_tutorial'])->name('admin_map_tutorial');
+
 });
 
 // Admin Login, Logout, Forget Password, Reset Password

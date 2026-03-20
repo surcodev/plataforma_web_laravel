@@ -105,4 +105,25 @@ class AdminSettingController extends Controller
 
         return redirect()->back()->with('success', 'Footer actualizado correctamente');
     }
+
+    // Mostrar el formulario de edición del mapa de contacto
+    public function contact()
+    {
+        $setting = Setting::where('id',1)->first();
+        return view('admin.setting.contact', compact('setting'));
+    }
+
+    // Guardar la URL del mapa
+    public function contact_update(Request $request)
+    {
+        $request->validate([
+            'contact_map_url' => 'required|url',
+        ]);
+
+        $setting = Setting::where('id',1)->first();
+        $setting->contact_map_url = $request->contact_map_url;
+        $setting->save();
+
+        return redirect()->back()->with('success', 'Mapa de contacto actualizado correctamente');
+    }
 }

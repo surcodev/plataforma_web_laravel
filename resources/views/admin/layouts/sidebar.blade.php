@@ -18,6 +18,7 @@
                     <li class="{{ Request::is('admin/setting/favicon/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting_favicon_index') }}"><i class="fas fa-angle-right"></i> Favicon</a></li>
                     <li class="{{ Request::is('admin/setting/banner/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting_banner_index') }}"><i class="fas fa-angle-right"></i> Banner</a></li>
                     <li class="{{ Request::is('admin/setting/footer/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting_footer_index') }}"><i class="fas fa-angle-right"></i> Footer</a></li>
+                    <li class="{{ Request::is('admin/setting/contact/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting_contact_index') }}"><i class="fas fa-angle-right"></i> Contact</a></li>
                 </ul>
             </li>
 

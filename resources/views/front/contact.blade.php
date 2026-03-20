@@ -56,13 +56,11 @@
             <div class="col-lg-6 col-md-12">
                 <div class="map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.635987877565!2d-77.0238138!3d-12.0961306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c86563beaea5%3A0x42aa1828ef456521!2sOf.%20302%2C%20C.%20German%20Schreiber%20Gulsmanco%20272%2C%20San%20Isidro%2015047%2C%20Peru!5e0!3m2!1ses!2spe!4v1725916800000!5m2!1ses!2spe"
-                        width="600"
-                        height="450"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
+                        @if($global_setting && $global_setting->contact_map_url)
+                            <iframe src="{{ $global_setting->contact_map_url }}" ...></iframe>
+                        @else
+                            <p>Mapa aún no configurado</p>
+                        @endif
                     </iframe>
                 </div>
             </div>
