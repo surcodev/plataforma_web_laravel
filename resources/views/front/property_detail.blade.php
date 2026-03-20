@@ -1,5 +1,34 @@
 @extends('front.layouts.master')
 
+<style>
+    /* Fotos */
+    .photo-all .item .bg {
+        background: rgba(0,0,0,0.0) !important;
+        transition: 0.3s;
+    }
+    .photo-all .item .icon {
+        opacity: 0;
+        transition: 0.3s;
+        font-size: 38px !important;
+    }
+    /* Fotos Hover */
+    .photo-all .item:hover .bg {
+        background: #262626 !important;
+    }
+
+    .photo-all .item:hover .icon {
+        opacity: 1;
+    }
+    .video-all .item .icon i {
+        transition: transform 0.3s ease;
+    }
+    /* Videos Hover */
+    .video-all .item:hover .icon i {
+        transform: scale(1.3);
+        transition: 0.3s;
+    }
+</style>
+
 @section('title', 'Información de propiedad: '.$property->name)
 @section('meta_description', 'Información de la propiedad '.$property->name.'. Encuentra detalles, precio y ubicación.')
 
@@ -42,9 +71,11 @@
                                     <div class="item">
                                         <a href="{{ asset('uploads/'.$photo->photo) }}" class="magnific">
                                             <img src="{{ asset('uploads/'.$photo->photo) }}" alt="">
+                                            
                                             <div class="icon">
-                                                <i class="fas fa-plus"></i>
+                                                <i class="fa fa-search-plus" aria-hidden="true"></i>
                                             </div>
+
                                             <div class="bg"></div>
                                         </a>
                                     </div>
@@ -205,7 +236,7 @@
                             <tr>
                                 <td>Publicado el: </td>
                                 <td>
-                                    {{ $property->created_at->format('d M, Y') }}
+                                    {{ $property->created_at->format('d/m/Y') }}
                                 </td>
                             </tr>
                             <tr>
