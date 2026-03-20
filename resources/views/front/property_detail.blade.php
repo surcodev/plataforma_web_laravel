@@ -332,11 +332,19 @@
                     </div>
                 </div>
 
-                @if($property->map != '')
+                @if(!empty($property->map) && str_starts_with($property->map, 'https://www.google.com/maps/embed'))
                 <div class="right-item">
                     <h2>Mapa de ubicación</h2>
                     <div class="location-map">
-                        {!! $property->map !!}
+                        <iframe 
+                            src="{{ $property->map }}"
+                            width="100%" 
+                            height="400"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
                 @endif

@@ -520,17 +520,17 @@ class AgentController extends Controller
         // Check in orders table if this agent has any package purchased
         $order = Order::where('agent_id', Auth::guard('agent')->user()->id)->where('currently_active',1)->first();
         if(!$order){
-            return redirect()->route('agent_payment')->with('error', 'Aún no has comprado ningún paquete. Compra un paquete para crear propiedades.');
+            return redirect()->route('agent_payment')->with('error', 'Aún no has comprado ningún plan. Compra un plan para crear propiedades.');
         }
 
         // Check if the agent has reached the maximum number of properties allowed in the package
         if($order->package->allowed_properties <= Property::where('agent_id', Auth::guard('agent')->user()->id)->count()){
-            return redirect()->route('agent_payment')->with('error', 'Has alcanzado el número máximo de propiedades permitidas en tu paquete. Compra un nuevo paquete para crear más propiedades.');
+            return redirect()->route('agent_payment')->with('error', 'Has alcanzado el número máximo de propiedades permitidas en tu plan. Compra un nuevo plan para crear más propiedades.');
         }
 
         // Check if package has been expired
         if($order->expire_date < date('Y-m-d')){
-            return redirect()->route('agent_payment')->with('error', 'Your package has been expired. Please purchase a new package to create properties.');
+            return redirect()->route('agent_payment')->with('error', 'Tu plan ha caducado. Compra un nuevo plan para crear propiedades.');
         }
 
 
@@ -546,7 +546,7 @@ class AgentController extends Controller
         $order = Order::where('agent_id', Auth::guard('agent')->user()->id)->where('currently_active',1)->first();
         if($request->is_featured == 'Yes') {
             if($order->package->allowed_featured_properties <= Property::where('agent_id', Auth::guard('agent')->user()->id)->where('is_featured','Yes')->count()){
-                return redirect()->back()->with('error', 'Has alcanzado el número máximo de propiedades destacadas permitidas en tu paquete. Compra un nuevo paquete para añadir más propiedades destacadas.');
+                return redirect()->back()->with('error', 'Has alcanzado el número máximo de propiedades destacadas permitidas en tu plan. Compra un nuevo plan para añadir más propiedades destacadas.');
             }
         }
 
@@ -558,7 +558,11 @@ class AgentController extends Controller
             'bedroom' => ['required', 'numeric'],
             'bathroom' => ['required', 'numeric'],
             'address' => ['required'],
+            'address' => ['required'],
+            'map' => ['url', 'regex:/^https:\/\/www\.google\.com\/maps\/embed\?pb=.+$/'],
             'featured_photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+        ], [
+            'map.regex' => 'La URL debe ser un mapa embed de Google Maps válido.'
         ]);
 
         $final_name = 'property_f_photo_'.time().'.'.$request->featured_photo->extension();
@@ -629,6 +633,9 @@ class AgentController extends Controller
             'bedroom' => ['required', 'numeric'],
             'bathroom' => ['required', 'numeric'],
             'address' => ['required'],
+            'map' => ['url', 'regex:/^https:\/\/www\.google\.com\/maps\/embed\?pb=.+$/'],
+        ], [
+            'map.regex' => 'La URL debe ser un mapa embed de Google Maps válido.'
         ]);
 
         if($request->featured_photo){
@@ -853,4 +860,8 @@ class AgentController extends Controller
         return redirect()->back()->with('success', 'Respuesta enviada exitosamente');
     }
 
+    public function map_tutorial()
+    {
+        return view('agent.tutorials.map_tutorial');
+    }
 }

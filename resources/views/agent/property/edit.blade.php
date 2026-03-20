@@ -115,7 +115,39 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="" class="form-label">Mapa de ubicación</label>
-                            <textarea name="map" class="form-control h-150" cols="30" rows="10">{{ $property->map }}</textarea>
+                            <div class="input-group">
+                                <input type="text" 
+                                    class="form-control" 
+                                    id="map" 
+                                    name="map" 
+                                    value="{{ $property->map}}"
+                                    placeholder="Pega aquí la URL del iframe de Google Maps"
+                                    pattern="https://www\.google\.com/maps/embed\?pb=.*"
+                                >
+                                <a href="{{ route('agent_map_tutorial') }}" 
+                                target="_blank" 
+                                class="btn btn-info">
+                                    ¿Cómo obtener la URL?
+                                </a>
+                            </div>
+                            <small class="text-danger" id="map_error" style="display:none;">
+                                *URL inválida. Debe ser un embed de Google Maps.
+                            </small>
+                            <small class="text-muted">Ej: https://www.google.com/maps/embed?pb=...</small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Vista previa del mapa</label>
+                            <div class="preview-map" style="border:1px solid #ccc; height: 400px;">
+                                <iframe id="map_preview" 
+                                        src="{{ old('map') }}" 
+                                        width="100%" 
+                                        height="100%" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="" class="form-label">Comodidades</label>
@@ -142,4 +174,53 @@
         </div>
     </div>
 </div>
+{{-- Script para actualizar la vista previa en tiempo real --}}
+<script>
+    const mapInput = document.getElementById('map');
+    const mapPreview = document.getElementById('map_preview');
+    const mapError = document.getElementById('map_error');
+
+    function extractSrc(value) {
+        const match = value.match(/src="([^"]+)"/);
+        return match ? match[1] : value;
+    }
+
+    function isValidGoogleMap(url) {
+        return url.startsWith('https://www.google.com/maps/embed?pb=');
+    }
+
+    function updateMapPreview(value) {
+        let cleaned = extractSrc(value);
+
+        if (cleaned !== value) {
+            mapInput.value = cleaned;
+        }
+
+        if (cleaned === '') {
+            mapPreview.style.display = 'none';
+            mapError.style.display = 'none';
+            return;
+        }
+
+        if (isValidGoogleMap(cleaned)) {
+            mapPreview.src = cleaned;
+            mapPreview.style.display = 'block';
+            mapError.style.display = 'none';
+        } else {
+            mapPreview.src = '';
+            mapPreview.style.display = 'none';
+            mapError.style.display = 'block';
+        }
+    }
+
+    // Tiempo real
+    mapInput.addEventListener('input', function() {
+        updateMapPreview(this.value);
+    });
+
+    // Al cargar la página
+    window.addEventListener('load', function() {
+        updateMapPreview(mapInput.value);
+    });
+</script>
 @endsection
