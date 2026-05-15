@@ -9,7 +9,7 @@
     <!-- Menu For Desktop Device -->
     <div class="main-nav">
         <div class="container-fluid mx-auto" style="width: 90%;">
-            <nav class="navbar navbar-expand-md navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
                     <!-- Logo -->
                     <img src="{{ asset('uploads/'.$global_setting->logo) }}" alt="Santa Clara" style="height:60px;">
@@ -50,17 +50,22 @@
                             <li class="nav-item"><a href="{{ route('agent_login') }}" class="nav-link">Login</a></li>
                         @endif --}}
 
-                        <li class="nav-item py-0">
-                            <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer" class="nav-link d-flex align-items-center">
-                                <div class="me-3">
+                        <li class="nav-item py-0 wsp-item">
+                            <a href="{{ route('publicar_wsp') }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="nav-link d-flex align-items-center">
+                                <div class="wsp-icon me-3">
                                     <i class="bi bi-whatsapp fs-1"></i>
                                 </div>
-                                <div>
-                                    <span class="fw-bold" style="max-width: 190px; display: inline-block;">PUBLICA TU INMUEBLE POR WHATSAPP</span>
+                                <div class="wsp-text-container">
+                                    <span class="fw-bold wsp-text"
+                                        style="max-width: 190px; display: inline-block;">
+                                        PUBLICA TU INMUEBLE POR WHATSAPP
+                                    </span>
                                 </div>
                             </a>
                         </li>
-
                     </ul>
                 </div>
             </nav>

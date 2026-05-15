@@ -4,8 +4,8 @@
 
 <div class="slider" style="background-image: url({{ asset('uploads/slider-home-background.webp') }})">
     <div class="bg"></div>
-    <div class="container-fluid m-0 p-0" style="width: 90%; height: 100%">
-        <div class="row" style="height: 100%">
+    <div class="container-fluid m-0 p-0" style="height: 100%">
+        <div class="row" style="width:100%; height: 100%">
             <div class="col-md-12" style="height: 100%">
                 <div class="item">
                     <div class="item-content">
@@ -98,12 +98,17 @@
                                 </div>
 
                                 {{-- Botones --}}
-                                <div class="row mt-4">
+                                <div class="row mt-4 g-3">
                                     <div class="col-auto">
                                         <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer">
                                             <button class="btn text-white btn-wsp d-flex align-items-center px-4">
-                                                <span> QUIERO PUBLICAR MI INMUEBLE </span>
-                                                <i class="bi bi-whatsapp ms-3 fs-4"></i>
+                                                <span class="btn-text-full">
+                                                    QUIERO PUBLICAR MI INMUEBLE
+                                                </span>
+                                                <span class="btn-text-short">
+                                                    QUIERO PUBLICAR
+                                                </span>
+                                                <i class="bi bi-whatsapp btn-icon ms-3 fs-4"></i>
                                             </button>
                                         </a>
                                     </div>
