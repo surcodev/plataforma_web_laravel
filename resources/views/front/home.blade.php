@@ -1,56 +1,122 @@
 @extends('front.layouts.master')
 
 @section('main_content')
-<div class="slider" style="background-image: url({{ asset('uploads/banner-home.jpg') }})">
+
+<div class="slider" style="background-image: url({{ asset('uploads/slider-home-background.webp') }})">
     <div class="bg"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="container-fluid m-0 p-0" style="width: 90%; height: 100%">
+        <div class="row" style="height: 100%">
+            <div class="col-md-12" style="height: 100%">
                 <div class="item">
-                    <div class="text">
-                        <h2>Descubre tu nuevo hogar</h2>
-                        <p>
-                            Descubre las mejores oportunidades inmobiliarias — casas, departamentos y terrenos — según nombre, categoría o ubicación.
-                        </p>
-                    </div>
-                    <div class="search-section">
-                        <form action="{{ route('property_search') }}" method="get">
-                            <div class="inner">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="Encuentra lo que buscas ..." value="">
+                    <div class="item-content">
+                        {{-- TEXTO --}}
+                        <div class="text d-flex align-items-start" style="flex-direction: column; width: 610px;">
+                            <h2 class="text-start mb-0">ENCONTRAMOS EL CLIENTE IDEAL PARA TU PROPIEDAD</h2>
+                            <h2 class="text-start text-important">SIN COMPLICACIONES</h2>
+                            <p class="text-start mb-0">
+                                Nos encargamos de la publicidad en portales web, redes sociales y atención a interesados reales y calificados. 
+                            </p>
+                            <p class="text-start">
+                                Tu propiedad en las mejores manos. 
+                            </p>
+                        </div>
+
+                        {{-- FILTROS (OCULTO)--}}
+                        <div class="search-section d-none">
+                            <form action="{{ route('property_search') }}" method="get">
+                                <div class="inner">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" placeholder="Encuentra lo que buscas ..." value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="form-group">
+                                                <select name="location" class="form-select select2" style="width: 100%">
+                                                    <option value="">Seleccionar ubicación</option>
+                                                    @foreach($search_locations as $location)
+                                                        <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="form-group">
+                                                <select name="type" class="form-select select2" style="width: 100%">
+                                                    <option value="">Selecionar tipo</option>
+                                                    @foreach($search_types as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-search"></i>
+                                                Buscar
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <select name="location" class="form-select select2">
-                                                <option value="">Seleccionar ubicación</option>
-                                                @foreach($search_locations as $location)
-                                                    <option value="{{ $location->id }}">{{ $location->name }}</option>
-                                                @endforeach
-                                            </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        {{-- ICONOS Y BOTONES --}}
+                        <div class="search-section mt-0">
+                            <div class="inner border-0 p-0">
+
+                                {{-- ICONOS --}}
+                                <div class="feature-card">
+                                    <div class="feature-row">
+                                        <div class="feature-item">
+                                            <div class="icon-circle">
+                                                <i class="bi bi-megaphone"></i>
+                                            </div>
+                                            <div class="feature-text">
+                                                Publicamos tu inmueble
+                                            </div>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="icon-circle">
+                                                <i class="bi bi-bar-chart-line"></i>
+                                            </div>
+                                            <div class="feature-text">
+                                                Promocionamos en portales y redes
+                                            </div>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="icon-circle">
+                                                <i class="bi bi-house-check"></i>
+                                            </div>
+
+                                            <div class="feature-text">
+                                                Gestionamos visitas y consultas
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <select name="type" class="form-select select2">
-                                                <option value="">Selecionar tipo</option>
-                                                @foreach($search_types as $type)
-                                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                </div>
+
+                                {{-- Botones --}}
+                                <div class="row mt-4">
+                                    <div class="col-auto">
+                                        <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer">
+                                            <button class="btn text-white btn-wsp d-flex align-items-center px-4">
+                                                <span> QUIERO PUBLICAR MI INMUEBLE </span>
+                                                <i class="bi bi-whatsapp ms-3 fs-4"></i>
+                                            </button>
+                                        </a>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-search"></i>
-                                            Buscar
-                                        </button>
+                                    <div class="col-auto">
+                                        <a href="{{ url('property-search') }}">
+                                            <button type="submit" class="btn btn-outline-primary px-4">
+                                                VER PROPIEDADES
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,13 +124,12 @@
     </div>
 </div>
 
-
-<div class="property">
+<div class="property py-5">
     <div class="container">
         {{-- Heading --}}
         <div class="row">
             <div class="col-md-12">
-                <div class="heading">
+                <div class="heading mb-0">
                     <h2>Propiedades destacadas</h2>
                     <p>Descubre las increíbles propiedades que te encantarán</p>
                 </div>
@@ -139,7 +204,7 @@
 
         </div>
         {{-- Boton --}}
-        <div class="row mt-4 property-section">
+        <div class="row property-section">
             <div class="col-12 text-center">
                 <a href="{{ url('/property-search') }}" class="btn btn-primary">
                     <span style="font-size: 18px;">Ver todas las propiedades</span>
@@ -239,9 +304,7 @@
     </div>
 </div>
 
-
-
-<div class="location pb_40">
+<div class="location pb_40 d-none">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -270,8 +333,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="testimonial d-none" style="background-image: url({{ asset('uploads/testimonial-bg.jpg') }})">
     <div class="bg"></div>
@@ -305,6 +366,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="blog">
     <div class="container">
@@ -344,4 +406,5 @@
         </div>
     </div>
 </div>
+
 @endsection

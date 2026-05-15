@@ -8,7 +8,7 @@
 
     <!-- Menu For Desktop Device -->
     <div class="main-nav">
-        <div class="container">
+        <div class="container-fluid mx-auto" style="width: 90%;">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
                     <!-- Logo -->
@@ -31,23 +31,36 @@
                 </button>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="{{ route('home') }}" class="nav-link">Inicio</a></li>
-                        <li class="nav-item"><a href="{{ url('property-search') }}" class="nav-link">Propiedades</a></li>
+                    <ul class="navbar-nav ml-auto align-items-center">
+                        <li class="nav-item active"><a href="{{ route('home') }}" class="nav-link">INICIO</a></li>
+                        <li class="nav-item d-none"><a href="" class="nav-link">PUBLICA TU INMUEBLE</a></li>
+                        <li class="nav-item"><a href="{{ url('property-search') }}" class="nav-link">PROPIEDADES</a></li>
                         {{-- <li class="nav-item"><a href="{{ route('agents') }}" class="nav-link">Agentes</a></li> --}}
-                        <li class="nav-item"><a href="{{ route('locations') }}" class="nav-link">Ubicaciones</a></li>
+                        <li class="nav-item"><a href="{{ route('locations') }}" class="nav-link">UBICACIONES</a></li>
                         {{-- <li class="nav-item"><a href="{{ route('pricing') }}" class="nav-link">Precios</a></li>
                         <li class="nav-item"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li> --}}
-                        <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Nuestros Proyectos</a></li>
-                        <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contacto</a></li>
+                        <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">INVERSIÓN</a></li>
+                        <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">CONTACTO</a></li>
 
-                        @if(Auth::guard('agent')->check())
+                        {{-- @if(Auth::guard('agent')->check())
                             <li class="nav-item"><a href="{{ route('agent_dashboard') }}" class="nav-link">Dashboard</a></li>
-                        {{-- @elseif(Auth::guard('web')->check())
-                            <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Cliente Dashboard</a></li> --}}
+                        @elseif(Auth::guard('web')->check())
+                            <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Cliente Dashboard</a></li>
                         @else
                             <li class="nav-item"><a href="{{ route('agent_login') }}" class="nav-link">Login</a></li>
-                        @endif
+                        @endif --}}
+
+                        <li class="nav-item py-0">
+                            <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer" class="nav-link d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="bi bi-whatsapp fs-1"></i>
+                                </div>
+                                <div>
+                                    <span class="fw-bold" style="max-width: 190px; display: inline-block;">PUBLICA TU INMUEBLE POR WHATSAPP</span>
+                                </div>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>

@@ -4,13 +4,21 @@
 @section('meta_description', 'Información de contacto. Escríbenos o llámanos para resolver tus dudas sobre nuestros servicios inmobiliarios.')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
+<div class="page-top py-5" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Contáctanos</h2>
-                <h6 style="margin-top: 20px;">Desea más información sobre nuestros proyectos o propiedades? No dude en contactarnos, estaremos encantados de atenderle.</h6>
+                <h2>Contáctenos</h2>
+                <h6 style="margin-top: 20px;">Busca mayor información sobre como publicar su inmueble o desea mas detalles sobre nuestras propiedades? </h6>
+                <h6>No dude en dejarnos un mensaje, estaremos encantados de atenderle.</h6>
+                <div class="d-flex justify-content-center mt-4">
+                    <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer">
+                        <button class="btn text-white btn-wsp d-flex align-items-center px-4">
+                            <i class="bi bi-whatsapp me-2"></i> Enviar Whatsapp
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

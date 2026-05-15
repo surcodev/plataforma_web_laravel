@@ -36,6 +36,7 @@ Route::post('/property/message/{id}', [FrontController::class, 'property_send_me
 Route::get('/locations', [FrontController::class, 'locations'])->name('locations');
 Route::get('/location/{slug}', [FrontController::class, 'location'])->name('location');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent'])->name('agent');
+Route::get('/publicar-wsp', [FrontController::class, 'publicar_wsp'])->name('publicar_wsp');
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
 Route::get('/post/{slug}', [FrontController::class, 'post'])->name('post');
 Route::get('/property-search', [FrontController::class, 'property_search'])->name('property_search');

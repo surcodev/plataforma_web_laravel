@@ -19,6 +19,7 @@ use App\Models\Testimonial;
 use App\Models\Post;
 use App\Models\Faq;
 use App\Models\Page;
+use App\Models\Setting;
 use App\Models\Subscriber;
 use App\Mail\Websitemail;
 use Auth;
@@ -125,6 +126,26 @@ class FrontController extends Controller
                 'success_message'=>'El mensaje se envió correctamente'
             ]);
         }
+    }
+
+    public function publicar_wsp()
+    {
+        $global_setting = Setting::first();
+
+        // 1. Parseamos el numero
+        $numero = preg_replace('/\D/', '', $global_setting->footer_phone);
+        
+        // 2. Definir mensaje
+        $mensaje = "Hola, estoy interesado en publicar mi inmueble en su plataforma web";
+        
+        // 3. Codificar mensaje
+        $mensajeCodificado = urlencode($mensaje);
+        
+        // 4. Construir enlace oficial de WhatsApp
+        $url = "https://wa.me/{$numero}?text={$mensajeCodificado}";
+        
+        // 5. Redirigir usuario a la URL
+        return redirect()->away($url);
     }
 
     public function blog()

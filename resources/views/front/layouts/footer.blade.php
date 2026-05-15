@@ -44,7 +44,7 @@
                     @if($global_setting->footer_email != '')
                     <div class="list-item">
                         <div class="left">
-                            <i class="fas fa-phone"></i>
+                            <i class="bi bi-whatsapp"></i>
                         </div>
                         <div class="right">{{ $global_setting->footer_phone }}</div>
                     </div>
