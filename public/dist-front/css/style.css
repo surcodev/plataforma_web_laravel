@@ -202,7 +202,7 @@ p {font-weight: 400;}
 }
 
 .mean-container .mean-bar {
-    background-color: #fff;
+    background-color: #071e3d;
     height: 60px;
     z-index: 999999 !important;
 }
@@ -216,11 +216,11 @@ p {font-weight: 400;}
 }
 
 .mean-container a.meanmenu-reveal span {
-    background: #0041d9;
+    background: #ffffff;
 }
 
 .mean-container a.meanmenu-reveal {
-    color: #0041d9;
+    color: #ffffff;
 }
 
 @media (max-width: 991px) {
