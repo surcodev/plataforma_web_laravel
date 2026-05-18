@@ -136,7 +136,7 @@ class FrontController extends Controller
         $numero = preg_replace('/\D/', '', $global_setting->footer_phone);
         
         // 2. Definir mensaje
-        $mensaje = "Hola, estoy interesado en publicar mi inmueble en su plataforma web";
+        $mensaje = "Hola, estoy interesado(a) en vender o rentar mi inmueble y me gustaría que su plataforma me ayude con el proceso";
         
         // 3. Codificar mensaje
         $mensajeCodificado = urlencode($mensaje);
@@ -146,6 +146,48 @@ class FrontController extends Controller
         
         // 5. Redirigir usuario a la URL
         return redirect()->away($url);
+    }
+
+    public function whatsapp_generar(Request $request)
+    {
+        // 1. Validar los datos por seguridad
+        // Laravel automáticamente devolverá un error al JS si algo falla aquí
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'accion' => 'required|string',
+            'tipo'   => 'required|string',
+            'email'  => 'nullable|email|max:255'
+        ]);
+
+        // Opcional: Aquí podrías guardar el contacto en tu Base de Datos
+        // Lead::create($request->all());
+
+        // 2. Construir el mensaje estructurado para WhatsApp
+        // Los asteriscos (*) son para que el texto salga en negrita en WhatsApp
+        $mensaje = "Hola, mi nombre es *{$request->nombre}*.\n\n";
+        $mensaje .= "Estoy interesado en *{$request->accion}* mi *{$request->tipo}* y me gustaría que su plataforma me ayude con el proceso de forma fácil y segura.\n\n";
+        
+        // Si el usuario decidió dejar su correo, lo agregamos al mensaje
+        if ($request->filled('email')) {
+            $mensaje .= "Mi correo de contacto es: {$request->email}\n\n";
+        }
+
+        $mensaje .= "¿Podemos hablar?";
+
+        // 3. Preparar el número y codificar el mensaje para la URL
+        $global_setting = Setting::first();
+        $numero = preg_replace('/\D/', '', $global_setting->footer_phone);
+
+        $mensajeCodificado = urlencode($mensaje);
+        
+        // Construimos la URL mágica de la API de WhatsApp
+        $urlWhatsapp = "https://wa.me/{$numero}?text={$mensajeCodificado}";
+
+        // 4. Devolver la respuesta en formato JSON a nuestro JavaScript
+        return response()->json([
+            'success' => true,
+            'url'     => $urlWhatsapp
+        ]);
     }
 
     public function blog()

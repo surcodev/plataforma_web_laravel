@@ -37,6 +37,7 @@ Route::get('/locations', [FrontController::class, 'locations'])->name('locations
 Route::get('/location/{slug}', [FrontController::class, 'location'])->name('location');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent'])->name('agent');
 Route::get('/publicar-wsp', [FrontController::class, 'publicar_wsp'])->name('publicar_wsp');
+Route::post('/generar-whatsapp', [FrontController::class, 'whatsapp_generar'])->name('whatsapp_generar');
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
 Route::get('/post/{slug}', [FrontController::class, 'post'])->name('post');
 Route::get('/property-search', [FrontController::class, 'property_search'])->name('property_search');

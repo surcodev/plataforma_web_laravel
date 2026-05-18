@@ -129,9 +129,9 @@
     </div>
 </div>
 
-<div class="property py-5">
-    <div class="container">
-        {{-- Heading --}}
+<div class="property d-flex py-5">
+    <div class="col-12 col-xl-8 px-5" style="padding-left: 4vw !important">
+        {{-- Heading --}} 
         <div class="row">
             <div class="col-md-12">
                 <div class="heading mb-0">
@@ -215,6 +215,58 @@
                     <span style="font-size: 18px;">Ver todas las propiedades</span>
                     <i class="fas fa-angle-double-right" style="font-size: 18px;"></i> 
                 </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4" style="padding-right: 4vw; transform: translateY(-80px);">
+        <div class="card shadow border-0" style="border-radius: 15px; background-color: #f4fcff;">
+            <div class="card-body p-4">
+                <div class="mb-3 text-center">
+                    <h5 class="card-title fw-bold text-primary">
+                        PUBLICA TU INMUEBLE EN 1 MINUTO
+                    </h5>
+                    <span>Tú danos los detalles, nosotros hacemos TODO EL TRABAJO</span>
+                </div>
+                
+                <form class="row" id="formulario-whatsapp" data-url="{{ route('whatsapp_generar') }}">
+                    @csrf
+                    <div class="col-12 col-xxl-6 mb-3 form-group">
+                        <label for="wa_nombre" class="form-label fw-bold">Tu Nombre</label>
+                        <input type="text" class="form-control" id="wa_nombre" placeholder="Ej. Juan Pérez" required>
+                    </div>
+
+                    <div class="col-12 col-xxl-6 mb-3 form-group">
+                        <label for="wa_accion" class="form-label fw-bold">¿Qué deseas hacer?</label>
+                        <select class="form-control" id="wa_accion" required>
+                            <option value="" selected disabled>Selecciona una opción...</option>
+                            <option value="Vender">Vender mi propiedad</option>
+                            <option value="Rentar">Rentar mi propiedad</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-xxl-6 mb-3 form-group">
+                        <label for="wa_tipo" class="form-label fw-bold">Tipo de Inmueble</label>
+                        <select class="form-control" id="wa_tipo" required>
+                            <option value="" selected disabled>Selecciona el tipo...</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Departamento">Departamento</option>
+                            <option value="Terreno">Terreno</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-xxl-6 mb-4 form-group">
+                        <label for="wa_email" class="form-label fw-bold">Email</label>
+                        <input type="text" class="form-control" id="wa_email" placeholder="(Opcional)">
+                    </div>
+
+                    <button type="button" id="btn-enviar-wa" class="col-12 btn btn-wsp d-block mx-auto mb-2" style="width: 80%">
+                        ENVIAR POR WHATSAPP
+                        <i class="bi bi-whatsapp btn-icon ms-2 fs-4"></i>
+                    </button>
+
+                    <span class="text-center"><i class="bi bi-shield-lock-fill text-success"></i> Tus datos están protegidos y no se publicarán</span>
+                </form>
+                
             </div>
         </div>
     </div>

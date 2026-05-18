@@ -101,9 +101,10 @@ p {font-weight: 400;}
     color: #fff;
 }
 
-.search-section .btn-wsp{
+.btn-wsp{
     padding-top: 4px;
     padding-bottom: 4px;
+    color: white;
     background-color: #009900; 
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
@@ -567,6 +568,16 @@ p {font-weight: 400;}
 
 .property .heading p {
     color: #696969;
+}
+
+@media (max-width: 1399px) {
+    .property .btn-wsp {
+        
+        font-size: 14px !important;
+    }
+    .property .btn-icon {
+        font-size: 20px !important;
+    }
 }
 
 .property .item {

@@ -11,3 +11,4 @@
 <script src="{{ asset('dist-front/js/jquery.meanmenu.js') }}"></script>
 <script src="{{ asset('dist-front/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('dist-front/js/iziToast.min.js') }}"></script>
+<script src="{{ asset('dist-front/js/form_wsp.js') }}"></script>
