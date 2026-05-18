@@ -129,14 +129,13 @@
     </div>
 </div>
 
-<div class="property d-flex py-5">
+<div class="property d-flex">
     <div class="col-12 col-xl-8 px-5" style="padding-left: 4vw !important">
         {{-- Heading --}} 
         <div class="row">
             <div class="col-md-12">
-                <div class="heading mb-0">
-                    <h2>Propiedades destacadas</h2>
-                    <p>Descubre las increíbles propiedades que te encantarán</p>
+                <div class="heading mb-3">
+                    <h3>PROPIEDADES DESTACADAS</h3>
                 </div>
             </div>
         </div>
@@ -149,28 +148,28 @@
                         <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
                         <div class="top">
                             @if($item->purpose == 'Venta')
-                            <div class="status-sale">
-                                En venta
+                            <div class="status-sale fw-bold">
+                                VENTA
                             </div>
                             @else
-                            <div class="status-rent">
-                                En alquiler
+                            <div class="status-rent fw-bold">
+                                ALQUILER
                             </div>
                             @endif
                             @if($item->is_featured == 'Yes')
-                            <div class="featured">
-                                Destacado
+                            <div class="featured fw-bold d-none">
+                                <i class="fas fa-bookmark"></i>
                             </div>
                             @endif
                         </div>
                         <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
                         {{-- <div class="wishlist"><a href="{{ route('wishlist_add',$item->id) }}"><i class="far fa-heart"></i></a></div> --}}
                     </div>
-                    <div class="text">
+                    <div class="text py-auto">
                         <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
                         <div class="detail">
-                            <div class="stat">
-                                <div class="i1">{{ $item->size }} m²</div>
+                            <div class="stat d-none">
+                                <div class="i1 d-none"><i class="fa-solid fa-ruler-vertical"></i> {{ $item->size }} m²</div>
                                 @if($item->bedroom > 0)
                                     <div class="i2">
                                         {{ $item->bedroom }} {{ $item->bedroom == 1 ? 'Habitación' : 'Habitaciones' }}
@@ -182,10 +181,25 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="address">
+                            <div class="address d-none">
                                 <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
                             </div>
-                            <div class="type-location">
+                            <div class="features main">
+                                @if($item->bedroom > 0)
+                                    <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                        <i class="fas fa-bed fs-5 me-2"></i> {{ $item->bedroom }}
+                                    </div>
+                                @endif
+                                @if($item->bathroom > 0)
+                                    <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                        <i class="fas fa-bath fs-5 me-2"></i> {{ $item->bathroom }}
+                                    </div>
+                                @endif
+                                    <div class="i2 fw-bold text-black" style="font-size: 16px;">
+                                        <i class="fa-solid fa-ruler-vertical fs-5 me-2"></i> {{ $item->size }} m²
+                                    </div>
+                            </div>
+                            <div class="features">
                                 <div class="i1">
                                     <i class="fas fa-edit"></i> {{ $item->type->name }}
                                 </div>
@@ -211,9 +225,9 @@
         {{-- Boton --}}
         <div class="row property-section">
             <div class="col-12 text-center">
-                <a href="{{ url('/property-search') }}" class="btn btn-primary">
-                    <span style="font-size: 18px;">Ver todas las propiedades</span>
-                    <i class="fas fa-angle-double-right" style="font-size: 18px;"></i> 
+                <a href="{{ url('/property-search') }}" class="btn btn-outline-primary px-5">
+                    <span style="font-size: 18px;">VER MÁS PROPIEDADES</span>
+                    <i class="fas fa-angle-double-right ms-2" style="font-size: 18px;"></i> 
                 </a>
             </div>
         </div>
@@ -222,9 +236,9 @@
         <div class="card shadow border-0" style="border-radius: 15px; background-color: #f4fcff;">
             <div class="card-body p-4">
                 <div class="mb-3 text-center">
-                    <h5 class="card-title fw-bold text-primary">
+                    <h4 class="card-title fw-bold text-primary">
                         PUBLICA TU INMUEBLE EN 1 MINUTO
-                    </h5>
+                    </h4>
                     <span>Tú danos los detalles, nosotros hacemos TODO EL TRABAJO</span>
                 </div>
                 

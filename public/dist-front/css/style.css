@@ -450,16 +450,17 @@ p {font-weight: 400;}
 }
 
 .property-section a.btn {
-    background: #0041d9;
+    font-family: 'Montserrat', sans-serif;
+    background: white;
     border: 1px solid #0041d9;
-    font-weight: 400;
-    color: #fff;
+    font-weight: 700;
+    color: #0d6efd;
 }
 
 .property-section a.btn:hover {
-    background: #fff;
+    background: #0041d9;
     border: 1px solid #0041d9;
-    color: #0041d9;
+    color: white;
 }
 
 @media (max-width: 991px) {
@@ -552,16 +553,17 @@ p {font-weight: 400;}
 
 /* Home Page - Property */
 .property {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .property .heading {
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin-bottom: 30px;
 }
 
-.property .heading h2 {
+.property .heading h3 {
     font-size: 30px;
     font-weight: 700;
 }
@@ -593,7 +595,7 @@ p {font-weight: 400;}
 }
 .property .item .photo img.main {
     width: 100%;
-    height: 220px;
+    height: 180px;
     object-fit: cover;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -606,37 +608,38 @@ p {font-weight: 400;}
 }
 .property .item .photo .top {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 5px;
+    top: 5px;
 }
 .property .item .photo .top .featured {
-    background: #0041d9;
-    color: #fff;
-    padding: 1px 10px;
-    border-radius: 16px;
-    font-size: 13px;
+    background: #ffffff;
+    color: #0041d9;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 20px;
     margin-right: 10px;
     float: left;
 }
 .property .item .photo .top .status-sale,
 .property .item .photo .top .status-rent {
+    font-family: 'Montserrat', sans-serif;
     color: #fff;
-    padding: 1px 10px;
-    border-radius: 16px;
-    font-size: 13px;
+    padding: 5px 20px;
+    border-radius: 8px;
+    font-size: 18px;
     margin-right: 10px;
     float: left;
 }
 .property .item .photo .top .status-sale {
-    background: #2895c4;
+    background: #0041d9;
 }
 .property .item .photo .top .status-rent {
-    background: #22b638;
+    background: #47a5ca
 }
 .property .item .photo .price {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 5px;
+    top: 8px;
     font-size: 18px;
     font-weight: 700;
     display: inline-block;
@@ -670,6 +673,7 @@ p {font-weight: 400;}
     color: #0041d9;
 }
 .property .item .text .detail {
+    font-family: 'Montserrat', sans-serif;
     margin-top: 10px;
     position: relative;
 }
@@ -692,17 +696,21 @@ p {font-weight: 400;}
     margin-top: 5px;
     color: #757575;
 }
-.property .item .text .detail .type-location {
+.property .item .text .detail .features {
+    margin-left: 5px;
     margin-top: 5px;
     color: #757575;
     text-align: left;
 }
-.property .item .text .detail .type-location .i1 {
+.property .item .text .detail .features .i1 {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 15px;
 }
-.property .item .text .detail .type-location .i2 {
+.property .item .text .detail .features .i2 {
     display: inline-block;
+}
+.property .item .text .detail .features.main .i1 {
+    margin-right: 40px !important;
 }
 .property .item .text .agent-section {
     font-size: 14px;
