@@ -479,6 +479,17 @@ p {font-weight: 400;}
     }
 }
 
+#formulario-whatsapp {
+    font-size: 1.05rem;
+}
+
+#formulario-whatsapp .form-control {
+    height: 45px;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
 /* Home Page - Why Choose */
 .why-choose {
     padding-top: 60px;

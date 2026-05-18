@@ -236,10 +236,10 @@
         <div class="card shadow border-0" style="border-radius: 15px; background-color: #f4fcff;">
             <div class="card-body p-4">
                 <div class="mb-3 text-center">
-                    <h4 class="card-title fw-bold text-primary">
+                    <h3 class="card-title fw-bold text-primary">
                         PUBLICA TU INMUEBLE EN 1 MINUTO
-                    </h4>
-                    <span>Tú danos los detalles, nosotros hacemos TODO EL TRABAJO</span>
+                    </h3>
+                    <span style="font-size: 16px">Tú danos los detalles, nosotros hacemos TODO EL TRABAJO</span>
                 </div>
                 
                 <form class="row" id="formulario-whatsapp" data-url="{{ route('whatsapp_generar') }}">
