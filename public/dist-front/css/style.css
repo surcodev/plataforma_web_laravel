@@ -4,12 +4,12 @@ html {
 
 body {
     font-family: "Roboto", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
 }
 
-select, textarea, input {font-size: 14px;}
-.form-control {font-size: 14px;border-color: #c9c9c9!important;}
+select, textarea, input {font-size: 15px;}
+.form-control {font-size: 15px;border-color: #c9c9c9!important;}
 .form-control:focus {border-color: #ff3c23 !important;box-shadow: none !important;}
 select {width: 100% !important;}
 table, table tr th, table tr td {border-color: #c9c9c9 !important;}
@@ -562,7 +562,7 @@ p {font-weight: 400;}
 }
 
 .why-choose .inner .text p {
-    font-size: 14px;
+    font-size: 15px;
     color: #fff;
 }
 
@@ -688,8 +688,9 @@ p {font-weight: 400;}
     color: #0041d9;
 }
 .property .item .text .detail {
+    margin-left: 5px;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 10px;
+    margin-top: 5px;
     position: relative;
 }
 .property .item .text .detail .stat {
@@ -708,11 +709,10 @@ p {font-weight: 400;}
     display: inline-block;
 }
 .property .item .text .detail .address {
-    margin-top: 5px;
+    margin-bottom: 10px;
     color: #757575;
 }
 .property .item .text .detail .features {
-    margin-left: 5px;
     margin-top: 5px;
     color: #757575;
     text-align: left;
@@ -728,7 +728,7 @@ p {font-weight: 400;}
     margin-right: 40px !important;
 }
 .property .item .text .agent-section {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     border-top: 1px dashed #cbcbcb;
     margin-top: 10px;
@@ -796,7 +796,7 @@ p {font-weight: 400;}
     color: #333;
     margin-bottom: 10px;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .blog .item .text .button a {
@@ -880,7 +880,7 @@ p {font-weight: 400;}
     color: #333;
     margin-bottom: 10px;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
 }
 .agent .item .text .button a {
     background: #0041d9;
@@ -942,7 +942,7 @@ p {font-weight: 400;}
     margin-bottom: 25px;
 }
 .agent-detail .detail .contact .item {
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 7px;
     margin-left: 10px;
     margin-right: 10px;
@@ -1033,7 +1033,7 @@ p {font-weight: 400;}
 }
 .location .item .text h4 {
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
     color: #575757;
 }
 
@@ -1041,7 +1041,7 @@ p {font-weight: 400;}
     color: #333;
     margin-bottom: 10px;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .location .item .text .button a {
@@ -1813,7 +1813,7 @@ p {font-weight: 400;}
     color: #575757;
 }
 .property-result .right-item .agent-right .right p {
-    font-size: 14px;
+    font-size: 15px;
 }
 .property-result .right-item ul.agent-ul {
     padding-left: 0;
@@ -2067,7 +2067,7 @@ p {font-weight: 400;}
     background: #fffdfd00;
     color: #797979;
     text-align: left;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -2084,7 +2084,7 @@ p {font-weight: 400;}
 
 .footer-bottom .right ul li a {
     color: #000000;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 /* User Panel */

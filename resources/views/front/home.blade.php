@@ -130,6 +130,7 @@
 </div>
 
 <div class="property d-flex">
+    {{-- PROPIEDADES DESTACADAS --}}
     <div class="col-12 col-xl-8 px-5" style="padding-left: 4vw !important">
         {{-- Heading --}} 
         <div class="row">
@@ -139,11 +140,13 @@
                 </div>
             </div>
         </div>
+
         {{-- Carrucel de propiedades --}}
         <div class="row">
             @foreach($properties as $item)
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="item">
+                    {{-- PARTE SUPERIOR --}}
                     <div class="photo">
                         <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
                         <div class="top">
@@ -165,6 +168,7 @@
                         <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
                         {{-- <div class="wishlist"><a href="{{ route('wishlist_add',$item->id) }}"><i class="far fa-heart"></i></a></div> --}}
                     </div>
+                    {{-- PARTE INFERIOR --}}
                     <div class="text py-auto">
                         <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
                         <div class="detail">
@@ -232,6 +236,7 @@
             </div>
         </div>
     </div>
+    {{-- FORMULARIO WSP --}}
     <div class="col-xl-4 d-none d-xl-block" style="padding-right: 4vw; transform: translateY(-80px);">
         <div class="card shadow border-0" style="border-radius: 15px; background-color: #f4fcff;">
             <div class="card-body p-4">

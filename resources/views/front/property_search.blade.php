@@ -148,7 +148,7 @@
                                     <div class="text">
                                         <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
                                         <div class="detail">
-                                            <div class="stat">
+                                            <div class="stat d-none">
                                                 <div class="i1">{{ $item->size }} m²</div>
                                                 @if($item->bedroom > 0)
                                                     <div class="i2">
@@ -164,7 +164,22 @@
                                             <div class="address">
                                                 <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
                                             </div>
-                                            <div class="type-location">
+                                            <div class="features main">
+                                                @if($item->bedroom > 0)
+                                                    <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                                        <i class="fas fa-bed fs-5 me-2"></i> {{ $item->bedroom }}
+                                                    </div>
+                                                @endif
+                                                @if($item->bathroom > 0)
+                                                    <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                                        <i class="fas fa-bath fs-5 me-2"></i> {{ $item->bathroom }}
+                                                    </div>
+                                                @endif
+                                                    <div class="i2 fw-bold text-black" style="font-size: 16px;">
+                                                        <i class="fa-solid fa-ruler-vertical fs-5 me-2"></i> {{ $item->size }} m²
+                                                    </div>
+                                            </div>
+                                            <div class="features">
                                                 <div class="i1">
                                                     <i class="fas fa-edit"></i> {{ $item->type->name }}
                                                 </div>
@@ -172,7 +187,7 @@
                                                     <i class="fas fa-location-arrow"></i> {{ $item->location->name }}
                                                 </div>
                                             </div>
-                                            <div class="agent-section">
+                                            <div class="agent-section d-none">
                                                 @if($item->agent->photo != null)
                                                 <img class="agent-photo" src="{{ asset('uploads/'.$item->agent->photo) }}" alt="">
                                                 @else
