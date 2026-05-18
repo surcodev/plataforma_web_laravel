@@ -129,16 +129,16 @@
                                         <div class="top">
                                             @if($item->purpose == 'Venta')
                                             <div class="status-sale">
-                                                En venta
+                                                VENTA
                                             </div>
                                             @else
                                             <div class="status-rent">
-                                                En alquiler
+                                                ALQUILER
                                             </div>
                                             @endif
                                             @if($item->is_featured == 'Yes')
                                             <div class="featured">
-                                                destacado
+                                                <i class="fas fa-bookmark"></i>
                                             </div>
                                             @endif
                                         </div>
