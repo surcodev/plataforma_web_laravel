@@ -9,8 +9,7 @@ body {
 }
 
 select, textarea, input {font-size: 15px;}
-.form-control {font-size: 15px;border-color: #c9c9c9!important;}
-.form-control:focus {border-color: #ff3c23 !important;box-shadow: none !important;}
+.form-control, .form-select {font-size: 15px;border-color: #c9c9c9!important;}
 select {width: 100% !important;}
 table, table tr th, table tr td {border-color: #c9c9c9 !important;}
 .form-check-label {font-weight: 400!important;}
@@ -483,7 +482,8 @@ p {font-weight: 400;}
     font-size: 1.05rem;
 }
 
-#formulario-whatsapp .form-control {
+#formulario-whatsapp .form-control,
+#formulario-whatsapp .form-select {
     height: 45px;
     font-size: 1rem;
     border-radius: 10px;
