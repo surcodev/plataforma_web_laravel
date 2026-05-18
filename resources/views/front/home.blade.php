@@ -232,7 +232,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-4" style="padding-right: 4vw; transform: translateY(-80px);">
+    <div class="col-xl-4 d-none d-xl-block" style="padding-right: 4vw; transform: translateY(-80px);">
         <div class="card shadow border-0" style="border-radius: 15px; background-color: #f4fcff;">
             <div class="card-body p-4">
                 <div class="mb-3 text-center">
