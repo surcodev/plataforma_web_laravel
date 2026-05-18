@@ -128,11 +128,11 @@
                                         <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
                                         <div class="top">
                                             @if($item->purpose == 'Venta')
-                                            <div class="status-sale">
+                                            <div class="status-sale fw-bold">
                                                 VENTA
                                             </div>
                                             @else
-                                            <div class="status-rent">
+                                            <div class="status-rent fw-bold">
                                                 ALQUILER
                                             </div>
                                             @endif

@@ -160,7 +160,7 @@
                             </div>
                             @endif
                             @if($item->is_featured == 'Yes')
-                            <div class="featured fw-bold d-none">
+                            <div class="featured d-none">
                                 <i class="fas fa-bookmark"></i>
                             </div>
                             @endif
