@@ -444,7 +444,9 @@ class FrontController extends Controller
 
         $properties = $properties->orderBy('id', 'asc')->paginate(10);
 
-        $locations = Location::orderBy('name', 'asc')->get();
+        $locations = Location::whereHas('properties')
+            ->orderBy('name', 'asc')
+            ->get();
         $types = Type::orderBy('name', 'asc')->get();
         $amenities = Amenity::orderBy('name', 'asc')->get();
 

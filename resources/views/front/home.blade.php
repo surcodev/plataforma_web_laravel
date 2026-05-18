@@ -256,7 +256,7 @@
 
                     <div class="col-12 col-xxl-6 mb-3 form-group">
                         <label for="wa_accion" class="form-label fw-bold">¿Qué deseas hacer?</label>
-                        <select class="form-control" id="wa_accion" required>
+                        <select class="form-select" id="wa_accion" required>
                             <option value="" selected disabled>Venta o Alquiler...</option>
                             <option value="Vender">Vender mi propiedad</option>
                             <option value="Rentar">Rentar mi propiedad</option>
@@ -265,7 +265,7 @@
 
                     <div class="col-12 col-xxl-6 mb-3 form-group">
                         <label for="wa_tipo" class="form-label fw-bold">Tipo de Inmueble</label>
-                        <select class="form-control" id="wa_tipo" required>
+                        <select class="form-select" id="wa_tipo" required>
                             <option value="" selected disabled>Selecciona el tipo...</option>
                             <option value="Casa">Casa</option>
                             <option value="Departamento">Departamento</option>
