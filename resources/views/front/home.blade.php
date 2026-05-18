@@ -252,7 +252,7 @@
                     <div class="col-12 col-xxl-6 mb-3 form-group">
                         <label for="wa_accion" class="form-label fw-bold">¿Qué deseas hacer?</label>
                         <select class="form-control" id="wa_accion" required>
-                            <option value="" selected disabled>Selecciona una opción...</option>
+                            <option value="" selected disabled>Venta o Alquiler...</option>
                             <option value="Vender">Vender mi propiedad</option>
                             <option value="Rentar">Rentar mi propiedad</option>
                         </select>
