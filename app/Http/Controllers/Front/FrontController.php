@@ -40,6 +40,8 @@ class FrontController extends Controller
         ->take(3)
         ->get();
 
+        $types = Type::orderBy('name','asc')->get();
+
         // Obtenga la totalidad de ubicaciones por propiedad. ¿Qué ubicación tiene más propiedades? Aparecerá primero y de esta manera.
         $locations = Location::withCount(['properties' => function ($query) {
             $query->where('status', 'Active')
@@ -62,7 +64,7 @@ class FrontController extends Controller
         $testimonials = Testimonial::orderBy('id','asc')->get();
         $posts = Post::orderBy('id','desc')->take(3)->get();
         
-        return view('front.home', compact('properties', 'locations', 'agents', 'search_locations', 'search_types', 'testimonials', 'posts'));
+        return view('front.home', compact('properties', 'locations', 'agents', 'search_locations', 'search_types', 'testimonials', 'posts', 'types'));
     }
 
     public function contact()
@@ -136,7 +138,7 @@ class FrontController extends Controller
         $numero = preg_replace('/\D/', '', $global_setting->footer_phone);
         
         // 2. Definir mensaje
-        $mensaje = "Hola, estoy interesado(a) en vender o rentar mi inmueble y me gustaría que su plataforma me ayude con el proceso";
+        $mensaje = "Hola, estoy interesado(a) en vender o rentar mi inmueble y me encantaría que me brinden su ayuda a gestionar el proceso.";
         
         // 3. Codificar mensaje
         $mensajeCodificado = urlencode($mensaje);
