@@ -4,117 +4,118 @@
 
 <div class="slider">
     <div class="container-fluid m-0 p-0 h-100-p">
-    <div class="item">
-        <div class="item-content">
-            {{-- TEXTO (width: 610px;) --}}
-            <div class="text d-flex align-items-start">
-                <h2 class="text-start mb-0">ENCONTRAMOS EL CLIENTE IDEAL PARA TU INMUEBLE</h2>
-                <h2 class="text-start text-important">SIN COMPLICACIONES</h2>
-                <p class="text-start mb-0">
-                    Nos encargamos de la publicidad en portales web, redes sociales y atención a interesados reales y calificados. 
-                </p>
-                <p class="text-start">
-                    Tu inmueble en las mejores manos. 
-                </p>
-            </div>
+        <div class="item">
+            <div class="item-content">
+                {{-- TEXTO (width: 610px;) --}}
+                <div class="text d-flex align-items-start">
+                    <h2 class="text-start mb-0">ENCONTRAMOS EL CLIENTE IDEAL PARA TU INMUEBLE</h2>
+                    <h2 class="text-start text-important">SIN COMPLICACIONES</h2>
+                    <p class="text-start mb-0">
+                        Nos encargamos de la publicidad en portales web, redes sociales y encontrar a interesados reales y calificados. 
+                    </p>
+                    <p class="text-start">
+                        Tu inmueble en las mejores manos. 
+                    </p>
+                </div>
 
-            {{-- FILTROS (OCULTO)--}}
-            <div class="search-section d-none">
-                <form action="{{ route('property_search') }}" method="get">
-                    <div class="inner">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Encuentra lo que buscas ..." value="">
+                {{-- FILTROS (OCULTO)--}}
+                <div class="search-section d-none">
+                    <form action="{{ route('property_search') }}" method="get">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="Encuentra lo que buscas ..." value="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="form-group">
-                                    <select name="location" class="form-select select2 w-100-p">
-                                        <option value="">Seleccionar ubicación</option>
-                                        @foreach($search_locations as $location)
-                                            <option value="{{ $location->id }}">{{ $location->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        <select name="location" class="form-select select2 w-100-p">
+                                            <option value="">Seleccionar ubicación</option>
+                                            @foreach($search_locations as $location)
+                                                <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="form-group">
-                                    <select name="type" class="form-select select2 w-100-p">
-                                        <option value="">Selecionar tipo</option>
-                                        @foreach($search_types as $type)
-                                            <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="form-group">
+                                        <select name="type" class="form-select select2 w-100-p">
+                                            <option value="">Selecionar tipo</option>
+                                            @foreach($search_types as $type)
+                                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                    Buscar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            {{-- ICONOS Y BOTONES --}}
-            <div class="search-section mt-0">
-                <div class="inner border-0 p-0">
-
-                    {{-- ICONOS --}}
-                    <div class="feature-card">
-                        <div class="feature-row">
-                            <div class="feature-item">
-                                <div class="icon-circle">
-                                    <i class="bi bi-megaphone"></i>
-                                </div>
-                                <div class="feature-text">
-                                    Publicamos tu inmueble
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="icon-circle">
-                                    <i class="bi bi-bar-chart-line"></i>
-                                </div>
-                                <div class="feature-text">
-                                    Promocionamos en portales y redes
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="icon-circle">
-                                    <i class="bi bi-house-check"></i>
-                                </div>
-
-                                <div class="feature-text">
-                                    Gestionamos visitas y consultas
+                                <div class="col-lg-3">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                        Buscar
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
 
-                    {{-- Botones --}}
-                    <div class="row mt-2 g-3">
-                        <div class="col-auto">
-                            <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer">
-                                <button class="btn text-white btn-wsp d-flex align-items-center px-4">
-                                    <span class="btn-text-full">
-                                        QUIERO PUBLICAR MI INMUEBLE
-                                    </span>
-                                    <span class="btn-text-short">
-                                        QUIERO PUBLICAR
-                                    </span>
-                                    <i class="bi bi-whatsapp btn-icon ms-3 fs-4"></i>
-                                </button>
-                            </a>
+                {{-- ICONOS Y BOTONES --}}
+                <div class="search-section mt-0">
+                    <div class="inner border-0 p-0">
+
+                        {{-- ICONOS --}}
+                        <div class="feature-card">
+                            <div class="feature-row">
+                                <div class="feature-item">
+                                    <div class="icon-circle">
+                                        <i class="bi bi-megaphone"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        Publicamos tu inmueble
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon-circle">
+                                        <i class="bi bi-bar-chart-line"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        Promocionamos en portales y redes
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon-circle">
+                                        <i class="bi bi-house-check"></i>
+                                    </div>
+
+                                    <div class="feature-text">
+                                        Gestionamos visitas y consultas
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-auto">
-                            <a href="#property">
-                                <button type="submit" class="btn btn-outline-primary px-4">
-                                    VER INMUEBLES
-                                </button>
-                            </a>
+
+                        {{-- Botones --}}
+                        <div class="row mt-2 g-3">
+                            <div class="col-auto">
+                                <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer">
+                                    <button class="btn text-white btn-wsp d-flex align-items-center px-4">
+                                        <span class="btn-text-full">
+                                            QUIERO PUBLICAR MI INMUEBLE
+                                        </span>
+                                        <span class="btn-text-short">
+                                            QUIERO PUBLICAR
+                                        </span>
+                                        <i class="bi bi-whatsapp btn-icon ms-3 fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="col-auto">
+                                <a href="#property">
+                                    <button type="submit" class="btn btn-outline-primary px-4">
+                                        VER INMUEBLES
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,12 +123,11 @@
         </div>
     </div>
 </div>
-</div>
 
 <div class="property d-flex" id="property">
     <div class="outstanding col-12 col-xl-8">
         {{-- INFO --}}
-        <div>
+        <div class="section">
             {{-- Heading --}} 
             <div class="heading">
                 <h4 class="mb-0">
@@ -139,7 +139,7 @@
                     Nosotros lo publicamos y conectamos con clientes interesados reales y calificados.
                 </span>
             </div>
-            <div class="cards-info row g-4 mb-4 justify-content-center">
+            <div class="cards-info row justify-content-center g-4">
                 <div class="col col-6 col-lg-3">
                     <div class="card">
                         <div class="card-icon icon-circle">
@@ -188,7 +188,7 @@
         </div>
 
         {{-- PASOS --}}
-        <div>
+        <div class="section">
             {{-- Heading --}} 
             <div class="heading mb-2">
                 <h4 class="mb-0 d-flex justify-content-center align-items-center">
@@ -197,7 +197,7 @@
                     <div class="custom-line ms-2 ms-md-3"></div>
                 </h4>
             </div>
-            <div class="cards-steps row justify-content-center g-3 mb-4">
+            <div class="cards-steps row justify-content-center g-3">
                 <div class="col col-12 col-md-6 col-lg-4 col-xl-6 col-xxl-4">
                     <div class="card py-3 px-4 d-flex flex-row align-items-center">
                         <i class="step-1 bi bi-1-circle-fill fs-1 me-4"></i>
@@ -229,8 +229,9 @@
                 </div>
             </div>
         </div>
+
         {{-- PROPIEDADES DESTACADAS (outstanding) --}}
-        <div>
+        <div class="property-section">
             {{-- Heading --}} 
             <div class="heading">
                 <h4>INMUEBLES DESTACADOS</h4>
@@ -322,7 +323,7 @@
             </div>
 
             {{-- Boton --}}
-            <div class="row property-section">
+            <div class="row">
                 <div class="col-12 text-center">
                     <a href="{{ url('/property-search') }}" class="btn btn-outline-primary px-5">
                         <span>VER MÁS INMUEBLES</span>
@@ -332,56 +333,77 @@
             </div>
         </div>
     </div>
-    {{-- FORMULARIO WSP (form-wsp) --}}
-    <div class="form-wsp col-xl-4 d-none d-xl-block">
-        <div class="card shadow border-0">
-            <div class="card-body p-4">
-                <div class="mb-3 text-center">
-                    <h3 class="card-title fw-bold text-primary">
-                        PUBLICA TU INMUEBLE EN 1 MINUTO
-                    </h3>
-                    <span class="card-text">Usted nos da los detalles, nosotros hacemos TODO EL TRABAJO</span>
+    
+    <div class="banner-right col-xl-4 d-none d-xl-block">
+        {{-- FORMULARIO WSP (form-wsp) --}}
+        <div class="form-wsp">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-center">
+                        <h3 class="card-title fw-bold text-primary">
+                            PUBLICA TU INMUEBLE EN 1 MINUTO
+                        </h3>
+                        <span class="card-text">Usted nos da los detalles, nosotros hacemos TODO EL TRABAJO</span>
+                    </div>
+                    
+                    <form class="row" id="formulario-whatsapp" data-url="{{ route('whatsapp_generar') }}">
+                        @csrf
+                        <div class="col-12 col-xxl-6 mb-3 form-group">
+                            <label for="wa_nombre" class="form-label fw-bold">Nombre</label>
+                            <input type="text" class="form-control" id="wa_nombre" placeholder="Ej. Juan Pérez" required>
+                        </div>
+
+                        <div class="col-12 col-xxl-6 mb-3 form-group">
+                            <label for="wa_accion" class="form-label fw-bold">¿Qué deseas hacer?</label>
+                            <select class="form-select" id="wa_accion" required>
+                                <option value="" selected disabled>Venta o Alquiler...</option>
+                                <option value="Vender">Vender mi inmueble</option>
+                                <option value="Rentar">Rentar mi inmueble</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-xxl-6 mb-3 form-group">
+                            <label for="wa_tipo" class="form-label fw-bold">Tipo de Inmueble</label>
+                            <select class="form-select" id="wa_tipo" required>
+                                <option value="" selected disabled>Selecciona el tipo...</option>
+                                @foreach($types as $type)
+                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-xxl-6 mb-4 form-group">
+                            <label for="wa_email" class="form-label fw-bold">Email</label>
+                            <input type="text" class="form-control" id="wa_email" placeholder="(Opcional)">
+                        </div>
+
+                        <button type="button" id="btn-enviar-wa" class="col-12 d-flex justify-content-center align-items-center btn btn-wsp d-block mx-auto mb-2 w-80-p">
+                            ENVIAR POR WHATSAPP
+                            <i class="bi bi-whatsapp btn-icon ms-2 fs-4"></i>
+                        </button>
+
+                        <span class="text-center"><i class="bi bi-shield-lock-fill text-success"></i> Tus datos están protegidos y no se publicarán</span>
+                    </form>
+                    
                 </div>
-                
-                <form class="row" id="formulario-whatsapp" data-url="{{ route('whatsapp_generar') }}">
-                    @csrf
-                    <div class="col-12 col-xxl-6 mb-3 form-group">
-                        <label for="wa_nombre" class="form-label fw-bold">Nombre</label>
-                        <input type="text" class="form-control" id="wa_nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
+        </div>
+        <div class="banner-wsp">
+            <div class="card shadow border-0 py-4">
+                <div class="row g-0 align-items-center">
+                    <div class="col p-0 my-4">
+                        <h3 class="card-title">¿Listo para publicar tu inmueble?</h3>
+                        <p class="card-text">Escribenos ahora por WhatsApp y empezemos a buscar interesados.</p>
                     </div>
-
-                    <div class="col-12 col-xxl-6 mb-3 form-group">
-                        <label for="wa_accion" class="form-label fw-bold">¿Qué deseas hacer?</label>
-                        <select class="form-select" id="wa_accion" required>
-                            <option value="" selected disabled>Venta o Alquiler...</option>
-                            <option value="Vender">Vender mi inmueble</option>
-                            <option value="Rentar">Rentar mi inmueble</option>
-                        </select>
+                    <div class="col-auto d-flex flex-column align-items-end">
+                        <img
+                            src="{{ asset('uploads/whatsapp_icon.png') }}"
+                            alt="WhatsApp"
+                            class="img-wsp"
+                        >
+                        <div class="img-arrow"></div>
                     </div>
-
-                    <div class="col-12 col-xxl-6 mb-3 form-group">
-                        <label for="wa_tipo" class="form-label fw-bold">Tipo de Inmueble</label>
-                        <select class="form-select" id="wa_tipo" required>
-                            <option value="" selected disabled>Selecciona el tipo...</option>
-                            @foreach($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-12 col-xxl-6 mb-4 form-group">
-                        <label for="wa_email" class="form-label fw-bold">Email</label>
-                        <input type="text" class="form-control" id="wa_email" placeholder="(Opcional)">
-                    </div>
-
-                    <button type="button" id="btn-enviar-wa" class="col-12 d-flex justify-content-center align-items-center btn btn-wsp d-block mx-auto mb-2 w-80-p">
-                        ENVIAR POR WHATSAPP
-                        <i class="bi bi-whatsapp btn-icon ms-2 fs-4"></i>
-                    </button>
-
-                    <span class="text-center"><i class="bi bi-shield-lock-fill text-success"></i> Tus datos están protegidos y no se publicarán</span>
-                </form>
-                
+                </div>
             </div>
         </div>
     </div>

@@ -120,7 +120,7 @@ p {font-weight: 400;}
     padding-top: 4px;
     padding-bottom: 4px;
     color: white;
-    background-color: #009900; 
+    background-color: #01aa01; 
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -128,8 +128,8 @@ p {font-weight: 400;}
 
 .btn-wsp:hover{
     background-color: #ffffff !important;
-    border-color: #009900 !important;
-    color: #009900 !important;
+    border-color: #01aa01 !important;
+    color: #01aa01 !important;
 }
 
 .main-nav nav .navbar-nav .nav-item .dropdown-menu {
@@ -180,7 +180,7 @@ p {font-weight: 400;}
 
 .main-nav nav .navbar-nav .nav-item:nth-last-of-type(1) {
     border-radius: 15px;
-    background: #009900;    
+    background: #01aa01;    
     margin-left: 4vw;
 }
 
@@ -470,6 +470,11 @@ p {font-weight: 400;}
     border-color: #0041d9;
     color: #ffffff;
 }
+@media (min-width: 1200px) {
+    .property-section {
+        margin-right: -4vw;
+    }
+}
 
 .property-section a.btn {
     font-family: 'Montserrat', sans-serif;
@@ -610,6 +615,10 @@ p {font-weight: 400;}
     }
 }
 
+.property .outstanding .section {
+    margin-bottom: 35px;
+}
+
 .property .outstanding .cards-info .card {
     border: none;
     border-radius: 20px;
@@ -627,6 +636,10 @@ p {font-weight: 400;}
         transform 0.25s ease,
         box-shadow 0.25s ease;
     height: 100%;
+}
+.property .outstanding .cards-info .card .card-body{
+    padding: 10px;
+    padding-top: 15px;
 }
 
 .property .outstanding .cards-info .col {
@@ -653,7 +666,7 @@ p {font-weight: 400;}
     align-items: center;
     justify-content: center;
     font-size: 36px;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .property .outstanding .cards-info .card-title{
@@ -698,8 +711,11 @@ p {font-weight: 400;}
     color: #696969;
 }
 
+.property .banner-right{
+    padding-right: 4vw;
+}
+
 .property .form-wsp {
-    padding-right: 4vw; 
     transform: translateY(-80px);
 }
 
@@ -710,6 +726,58 @@ p {font-weight: 400;}
 
 .property .form-wsp .card .card-text {
     font-size: 16px !important;
+}
+
+.property .banner-wsp{
+   padding-left: 4vw;
+   padding-right: 2vw;
+}
+
+.property .banner-wsp .card{
+   padding-left: 3vw;
+   padding-right: 3vw;
+   border-radius: 20px;
+   background: linear-gradient(
+        to bottom right,
+        #e1ffe1 0%,
+        #ffffff 55%
+    );
+}
+
+.property .banner-wsp img {
+    max-width: 90px; 
+    max-height: 90px;
+}
+
+.property .banner-wsp .img-arrow {
+    width: 70px;
+    height: 45px;
+
+    background-color: #01aa01;
+
+    mask: url('/uploads/curved-arrow.png') no-repeat center / contain;
+    -webkit-mask: url('/uploads/curved-arrow.png') no-repeat center / contain;
+
+    opacity: 0.8;
+
+    transform: translateX(-60px) rotate(15deg);
+
+    position: relative;
+}
+
+.property .banner-wsp .img-arrow::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to right,
+        white 0%,
+        transparent 40%
+    );
+
+    pointer-events: none;
 }
 
 @media (max-width: 1399px) {

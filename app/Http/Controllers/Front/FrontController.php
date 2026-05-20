@@ -138,7 +138,7 @@ class FrontController extends Controller
         $numero = preg_replace('/\D/', '', $global_setting->footer_phone);
         
         // 2. Definir mensaje
-        $mensaje = "Hola, estoy interesado(a) en vender o rentar mi inmueble y me encantaría que me brinden su ayuda a gestionar el proceso.";
+        $mensaje = "Hola, quiero vender/rentar mi inmueble de forma segura. ¿Me podrían brindar más información sobre cómo trabajan?";
         
         // 3. Codificar mensaje
         $mensajeCodificado = urlencode($mensaje);
