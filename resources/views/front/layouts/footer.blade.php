@@ -6,7 +6,7 @@
                     <h2 class="heading">Secciones clave</h2>
                     <ul class="useful-links">
                         <li><a href="{{ route('home') }}">Inicio</a></li>
-                        <li><a href="{{ route('property_search') }}">Propiedades</a></li>
+                        <li><a href="{{ route('property_search') }}">Inmuebles</a></li>
                         {{-- <li><a href="{{ route('agents') }}">Agentes</a></li> --}} 
                         <li><a href="{{ route('blog') }}">Proyectos</a></li>
                     </ul>

@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
-@section('title', 'Listado de Propiedades')
-@section('meta_description', 'Explora nuestro listado de propiedades. Encuentra casas, departamentos y terrenos con las mejores oportunidades inmobiliarias.')
+@section('title', 'Listado de Inmuebles')
+@section('meta_description', 'Explora nuestro listado de inmuebles. Encuentra casas, departamentos y terrenos con las mejores oportunidades inmobiliarias.')
 
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Listado de propiedades</h2>
+                <h2>Listado de Inmuebles</h2>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
                         <div class="row">
 
                             @if($properties->count() == 0)
-                            <div class="text-danger">No se encontró ninguna propiedad</div>
+                            <div class="text-danger">No se encontró ningun inmueble</div>
                             @else
                             @foreach($properties as $item)
                             <div class="col-lg-6 col-md-6 col-sm-12">

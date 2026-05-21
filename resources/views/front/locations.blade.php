@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 
 @section('title', 'Nuestras Ubicaciones')
-@section('meta_description', 'Descubre nuestras ubicaciones disponibles. Encuentra propiedades en las mejores zonas y oportunidades inmobiliarias con asesoría profesional.')
+@section('meta_description', 'Descubre nuestras ubicaciones disponibles. Encuentra inmuebles en las mejores zonas y oportunidades inmobiliarias con asesoría profesional.')
 
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="text">
                         <h2><a href="{{ route('location',$item->slug) }}">{{ $item->name }}</a></h2>
-                        <h4>({{ $item->properties_count }} Propiedades)</h4>
+                        <h4>({{ $item->properties_count }} Immuebles)</h4>
                     </div>
                 </div>
             </div>

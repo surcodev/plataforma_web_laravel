@@ -42,7 +42,7 @@
                         <i class="fa-solid fa-user-tie fa-3x text-success"></i>
                     </div>
                     <h4 class="fw-bold text-dark mb-3">Soy Agente</h4>
-                    <p class="text-muted mb-4">Regístrate o inicia sesión para publicar propiedades y gestionar clientes.</p>
+                    <p class="text-muted mb-4">Regístrate o inicia sesión para publicar inmuebles y gestionar clientes.</p>
                     <div class="d-flex flex-column gap-2">
                         <a href="{{ route('agent_registration') }}" class="btn btn-success rounded-pill">
                             <i class="fa-solid fa-user-plus me-2"></i> Registro de agente

@@ -29,8 +29,8 @@
     }
 </style>
 
-@section('title', 'Información de propiedad: '.$property->name)
-@section('meta_description', 'Información de la propiedad '.$property->name.'. Encuentra detalles, precio y ubicación.')
+@section('title', 'Información de inmueble: '.$property->name)
+@section('meta_description', 'Información de la inmueble '.$property->name.'. Encuentra detalles, precio y ubicación.')
 
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
@@ -134,7 +134,7 @@
 
                 <div class="left-item">
                     <h2>
-                        Propiedades relacionadas
+                        Inmuebles relacionados
                     </h2>
                     <div class="property related-property pt_0 pb_0">
                         <div class="row">
@@ -147,7 +147,7 @@
                                 ->get();    
                             @endphp
                             @if($related_properties->count() == 0)
-                                <span class="text-danger">No se encontraron propiedades relacionadas</span>
+                                <span class="text-danger">No se encontraron inmuebles relacionados</span>
                             @else
                                 @foreach($related_properties as $item)
                                 <div class="col-lg-6 col-md-6 col-sm-12">

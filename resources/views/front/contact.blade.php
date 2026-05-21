@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Contáctenos</h2>
-                <h6 style="margin-top: 20px;">Busca mayor información sobre como publicar su inmueble o desea mas detalles sobre nuestras propiedades? </h6>
+                <h6 style="margin-top: 20px;">Busca mayor información sobre algunos de los inmuebles o desea publicar una? </h6>
                 <h6>No dude en dejarnos un mensaje, estaremos encantados de atenderle.</h6>
                 <div class="d-flex justify-content-center mt-4">
                     <a href="{{ route('publicar_wsp') }}" target="_blank" rel="noopener noreferrer">

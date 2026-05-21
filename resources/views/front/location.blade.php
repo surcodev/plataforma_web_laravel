@@ -19,7 +19,7 @@
         <div class="row">
             @if($properties->count() == 0)
                 <div class="text-danger mt_30 mb_30">
-                    No se encontró ninguna propiedad en esta ubicación.
+                    No se encontró ningun inmueble en esta ubicación.
                 </div>
             @else
                 @foreach($properties as $item)

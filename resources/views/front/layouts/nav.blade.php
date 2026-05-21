@@ -34,7 +34,7 @@
                     <ul class="navbar-nav ml-auto align-items-center">
                         <li class="nav-item active"><a href="{{ route('home') }}" class="nav-link">INICIO</a></li>
                         <li class="nav-item d-none"><a href="" class="nav-link">PUBLICA TU INMUEBLE</a></li>
-                        <li class="nav-item"><a href="{{ url('property-search') }}" class="nav-link">PROPIEDADES</a></li>
+                        <li class="nav-item"><a href="{{ url('property-search') }}" class="nav-link">INMUEBLES</a></li>
                         {{-- <li class="nav-item"><a href="{{ route('agents') }}" class="nav-link">Agentes</a></li> --}}
                         <li class="nav-item"><a href="{{ route('locations') }}" class="nav-link">UBICACIONES</a></li>
                         {{-- <li class="nav-item"><a href="{{ route('pricing') }}" class="nav-link">Precios</a></li>
