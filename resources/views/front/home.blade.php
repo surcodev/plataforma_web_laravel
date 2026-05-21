@@ -261,12 +261,13 @@
                                 </div>
                                 @endif
                             </div>
-                            <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
+                            <div class="price d-none">USD {{ rtrim(rtrim(number_format($item->price_dolar, 2, '.', ','), '0'), '.') }} • S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
                             {{-- <div class="wishlist"><a href="{{ route('wishlist_add',$item->id) }}"><i class="far fa-heart"></i></a></div> --}}
                         </div>
                         {{-- PARTE INFERIOR --}}
                         <div class="text py-auto">
                             <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
+                            <h3 class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }} • USD {{ rtrim(rtrim(number_format($item->price_dolar, 2, '.', ','), '0'), '.') }}</h3>
                             <div class="detail">
                                 <div class="stat d-none">
                                     <div class="i1 d-none"><i class="fa-solid fa-ruler-vertical"></i> {{ $item->size }} m²</div>

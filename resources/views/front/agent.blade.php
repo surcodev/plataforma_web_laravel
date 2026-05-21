@@ -79,7 +79,7 @@
 
             @if($properties->count() == 0)
                 <div class="text-danger mt_30 mb_30">
-                    No property found for this agent.
+                    No se encontraron propiedades para este agente.
                 </div>
             @else
             @foreach($properties as $item)
@@ -89,43 +89,48 @@
                             <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
                             <div class="top">
                                 @if($item->purpose == 'Venta')
-                                <div class="status-sale">
-                                    En venta
+                                <div class="status-sale fw-bold">
+                                    VENTA
                                 </div>
                                 @else
-                                <div class="status-rent">
-                                    En alquiler
+                                <div class="status-rent fw-bold">
+                                    ALQUILER
                                 </div>
                                 @endif
                                 @if($item->is_featured == 'Yes')
                                 <div class="featured">
-                                    Destacado
+                                    <i class="fas fa-bookmark"></i>
                                 </div>
                                 @endif
                             </div>
-                            <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
-                            <div class="wishlist"><a href=""><i class="far fa-heart"></i></a></div>
+                            <div class="price d-none">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
+                            <div class="wishlist d-none"><a href=""><i class="far fa-heart"></i></a></div>
                         </div>
                         <div class="text">
                             <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
+                            <h3 class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }} • USD {{ rtrim(rtrim(number_format($item->price_dolar, 2, '.', ','), '0'), '.') }}</h3>
                             <div class="detail">
-                                <div class="stat">
+                                <div class="stat d-none">
                                     <div class="i1">{{ $item->size }} m²</div>
+                                    <div class="i2">{{ $item->bedroom }} Habitaciones</div>
+                                    <div class="i3">{{ $item->bathroom }} Baños</div>
+                                </div>
+                                <div class="features main">
                                     @if($item->bedroom > 0)
-                                        <div class="i2">
-                                            {{ $item->bedroom }} {{ $item->bedroom == 1 ? 'Habitación' : 'Habitaciones' }}
+                                        <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                            <i class="fas fa-bed fs-5 me-2"></i> {{ $item->bedroom }}
                                         </div>
                                     @endif
-                                    @if($item->bedroom > 0)
-                                        <div class="i3">
-                                            {{ $item->bathroom }} {{ $item->bathroom == 1 ? 'Baño' : 'Baños' }}
+                                    @if($item->bathroom > 0)
+                                        <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                            <i class="fas fa-bath fs-5 me-2"></i> {{ $item->bathroom }}
                                         </div>
                                     @endif
+                                        <div class="i2 fw-bold text-black" style="font-size: 16px;">
+                                            <i class="fa-solid fa-ruler-vertical fs-5 me-2"></i> {{ $item->size }} m²
+                                        </div>
                                 </div>
-                                <div class="address">
-                                    <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
-                                </div>
-                                <div class="type-location">
+                                <div class="features">
                                     <div class="i1">
                                         <i class="fas fa-edit"></i> {{ $item->type->name }}
                                     </div>
@@ -133,13 +138,16 @@
                                         <i class="fas fa-location-arrow"></i> {{ $item->location->name }}
                                     </div>
                                 </div>
-                                <div class="agent-section">
+                                <div class="address">
+                                    <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
+                                </div>
+                                <div class="agent-section d-none">
                                     @if($item->agent->photo != null)
                                     <img class="agent-photo" src="{{ asset('uploads/'.$item->agent->photo) }}" alt="">
                                     @else
                                     <img class="agent-photo" src="{{ asset('uploads/default.png') }}" alt="">
                                     @endif
-                                    <a href="{{ route('agent',$item->agent->id) }}">{{ $item->agent->name }} ({{ $item->agent->company }})</a>
+                                    <a href="">{{ $item->agent->name }} ({{ $item->agent->company }})</a>
                                 </div>
                             </div>
                         </div>

@@ -1,38 +1,10 @@
 @extends('front.layouts.master')
 
-<style>
-    /* Fotos */
-    .photo-all .item .bg {
-        background: rgba(0,0,0,0.0) !important;
-        transition: 0.3s;
-    }
-    .photo-all .item .icon {
-        opacity: 0;
-        transition: 0.3s;
-        font-size: 38px !important;
-    }
-    /* Fotos Hover */
-    .photo-all .item:hover .bg {
-        background: #262626 !important;
-    }
-
-    .photo-all .item:hover .icon {
-        opacity: 1;
-    }
-    .video-all .item .icon i {
-        transition: transform 0.3s ease;
-    }
-    /* Videos Hover */
-    .video-all .item:hover .icon i {
-        transform: scale(1.3);
-        transition: 0.3s;
-    }
-</style>
-
 @section('title', 'Información de inmueble: '.$property->name)
 @section('meta_description', 'Información de la inmueble '.$property->name.'. Encuentra detalles, precio y ubicación.')
 
 @section('main_content')
+
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>
     <div class="container">
@@ -156,35 +128,48 @@
                                             <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
                                             <div class="top">
                                                 @if($item->purpose == 'Venta')
-                                                <div class="status-sale">
-                                                    En venta
+                                                <div class="status-sale fw-bold">
+                                                    VENTA
                                                 </div>
                                                 @else
-                                                <div class="status-rent">
-                                                    En alquiler
+                                                <div class="status-rent fw-bold">
+                                                    ALQUILER
                                                 </div>
                                                 @endif
                                                 @if($item->is_featured == 'Yes')
                                                 <div class="featured">
-                                                    Destacado
+                                                    <i class="fas fa-bookmark"></i>
                                                 </div>
                                                 @endif
                                             </div>
-                                            <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
+                                            <div class="price d-none">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
                                             {{-- <div class="wishlist"><a href=""><i class="far fa-heart"></i></a></div> --}}
                                         </div>
                                         <div class="text">
                                             <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
+                                            <h3 class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }} • USD {{ rtrim(rtrim(number_format($item->price_dolar, 2, '.', ','), '0'), '.') }}</h3>
                                             <div class="detail">
-                                                <div class="stat">
+                                                <div class="stat d-none">
                                                     <div class="i1">{{ $item->size }} m²</div>
                                                     <div class="i2">{{ $item->bedroom }} Habitaciones</div>
                                                     <div class="i3">{{ $item->bathroom }} Baños</div>
                                                 </div>
-                                                <div class="address">
-                                                    <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
+                                                <div class="features main">
+                                                    @if($item->bedroom > 0)
+                                                        <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                                            <i class="fas fa-bed fs-5 me-2"></i> {{ $item->bedroom }}
+                                                        </div>
+                                                    @endif
+                                                    @if($item->bathroom > 0)
+                                                        <div class="i1 fw-bold text-black" style="font-size: 16px;">
+                                                            <i class="fas fa-bath fs-5 me-2"></i> {{ $item->bathroom }}
+                                                        </div>
+                                                    @endif
+                                                        <div class="i2 fw-bold text-black" style="font-size: 16px;">
+                                                            <i class="fa-solid fa-ruler-vertical fs-5 me-2"></i> {{ $item->size }} m²
+                                                        </div>
                                                 </div>
-                                                <div class="type-location">
+                                                <div class="features">
                                                     <div class="i1">
                                                         <i class="fas fa-edit"></i> {{ $item->type->name }}
                                                     </div>
@@ -192,7 +177,10 @@
                                                         <i class="fas fa-location-arrow"></i> {{ $item->location->name }}
                                                     </div>
                                                 </div>
-                                                <div class="agent-section">
+                                                <div class="address">
+                                                    <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
+                                                </div>
+                                                <div class="agent-section d-none">
                                                     @if($item->agent->photo != null)
                                                     <img class="agent-photo" src="{{ asset('uploads/'.$item->agent->photo) }}" alt="">
                                                     @else
@@ -210,8 +198,8 @@
                     </div>
                 </div>
             </div>
+            {{-- DETALLES --}}
             <div class="col-lg-4 col-md-12">
-
                 <div class="right-item">
                     <h2>Agente</h2>
                     <div class="agent-right d-flex justify-content-start">
@@ -283,7 +271,10 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <td><b>Precio</b></td>
-                                    <td>S/ {{ rtrim(rtrim(number_format($property->price, 2, '.', ','), '0'), '.') }}</td>
+                                    <td>
+                                        <div>S/ {{ rtrim(rtrim(number_format($property->price, 2, '.', ','), '0'), '.') }}</div>
+                                        <div>USD {{ rtrim(rtrim(number_format($property->price_dolar, 2, '.', ','), '0'), '.') }}</div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><b>Departamento</b></td>

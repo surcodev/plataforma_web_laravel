@@ -24,13 +24,14 @@
                     <table class="table table-bordered" id="datatable">
                         <thead>
                             <tr>
-                                <th>Item</th>
+                                <th></th>
                                 <th>Foto destacada</th>
                                 <th>Nombre</th>
-                                <th>Agente</th>
+                                <th class="d-none">Agente</th>
                                 <th>Ubicación</th>
                                 <th>Tipo</th>
-                                <th>Objetivo</th>
+                                <th>Propósito</th>
+                                <th class="text-nowrap">Precio</th>
                                 <th>¿Es destacado?</th>
                                 <th>Estado</th>
                                 <th class="w-150">Opciones</th>
@@ -45,10 +46,20 @@
                                     <img src="{{ asset('uploads/' . $property->featured_photo) }}" alt="" class="w-100">
                                 </td>
                                 <td>{{ $property->name }}</td>
-                                <td>{{ $property->agent->name }}</td>
+                                <td class="d-none">{{ $property->agent->name }}</td>
                                 <td>{{ $property->location->name }}</td>
                                 <td>{{ $property->type->name }}</td>
                                 <td>{{ $property->purpose }}</td>
+                                <td class="text-nowrap">
+                                    <div class="d-flex justify-content-between gap-1">
+                                        <span>USD</span>
+                                        <span>{{ number_format($property->price_dolar ?? 0, 0, '.', ',') }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between gap-1">
+                                        <span>S/</span>
+                                        <span>{{ number_format($property->price ?? 0, 0, '.', ',') }}</span>
+                                    </div>
+                                </td>
                                 <td>
                                     @if($property->is_featured == 'Yes')
                                         <span class="badge bg-success">Sí</span>

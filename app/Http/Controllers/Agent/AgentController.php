@@ -511,7 +511,9 @@ class AgentController extends Controller
             return redirect()->route('agent_payment')->with('error', 'Aún no has comprado ningún paquete. Compra uno para ver las propiedades.');
         }
 
-        $properties = Property::where('agent_id', Auth::guard('agent')->user()->id)->get();
+        $properties = Property::where('agent_id', Auth::guard('agent')->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('agent.property.index', compact('properties'));
     }
 
@@ -553,6 +555,7 @@ class AgentController extends Controller
         $request->validate([
             'name' => ['required'],
             'slug' => ['required','unique:properties,slug', 'regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/'],
+            'price_dolar' => ['required'],
             'price' => ['required'],
             'size' => ['required', 'numeric'],
             'bedroom' => ['required', 'numeric'],
@@ -577,6 +580,7 @@ class AgentController extends Controller
         $property->slug = $request->slug;
         $property->description = $request->description;
         $property->price = $request->price;
+        $property->price_dolar = $request->price_dolar;
         $property->featured_photo = $final_name;
         $property->purpose = $request->purpose;
         $property->bedroom = $request->bedroom;
@@ -628,6 +632,7 @@ class AgentController extends Controller
         $request->validate([
             'name' => ['required'],
             'slug' => ['required','unique:properties,slug,'.$property->id, 'regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/'],
+            'price_dolar' => ['required'],
             'price' => ['required'],
             'size' => ['required', 'numeric'],
             'bedroom' => ['required', 'numeric'],
@@ -656,6 +661,7 @@ class AgentController extends Controller
         $property->name = $request->name;
         $property->slug = $request->slug;
         $property->description = $request->description;
+        $property->price_dolar = $request->price_dolar;
         $property->price = $request->price;
         $property->purpose = $request->purpose;
         $property->bedroom = $request->bedroom;

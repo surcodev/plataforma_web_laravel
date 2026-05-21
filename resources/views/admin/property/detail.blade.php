@@ -35,7 +35,16 @@
                                     </tr>
                                     <tr>
                                         <th>Precio</th>
-                                        <td>$ {{ $property->price }}</td>
+                                        <td class="text-nowrap">
+                                            <div class="d-flex justify-content-start gap-1">
+                                                <span>USD</span>
+                                                <span>{{ number_format($property->price_dolar ?? 0, 0, '.', ',') }}</span>
+                                            </div>
+                                            <div class="d-flex justify-content-start gap-1">
+                                                <span>S/</span>
+                                                <span>{{ number_format($property->price ?? 0, 0, '.', ',') }}</span>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Agente</th>

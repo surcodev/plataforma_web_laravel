@@ -35,16 +35,20 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="" class="form-label">Nombre *</label>
                             <input type="text" name="name" class="form-control" value="{{ $property->name }}">
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="" class="form-label">Slug *</label>
                             <input type="text" name="slug" class="form-control" value="{{ $property->slug }}">
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Precio *</label>
+                        <div class="col-md-3 mb-3">
+                            <label for="" class="form-label">Precio (USD) *</label>
+                            <input type="number" name="price_dolar" class="form-control" value="{{ $property->price_dolar ?? 0 }}">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="" class="form-label">Precio (S/) *</label>
                             <input type="number" name="price" class="form-control" value="{{ $property->price }}">
                         </div>
                         <div class="col-md-12 mb-3">
@@ -174,7 +178,7 @@
         </div>
     </div>
 </div>
-{{-- Script para actualizar la vista previa en tiempo real --}}
+{{-- Script para actualizar la vista previa del mapa en tiempo real --}}
 <script>
     const mapInput = document.getElementById('map');
     const mapPreview = document.getElementById('map_preview');

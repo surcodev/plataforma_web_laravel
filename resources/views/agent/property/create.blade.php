@@ -27,16 +27,20 @@
                         <input type="file" name="featured_photo">
                     </div>
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="" class="form-label">Nombre *</label>
                             <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="" class="form-label">Slug *</label>
                             <input type="text" name="slug" class="form-control" value="{{ old('slug') }}">
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="" class="form-label">Precio *</label>
+                        <div class="col-md-3 mb-3">
+                            <label for="" class="form-label">Precio (USD) *</label>
+                            <input type="number" name="price_dolar" class="form-control" value="{{ old('price_dolar') }}">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="" class="form-label">Precio (S/) *</label>
                             <input type="number" name="price" class="form-control" value="{{ old('price') }}">
                         </div>
                         <div class="col-md-12 mb-3">

@@ -53,12 +53,12 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>Item</th>
+                                <th></th>
                                 <th>Nombre</th>
                                 <th>Ubicación</th>
                                 <th>Tipo</th>
                                 <th>Propósito</th>
-                                <th>Precio</th>
+                                <th class="text-nowrap">Precio</th>
                                 <th>¿Es Destacado?</th>
                                 <th>Fecha de creación</th>
                             </tr>
@@ -69,7 +69,16 @@
                                 <td>{{ $item->location->name }}</td>
                                 <td>{{ $item->type->name }}</td>
                                 <td>{{ $item->purpose }}</td>
-                                <td>${{ $item->price }}</td>
+                                <td class="text-nowrap">
+                                    <div class="d-flex justify-content-between gap-1">
+                                        <span>USD</span>
+                                        <span>{{ number_format($item->price_dolar ?? 0, 0, '.', ',') }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between gap-1">
+                                        <span>S/</span>
+                                        <span>{{ number_format($item->price ?? 0, 0, '.', ',') }}</span>
+                                    </div>
+                                </td>
                                 <td>
                                     @if($item->is_featured == 'Yes')
                                         <span class="badge bg-success">Sí</span>

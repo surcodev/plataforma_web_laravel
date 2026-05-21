@@ -43,7 +43,16 @@
                                             <td>{{ $item->location->name }}</td>
                                             <td>{{ $item->type->name ?? 'Sin tipo' }}</td>
                                             <td>{{ $item->purpose }}</td>
-                                            <td>${{ $item->price }}</td>
+                                            <td class="text-nowrap">
+                                                <div class="d-flex justify-content-between gap-1">
+                                                    <span>USD</span>
+                                                    <span>{{ number_format($item->price_dolar ?? 0, 0, '.', ',') }}</span>
+                                                </div>
+                                                <div class="d-flex justify-content-between gap-1">
+                                                    <span>S/</span>
+                                                    <span>{{ number_format($item->price ?? 0, 0, '.', ',') }}</span>
+                                                </div>
+                                            </td>
                                             <td>
                                                 @if($item->status == 'Pending')
                                                 <span class="badge bg-danger">{{ $item->status }}</span>

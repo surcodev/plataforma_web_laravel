@@ -18,6 +18,7 @@
 <div class="property-result">
     <div class="container">
         <div class="row">
+            {{-- Filtros --}}
             <div class="col-lg-4 col-md-12">
                 <form action="{{ route('property_search') }}" method="get" id="property-filter-form">
                     <div class="property-filter">
@@ -113,6 +114,7 @@
                     </div>
                 </form>
             </div>
+            {{-- Propiedades --}}
             <div class="col-lg-8 col-md-12">
                 <div class="property">
                     <div class="container">
@@ -142,11 +144,12 @@
                                             </div>
                                             @endif
                                         </div>
-                                        <div class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
+                                        <div class="price d-none">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }}</div>
                                         {{-- <div class="wishlist"><a href=""><i class="far fa-heart"></i></a></div> --}}
                                     </div>
                                     <div class="text">
                                         <h3><a href="{{ route('property_detail',$item->slug) }}">{{ $item->name }}</a></h3>
+                                        <h3 class="price">S/ {{ rtrim(rtrim(number_format($item->price, 2, '.', ','), '0'), '.') }} • USD {{ rtrim(rtrim(number_format($item->price_dolar, 2, '.', ','), '0'), '.') }}</h3>
                                         <div class="detail">
                                             <div class="stat d-none">
                                                 <div class="i1">{{ $item->size }} m²</div>
@@ -160,9 +163,6 @@
                                                         {{ $item->bathroom }} {{ $item->bathroom == 1 ? 'Baño' : 'Baños' }}
                                                     </div>
                                                 @endif
-                                            </div>
-                                            <div class="address">
-                                                <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
                                             </div>
                                             <div class="features main">
                                                 @if($item->bedroom > 0)
@@ -186,6 +186,9 @@
                                                 <div class="i2">
                                                     <i class="fas fa-location-arrow"></i> {{ $item->location->name }}
                                                 </div>
+                                            </div>
+                                            <div class="address">
+                                                <i class="fas fa-map-marker-alt"></i> {{ $item->address }}
                                             </div>
                                             <div class="agent-section d-none">
                                                 @if($item->agent->photo != null)
