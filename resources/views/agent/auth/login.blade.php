@@ -40,9 +40,9 @@
                             </button>
 
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <a href="{{ route('agent_registration') }}" class="primary-color">¿No tienes una cuenta? Crear una cuenta</a>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>
