@@ -1,0 +1,43 @@
+# Dependencias / builds
+node_modules/
+vendor/
+public/
+storage/
+bootstrap/cache/
+graphify-out/
+.codex/
+
+# Archivos ocultos y de configuración del editor
+.DS_Store
+.editorconfig
+.gitattributes
+_ide_helper.php
+_ide_helper_models.php
+
+# Imágenes
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.svg
+*.ico
+*.bmp
+*.tiff
+
+# Documentos que requieren extracción semántica/LLM
+*.pdf
+*.docx
+*.xlsx
+*.pptx
+*.md
+*.mdx
+*.txt
+*.rst
+
+# Otros binarios comunes
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
