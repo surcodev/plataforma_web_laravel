@@ -109,32 +109,30 @@
                         </div>
                     </div>
                 </div>
+                @if($property->videos->count() > 0)
                 <div class="left-item">
                     <h2>
                         Videos
                     </h2>
                     <div class="video-all">
                         <div class="row">
-                            @if($property->videos->count() == 0)
-                                <span class="text-danger">No hay vídeos disponibles</span>
-                            @else
-                                @foreach($property->videos as $video)
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="item">
-                                        <a class="video-button" href="http://www.youtube.com/watch?v={{ $video->video }}">
-                                            <img src="http://img.youtube.com/vi/{{ $video->video }}/0.jpg" alt="" />
-                                            <div class="icon">
-                                                <i class="far fa-play-circle"></i>
-                                            </div>
-                                            <div class="bg"></div>
-                                        </a>
-                                    </div>
+                            @foreach($property->videos as $video)
+                            <div class="col-md-6 col-lg-4">
+                                <div class="item">
+                                    <a class="video-button" href="http://www.youtube.com/watch?v={{ $video->video }}">
+                                        <img src="http://img.youtube.com/vi/{{ $video->video }}/0.jpg" alt="" />
+                                        <div class="icon">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="bg"></div>
+                                    </a>
                                 </div>
-                                @endforeach
-                            @endif
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
+                @endif
 
                 <div class="left-item mb_50">
                     <h2>Compartir</h2>
@@ -384,27 +382,38 @@
                                 </tr>
                                 <tr>
                                     <td><b>Año de construcción:</b></td>
-                                    <td>{{ $property->built_year }}</td>
+                                    <td>
+                                        @if(!empty($property->built_year))
+                                            {{ $property->built_year }}
+                                        @else
+                                            <span class="text-muted fst-italic">No especificado</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
 
-                <div class="right-item">
-                    <h2>Comodidades</h2>
-                    <div class="amenity">
-                        <ul class="amenity-ul">
-                            @php
-                            $amenity_arr = explode(',', $property->amenities);
-                            $amenity = \App\Models\Amenity::whereIn('id', $amenity_arr)->get();
-                            @endphp
-                            @foreach($amenity as $item)
-                                <li><i class="fas fa-check-square"></i> {{ $item->name }}</li>
-                            @endforeach
-                        </ul>
+                @php
+                    //Procesamos los IDs y hacemos la consulta al inicio
+                    $amenity_arr = !empty($property->amenities) ? explode(',', $property->amenities) : [];
+                    $amenity = !empty($amenity_arr) ? \App\Models\Amenity::whereIn('id', $amenity_arr)->get() : collect();
+                @endphp
+
+                <!-- Solo si la colección NO está vacía, dibujamos el contenedor -->
+                @if(!$amenity->isEmpty())
+                    <div class="right-item">
+                        <h2>Comodidades</h2>
+                        <div class="amenity">
+                            <ul class="amenity-ul">
+                                @foreach($amenity as $item)
+                                    <li><i class="fas fa-check-square"></i> {{ $item->name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @endif
 
                 @if(!empty($property->map) && str_starts_with($property->map, 'https://www.google.com/maps/embed'))
                 <div class="right-item">
