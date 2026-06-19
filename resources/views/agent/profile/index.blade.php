@@ -37,29 +37,35 @@
                         <div class="col-md-12 mb-3">
                             <label for="">Cambiar foto</label>
                             <div class="form-group">
-                                <input type="file" name="photo">
+                                <input
+                                    type="file"
+                                    name="photo"
+                                    id="featured_photo_source"
+                                    class="form-control"
+                                    accept="image/jpeg,image/png,image/webp"
+                                >
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Nombre *</label>
+                            <label for="">Nombre <span class="text-danger">*</span></label>
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" value="{{ Auth::guard('agent')->user()->name }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Correo electrónico *</label>
+                            <label for="">Correo electrónico <span class="text-danger">*</span></label>
                             <div class="form-group">
                                 <input type="text" name="email" class="form-control" value="{{ Auth::guard('agent')->user()->email }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Empresa *</label>
+                            <label for="">Empresa <span class="text-danger">*</span></label>
                             <div class="form-group">
                                 <input type="text" name="company" class="form-control" value="{{ Auth::guard('agent')->user()->company }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Cargo *</label>
+                            <label for="">Cargo <span class="text-danger">*</span></label>
                             <div class="form-group">
                                 <input type="text" name="designation" class="form-control" value="{{ Auth::guard('agent')->user()->designation }}">
                             </div>
