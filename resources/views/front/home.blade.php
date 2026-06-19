@@ -238,13 +238,12 @@
             </div>
 
             {{-- Carrucel de propiedades --}}
-            <div class="row">
+            <div class="property-carousel owl-carousel">
                 @foreach($properties as $item)
-                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="item">
                         {{-- PARTE SUPERIOR --}}
                         <div class="photo">
-                            <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
+                            <img class="main" src="{{ asset('uploads/'.$item->featured_photo) }}" alt="{{ $item->name }}">
                             <div class="top">
                                 @if($item->purpose == 'Venta')
                                 <div class="status-sale fw-bold">
@@ -319,7 +318,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
 

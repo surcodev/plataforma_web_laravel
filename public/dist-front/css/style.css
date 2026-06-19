@@ -798,21 +798,52 @@ p {font-weight: 400;}
     transition: all 0.5s;
     position: relative;
 }
+.property-carousel .owl-stage {
+    display: flex;
+}
+.property-carousel .owl-item {
+    display: flex;
+    height: auto;
+}
+.property-carousel .item {
+    width: 100%;
+}
 .property .item .photo {
     position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
 }
 .property .item .photo img.main {
     width: 100%;
-    height: 180px;
+    height: 100%;
     object-fit: cover;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
-@media only screen and (max-width: 767px) {
-    .property .item .photo img.main {
-        height: auto;
-        object-fit: none;
-    }
+.property-carousel .owl-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 0 18px;
+}
+.property-carousel .owl-nav button.owl-prev,
+.property-carousel .owl-nav button.owl-next {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #0041d9;
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 42px;
+    transition: background-color 0.2s ease;
+}
+.property-carousel .owl-nav button.owl-prev:hover,
+.property-carousel .owl-nav button.owl-next:hover {
+    background: #0d6efd;
+}
+.property-carousel .owl-nav button.disabled {
+    cursor: default;
+    opacity: 0.4;
 }
 .property .item .photo .top {
     position: absolute;

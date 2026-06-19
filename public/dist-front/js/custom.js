@@ -52,6 +52,36 @@
 
     $('.select2').select2();
 
+    $(".property-carousel").each(function () {
+        const itemCount = $(this).children().length;
+
+        $(this).owlCarousel({
+            loop: itemCount > 3,
+            autoplay: itemCount > 1,
+            autoplayHoverPause: true,
+            autoplayTimeout: 5000,
+            smartSpeed: 700,
+            margin: 24,
+            nav: itemCount > 1,
+            dots: false,
+            navText: [
+                "<i class='fa fa-chevron-left'></i>",
+                "<i class='fa fa-chevron-right'></i>",
+            ],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                1200: {
+                    items: 3
+                },
+            },
+        });
+    });
+
     $(".testimonial-carousel").owlCarousel({
         loop: true,
         autoplay: true,

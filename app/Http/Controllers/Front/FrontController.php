@@ -29,6 +29,7 @@ class FrontController extends Controller
     public function index()
     {
         $properties = Property::where('status', 'Active')->where('is_featured','Yes')
+            ->with(['type', 'location'])
             ->whereHas('agent', function($query) {
                 $query->whereHas('orders', function($q) {
                     $q->where('currently_active', 1)
@@ -37,7 +38,6 @@ class FrontController extends Controller
                 });
             })
         ->orderBy('id', 'asc')
-        ->take(3)
         ->get();
 
         $types = Type::orderBy('name','asc')->get();
