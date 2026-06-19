@@ -25,6 +25,7 @@
     />
 
     @include('front.layouts.style')
+    @stack('styles')
     @include('front.layouts.script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

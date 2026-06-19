@@ -82,7 +82,9 @@
 
     tinymce.init({
         selector: '.editor',
-        height: '300'
+        height: 300,
+        promotion: false,
+        branding: false,
     });
 
     $('.select2').select2();

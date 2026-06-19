@@ -1,12 +1,13 @@
 <script src="{{ asset('dist-front/js/custom.js') }}"></script>
 
 @if($errors->any())
-    @foreach($errors->all() as $error)
+    {{-- iziToast apila el último toast creado en la parte superior. --}}
+    @foreach(array_reverse($errors->all()) as $error)
         <script>
             iziToast.error({
-                message: '{{ $error }}',
+                message: @json($error),
                 position: 'topRight',
-                timeout: 5000,
+                timeout: 15000,
                 progressBarColor: '#FF0000',
             });
         </script>
@@ -16,7 +17,7 @@
 @if(session('success'))
     <script>
         iziToast.success({
-            message: '{{ session('success') }}',
+            message: @json(session('success')),
             position: 'topRight',
             timeout: 5000,
             progressBarColor: '#00FF00',
@@ -27,9 +28,9 @@
 @if(session('error'))
     <script>
         iziToast.error({
-            message: '{{ session('error') }}',
+            message: @json(session('error')),
             position: 'topRight',
-            timeout: 5000,
+            timeout: 15000,
             progressBarColor: '#FF0000',
         });
     </script>

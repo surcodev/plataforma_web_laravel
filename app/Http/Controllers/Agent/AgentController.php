@@ -21,6 +21,9 @@ use App\Models\MessageReply;
 use App\Models\User;
 use App\Mail\Websitemail;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class AgentController extends Controller
 {
@@ -561,15 +564,33 @@ class AgentController extends Controller
             'bedroom' => ['required', 'numeric'],
             'bathroom' => ['required', 'numeric'],
             'address' => ['required'],
-            'address' => ['required'],
             'map' => ['url', 'regex:/^https:\/\/www\.google\.com\/maps\/embed\?pb=.+$/'],
-            'featured_photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'featured_photo' => ['required','image','mimes:jpeg,png,jpg,webp','max:4096'],
         ], [
-            'map.regex' => 'La URL debe ser un mapa embed de Google Maps válido.'
+            'required' => 'Completa el campo :attribute.',
+            'numeric' => 'Ingresa un número válido en el campo :attribute.',
+            'slug.unique' => 'Este slug ya pertenece a otra propiedad. Prueba con uno diferente.',
+            'slug.regex' => 'El slug solo puede contener letras, números y guiones, sin espacios. Ejemplo: casa-en-venta-lima.',
+            'map.url' => 'La dirección del mapa no es una URL válida.',
+            'map.regex' => 'Usa el enlace de inserción de Google Maps que comienza con https://www.google.com/maps/embed?pb=',
+            'featured_photo.required' => 'Selecciona una foto destacada y confirma el recorte antes de guardar.',
+            'featured_photo.image' => 'El archivo seleccionado para la foto destacada no es una imagen válida.',
+            'featured_photo.mimes' => 'La foto destacada debe estar en formato JPG, PNG o WebP.',
+            'featured_photo.max' => 'La foto destacada es demasiado pesada. Después del recorte no debe superar los 4 MB.',
+        ], [
+            'name' => 'Nombre',
+            'slug' => 'Slug',
+            'price_dolar' => 'Precio (USD)',
+            'price' => 'Precio (S/)',
+            'size' => 'Área (m²)',
+            'bedroom' => 'Habitaciones',
+            'bathroom' => 'Baños',
+            'address' => 'Dirección',
+            'map' => 'Mapa de ubicación',
+            'featured_photo' => 'Foto destacada',
         ]);
 
-        $final_name = 'property_f_photo_'.time().'.'.$request->featured_photo->extension();
-        $request->featured_photo->move(public_path('uploads'), $final_name);
+        $final_name = $this->storeFeaturedPhoto($request->file('featured_photo'));
 
         $property = new Property();
         $property->agent_id = Auth::guard('agent')->user()->id;
@@ -609,6 +630,73 @@ class AgentController extends Controller
         return redirect()->route('agent_property_index')->with('success', 'Propiedad creada exitosamente');
     }
 
+    private function storeFeaturedPhoto(UploadedFile $file): string
+    {
+        $sourceData = file_get_contents($file->getRealPath());
+        $sourceImage = $sourceData !== false ? @imagecreatefromstring($sourceData) : false;
+
+        if ($sourceImage === false) {
+            throw ValidationException::withMessages([
+                'featured_photo' => 'No pudimos leer la foto destacada. Selecciona otra imagen JPG, PNG o WebP e inténtalo nuevamente.',
+            ]);
+        }
+
+        $sourceWidth = imagesx($sourceImage);
+        $sourceHeight = imagesy($sourceImage);
+        $targetRatio = 16 / 9;
+        $sourceRatio = $sourceWidth / $sourceHeight;
+
+        if ($sourceRatio > $targetRatio) {
+            $cropHeight = $sourceHeight;
+            $cropWidth = (int) round($cropHeight * $targetRatio);
+            $sourceX = (int) floor(($sourceWidth - $cropWidth) / 2);
+            $sourceY = 0;
+        } else {
+            $cropWidth = $sourceWidth;
+            $cropHeight = (int) round($cropWidth / $targetRatio);
+            $sourceX = 0;
+            $sourceY = (int) floor(($sourceHeight - $cropHeight) / 2);
+        }
+
+        $outputWidth = min(1600, $cropWidth);
+        $outputHeight = (int) round($outputWidth * 9 / 16);
+        $outputImage = imagecreatetruecolor($outputWidth, $outputHeight);
+        $white = imagecolorallocate($outputImage, 255, 255, 255);
+        imagefill($outputImage, 0, 0, $white);
+
+        imagecopyresampled(
+            $outputImage,
+            $sourceImage,
+            0,
+            0,
+            $sourceX,
+            $sourceY,
+            $outputWidth,
+            $outputHeight,
+            $cropWidth,
+            $cropHeight
+        );
+
+        $uploadDirectory = public_path('uploads');
+        if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory, 0755, true);
+        }
+
+        $fileName = 'property_f_photo_'.now()->format('YmdHis').'_'.Str::lower(Str::random(8)).'.webp';
+        $saved = imagewebp($outputImage, $uploadDirectory.DIRECTORY_SEPARATOR.$fileName, 82);
+
+        imagedestroy($sourceImage);
+        imagedestroy($outputImage);
+
+        if (!$saved) {
+            throw ValidationException::withMessages([
+                'featured_photo' => 'No pudimos guardar la foto optimizada. Vuelve a seleccionarla y confirma el recorte.',
+            ]);
+        }
+
+        return $fileName;
+    }
+
     public function property_edit($id) 
     {
         $property = Property::where('id',$id)->where('agent_id', Auth::guard('agent')->user()->id)->first();
@@ -640,18 +728,40 @@ class AgentController extends Controller
             'address' => ['required'],
             'map' => ['url', 'regex:/^https:\/\/www\.google\.com\/maps\/embed\?pb=.+$/'],
         ], [
-            'map.regex' => 'La URL debe ser un mapa embed de Google Maps válido.'
+            'required' => 'Completa el campo :attribute.',
+            'numeric' => 'Ingresa un número válido en el campo :attribute.',
+            'slug.unique' => 'Este slug ya pertenece a otra propiedad. Prueba con uno diferente.',
+            'slug.regex' => 'El slug solo puede contener letras, números y guiones, sin espacios. Ejemplo: casa-en-venta-lima.',
+            'map.url' => 'La dirección del mapa no es una URL válida.',
+            'map.regex' => 'Usa el enlace de inserción de Google Maps que comienza con https://www.google.com/maps/embed?pb=',
+        ], [
+            'name' => 'Nombre',
+            'slug' => 'Slug',
+            'price_dolar' => 'Precio (USD)',
+            'price' => 'Precio (S/)',
+            'size' => 'Área (m²)',
+            'bedroom' => 'Habitaciones',
+            'bathroom' => 'Baños',
+            'address' => 'Dirección',
+            'map' => 'Mapa de ubicación',
         ]);
 
         if($request->featured_photo){
             $request->validate([
-                'featured_photo' => ['image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+                'featured_photo' => ['image','mimes:jpeg,png,jpg,webp','max:4096'],
+            ], [
+                'featured_photo.image' => 'El archivo seleccionado para la foto destacada no es una imagen válida.',
+                'featured_photo.mimes' => 'La foto destacada debe estar en formato JPG, PNG o WebP.',
+                'featured_photo.max' => 'La foto destacada es demasiado pesada. Después del recorte no debe superar los 4 MB.',
             ]);
-            $final_name = 'property_f_photo_'.time().'.'.$request->featured_photo->extension();
-            if($property->featured_photo != '') {
-                unlink(public_path('uploads/'.$property->featured_photo));
+
+            $final_name = $this->storeFeaturedPhoto($request->file('featured_photo'));
+            $currentPhoto = public_path('uploads/'.$property->featured_photo);
+
+            if($property->featured_photo != '' && file_exists($currentPhoto)) {
+                unlink($currentPhoto);
             }
-            $request->featured_photo->move(public_path('uploads'), $final_name);
+
             $property->featured_photo = $final_name;
         }
 
