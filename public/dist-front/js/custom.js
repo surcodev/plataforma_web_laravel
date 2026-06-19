@@ -30,11 +30,46 @@
         },
     });
 
-    $(".magnific").magnificPopup({
+    const propertyGalleryItems = $(".property-photo-gallery .magnific");
+
+    propertyGalleryItems.magnificPopup({
         type: "image",
         gallery: {
             enabled: true,
+            navigateByImgClick: false,
         },
+        callbacks: {
+            open: function () {
+                $(document)
+                    .off("click.propertyGalleryZoom")
+                    .on("click.propertyGalleryZoom", ".mfp-img", function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        const image = $(this);
+                        const imageBounds = this.getBoundingClientRect();
+                        const originX = ((event.clientX - imageBounds.left) / imageBounds.width) * 100;
+                        const originY = ((event.clientY - imageBounds.top) / imageBounds.height) * 100;
+
+                        if (!image.hasClass("is-zoomed")) {
+                            image.css("transform-origin", `${originX}% ${originY}%`);
+                        }
+
+                        image.toggleClass("is-zoomed");
+                    });
+            },
+            change: function () {
+                $(".mfp-img").removeClass("is-zoomed").css("transform-origin", "");
+            },
+            close: function () {
+                $(document).off("click.propertyGalleryZoom");
+            },
+        },
+    });
+
+    $(".property-gallery-trigger").on("click", function (event) {
+        event.preventDefault();
+        propertyGalleryItems.first().trigger("click");
     });
     
     jQuery(".mean-menu").meanmenu({

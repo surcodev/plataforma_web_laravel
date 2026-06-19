@@ -22,7 +22,9 @@
             <div class="col-lg-8 col-md-12">
                 <div class="left-item">
                     <div class="main-photo">
-                        <img src="{{ asset('uploads/'.$property->featured_photo) }}" alt="">
+                        <a href="#" class="property-gallery-trigger" aria-label="Abrir galería de {{ $property->name }}">
+                            <img src="{{ asset('uploads/'.$property->featured_photo) }}" alt="{{ $property->name }}">
+                        </a>
                     </div>
                     <h2>
                         Descripción
@@ -33,17 +35,28 @@
                     <h2>
                         Fotos
                     </h2>
-                    <div class="photo-all">
+                    <div class="photo-all property-photo-gallery">
                         <div class="row">
-                            @if($property->photos->count() == 0)
+                            @php
+                                $galleryPhotos = collect([$property->featured_photo])
+                                    ->merge($property->photos->pluck('photo'))
+                                    ->filter()
+                                    ->unique()
+                                    ->values();
+                                $photoCount = $galleryPhotos->count();
+                                $galleryCardLimit = 3;
+                                $visiblePhotoCount = $galleryCardLimit - 1;
+                            @endphp
+
+                            @if($photoCount == 0)
                                 <span class="text-danger">No hay fotos disponibles</span>
-                            @else
-                                @foreach($property->photos as $photo)
+                            @elseif($photoCount <= $galleryCardLimit)
+                                @foreach($galleryPhotos as $photo)
                                 <div class="col-md-6 col-lg-4">
                                     <div class="item">
-                                        <a href="{{ asset('uploads/'.$photo->photo) }}" class="magnific">
-                                            <img src="{{ asset('uploads/'.$photo->photo) }}" alt="">
-                                            
+                                        <a href="{{ asset('uploads/'.$photo) }}" class="magnific">
+                                            <img src="{{ asset('uploads/'.$photo) }}" alt="Foto de {{ $property->name }}">
+
                                             <div class="icon">
                                                 <i class="fa fa-search-plus" aria-hidden="true"></i>
                                             </div>
@@ -52,6 +65,45 @@
                                         </a>
                                     </div>
                                 </div>
+                                @endforeach
+                            @else
+                                @foreach($galleryPhotos->take($visiblePhotoCount) as $photo)
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="item">
+                                        <a href="{{ asset('uploads/'.$photo) }}" class="magnific">
+                                            <img src="{{ asset('uploads/'.$photo) }}" alt="Foto de {{ $property->name }}">
+
+                                            <div class="icon">
+                                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                            </div>
+
+                                            <div class="bg"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                                @php
+                                    $morePhotosCover = $galleryPhotos->get($visiblePhotoCount);
+                                @endphp
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="item gallery-more-item">
+                                        <a href="{{ asset('uploads/'.$morePhotosCover) }}" class="magnific">
+                                            <img src="{{ asset('uploads/'.$morePhotosCover) }}" alt="Ver más fotos de {{ $property->name }}">
+                                            <div class="gallery-more-overlay">
+                                                <span>+{{ $photoCount - $visiblePhotoCount }} más</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                @foreach($galleryPhotos->skip($galleryCardLimit) as $photo)
+                                    <a
+                                        href="{{ asset('uploads/'.$photo) }}"
+                                        class="magnific d-none"
+                                        aria-hidden="true"
+                                        tabindex="-1"
+                                    ></a>
                                 @endforeach
                             @endif
                         </div>
