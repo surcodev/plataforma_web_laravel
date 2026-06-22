@@ -22,6 +22,8 @@ use App\Models\User;
 use App\Mail\Websitemail;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -278,6 +280,10 @@ class AgentController extends Controller
             ],
             "purchase_units" => [
                 [
+                    "custom_id" => json_encode([
+                        'agent_id' => Auth::guard('agent')->user()->id,
+                        'package_id' => $package_data->id,
+                    ], JSON_THROW_ON_ERROR),
                     "amount" => [
                         "currency_code" => "USD",
                         "value" => $package_data->price
@@ -300,33 +306,47 @@ class AgentController extends Controller
 
     public function paypal_success(Request $request)
     {
-        $provider = new PayPalClient;
+        $provider = app(PayPalClient::class);
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request->token);
         //dd($response);
         if(isset($response['status']) && $response['status'] == 'COMPLETED') {
+            $transactionId = data_get($response, 'purchase_units.0.payments.captures.0.id')
+                ?? ($response['id'] ?? null);
+
+            if (empty($transactionId)) {
+                return redirect()->route('agent_payment')->with('error', 'PayPal no devolvió un identificador válido para la transacción.');
+            }
+
+            if (Order::where('transaction_id', $transactionId)->exists()) {
+                session()->forget('package_id');
+
+                return redirect()->route('agent_payment')->with('error', 'Esta transacción de PayPal ya fue procesada anteriormente.');
+            }
 
             $package_data = Package::where('id',session()->get('package_id'))->first();
+            if (!$package_data) {
+                session()->forget('package_id');
+
+                return redirect()->route('agent_payment')->with('error', 'No se pudo identificar el plan asociado al pago.');
+            }
+
             $invoice_no = 'INV-'.Auth::guard('agent')->user()->id.'-'.time();
             $admin_data = Admin::where('id',1)->first();
-            
-            // All previous orders will be currently_active as 0
-            Order::where('agent_id', Auth::guard('agent')->user()->id)->update(['currently_active' => 0]);
 
-            // Insert data into database
-            $order = new Order;
-            $order->agent_id = Auth::guard('agent')->user()->id;
-            $order->package_id = session()->get('package_id');
-            $order->invoice_no = $invoice_no;
-            $order->transaction_id = $response['id'];
-            $order->payment_method = 'PayPal';
-            $order->paid_amount = $package_data->price;
-            $order->purchase_date = date('Y-m-d');
-            $order->expire_date = date('Y-m-d', strtotime('+'.$package_data->allowed_days.' days'));
-            $order->status = 'Completed';
-            $order->currently_active = 1;
-            $order->save();
+            $order = $this->registerCompletedPayPalPayment(
+                Auth::guard('agent')->user()->id,
+                $package_data,
+                $transactionId,
+                $invoice_no
+            );
+
+            if (!$order) {
+                session()->forget('package_id');
+
+                return redirect()->route('agent_payment')->with('error', 'Esta transacción de PayPal ya fue procesada anteriormente.');
+            }
 
             // Sending email to user
             $link = route('agent_order');
@@ -336,7 +356,7 @@ class AgentController extends Controller
             $message .= 'Invoice No: '.$invoice_no.'<br>';
             $message .= 'Payment Method: PayPal<br>';
             // $message .= 'Transaction ID: '.$response->id.'<br>';
-            $message .= 'Transaction ID: '.$response['id'].'<br>';
+            $message .= 'Transaction ID: '.$transactionId.'<br>';
             $message .= 'Package Name: '.$package_data->name.'<br>';
             $message .= 'Paid Amount: $'.$package_data->price.'<br>';
             $message .= 'Purchase Date: '.date('Y-m-d').'<br>';
@@ -357,9 +377,9 @@ class AgentController extends Controller
             $message .= 'Invoice No: '.$invoice_no.'<br>';
             $message .= 'Agent Name: '.Auth::guard('agent')->user()->name.'<br>';
             $message .= 'Agent Email: '.Auth::guard('agent')->user()->email.'<br>';
-            $message .= 'Payment Method: Stripe<br>';
+            $message .= 'Payment Method: PayPal<br>';
             // $message .= 'Transaction ID: '.$response->id.'<br>';
-            $message .= 'Transaction ID: '.$response['id'].'<br>';
+            $message .= 'Transaction ID: '.$transactionId.'<br>';
             $message .= 'Package Name: '.$package_data->name.'<br>';
             $message .= 'Paid Amount: $'.$package_data->price.'<br>';
             $message .= 'Purchase Date: '.date('Y-m-d').'<br>';
@@ -390,6 +410,109 @@ class AgentController extends Controller
         return redirect()
             ->route('agent_payment')
             ->with('error', 'El pago fue cancelado. No se realizó ningún cargo.');
+    }
+
+    public function paypal_webhook(Request $request)
+    {
+        if ($request->input('event_type') !== 'PAYMENT.SALE.COMPLETED') {
+            return response()->json(['status' => 'ignored']);
+        }
+
+        $webhookId = config('paypal.webhook_id');
+        if (empty($webhookId)) {
+            return response()->json(['message' => 'PayPal webhook ID is not configured.'], 503);
+        }
+
+        $provider = app(PayPalClient::class);
+        $provider->setApiCredentials(config('paypal'));
+        $provider->getAccessToken();
+        $verification = $provider
+            ->setWebHookID($webhookId)
+            ->verifyIPN($request);
+
+        if (($verification['verification_status'] ?? null) !== 'SUCCESS') {
+            return response()->json(['message' => 'Invalid PayPal webhook signature.'], 401);
+        }
+
+        $transactionId = $request->input('resource.id');
+        $customId = $request->input('resource.custom_id', $request->input('resource.custom'));
+        $metadata = is_string($customId) ? json_decode($customId, true) : null;
+        $agentId = (int) ($metadata['agent_id'] ?? 0);
+        $packageId = (int) ($metadata['package_id'] ?? 0);
+
+        if (empty($transactionId) || $agentId < 1 || $packageId < 1) {
+            return response()->json(['message' => 'Incomplete PayPal webhook payload.'], 422);
+        }
+
+        $agent = Agent::find($agentId);
+        $package = Package::find($packageId);
+        if (!$agent || !$package) {
+            return response()->json(['message' => 'Agent or package not found.'], 422);
+        }
+
+        $paidAmount = $request->input('resource.amount.total', $request->input('resource.amount.value'));
+        $currency = $request->input('resource.amount.currency', $request->input('resource.amount.currency_code'));
+
+        if ($currency !== 'USD' || $paidAmount === null || (float) $paidAmount !== (float) $package->price) {
+            return response()->json(['message' => 'PayPal payment amount does not match the package.'], 422);
+        }
+
+        $order = $this->registerCompletedPayPalPayment(
+            $agent->id,
+            $package,
+            $transactionId,
+            'INV-'.$agent->id.'-'.time()
+        );
+
+        return response()->json([
+            'status' => $order ? 'processed' : 'already_processed',
+        ]);
+    }
+
+    private function registerCompletedPayPalPayment(
+        int $agentId,
+        Package $package,
+        string $transactionId,
+        string $invoiceNo
+    ): ?Order {
+        if (Order::where('transaction_id', $transactionId)->exists()) {
+            return null;
+        }
+
+        try {
+            return DB::transaction(function () use ($agentId, $package, $transactionId, $invoiceNo): Order {
+                Order::where('agent_id', $agentId)->update(['currently_active' => 0]);
+
+                $order = new Order;
+                $order->agent_id = $agentId;
+                $order->package_id = $package->id;
+                $order->invoice_no = $invoiceNo;
+                $order->transaction_id = $transactionId;
+                $order->payment_method = 'PayPal';
+                $order->paid_amount = $package->price;
+                $order->purchase_date = date('Y-m-d');
+                $order->expire_date = date('Y-m-d', strtotime('+'.$package->allowed_days.' days'));
+                $order->status = 'Completed';
+                $order->currently_active = 1;
+                $order->save();
+
+                return $order;
+            });
+        } catch (QueryException $exception) {
+            if ($this->isDuplicateTransactionException($exception)) {
+                return null;
+            }
+
+            throw $exception;
+        }
+    }
+
+    private function isDuplicateTransactionException(QueryException $exception): bool
+    {
+        $driverErrorCode = $exception->errorInfo[1] ?? null;
+
+        return in_array($driverErrorCode, [19, 1062], true)
+            || in_array($exception->getCode(), ['23000', '23505'], true);
     }
 
     public function stripe(Request $request)
