@@ -87,7 +87,7 @@ class PayPalPaymentTest extends TestCase
             'PAYPAL-TRANSMISSION-TIME' => now()->toIso8601String(),
         ])->postJson(route('paypal_webhook'), [
             'id' => 'WH-EVENT-TEST-001',
-            'event_type' => 'PAYMENT.SALE.COMPLETED',
+            'event_type' => 'PAYMENT.CAPTURE.COMPLETED',
             'resource' => [
                 'id' => $transactionId,
                 'state' => 'completed',
