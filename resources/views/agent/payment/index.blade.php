@@ -45,7 +45,7 @@
                             <td>
                                 <form action="{{ route('agent_paypal') }}" method="post">
                                 @csrf
-                                <select name="package_id" class="form-control select2">
+                                <select name="package_id" class="form-select">
                                     @foreach($packages as $package)
                                         <option value="{{ $package->id }}">{{ $package->name }} (${{ $package->price }})</option>
                                     @endforeach
@@ -53,21 +53,6 @@
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-secondary btn-sm buy-button">Pagar con PayPal</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr class="d-none">
-                            <td>
-                                <form action="{{ route('agent_stripe') }}" method="post">
-                                @csrf
-                                <select name="package_id" class="form-control select2">
-                                    @foreach($packages as $package)
-                                        <option value="{{ $package->id }}">{{ $package->name }} (${{ $package->price }})</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td>
-                                <button type="submit" class="btn btn-secondary btn-sm buy-button">Pagar con Stripe</button>
                                 </form>
                             </td>
                         </tr>

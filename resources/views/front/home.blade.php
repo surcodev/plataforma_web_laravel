@@ -18,47 +18,6 @@
                     </p>
                 </div>
 
-                {{-- FILTROS (OCULTO)--}}
-                <div class="search-section d-none">
-                    <form action="{{ route('property_search') }}" method="get">
-                        <div class="inner">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <input type="text" name="name" class="form-control" placeholder="Encuentra lo que buscas ..." value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="form-group">
-                                        <select name="location" class="form-select select2 w-100-p">
-                                            <option value="">Seleccionar ubicación</option>
-                                            @foreach($search_locations as $location)
-                                                <option value="{{ $location->id }}">{{ $location->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="form-group">
-                                        <select name="type" class="form-select select2 w-100-p">
-                                            <option value="">Selecionar tipo</option>
-                                            @foreach($search_types as $type)
-                                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-search"></i>
-                                        Buscar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
                 {{-- ICONOS Y BOTONES --}}
                 <div class="search-section mt-0">
                     <div class="inner border-0 p-0">

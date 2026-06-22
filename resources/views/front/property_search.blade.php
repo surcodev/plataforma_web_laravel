@@ -30,7 +30,7 @@
 
                         <div class="widget">
                             <h2>Ubicación</h2>
-                            <select name="location" class="form-control select2">
+                            <select name="location" class="form-select">
                                 <option value="">Seleccionar ubicación</option>
                                 @foreach($locations as $location)
                                     <option value="{{ $location->id }}" @if($form_location == $location->id) selected @endif>{{ $location->name }}</option>
@@ -40,7 +40,7 @@
 
                         <div class="widget">
                             <h2>Tipo</h2>
-                            <select name="type" class="form-control select2">
+                            <select name="type" class="form-select">
                                 <option value="">Seleccionar tipo</option>
                                 @foreach($types as $type)
                                     <option value="{{ $type->id }}" @if($form_type == $type->id) selected @endif>{{ $type->name }}</option>
@@ -50,7 +50,7 @@
 
                         {{-- <div class="widget d-none">
                             <h2>Propósito</h2>
-                            <select name="purpose" class="form-control select2" onchange="this.form.submit()">
+                            <select name="purpose" class="form-select" onchange="this.form.submit()">
                                 <option value="Seleccionar propósito"></option>
                                 <option value="Rent" @if($form_purpose == 'Rent') selected @endif>En alquiler</option>
                                 <option value="Sale" @if($form_purpose == 'Sale') selected @endif>En venta</option>
@@ -59,7 +59,7 @@
 
                         {{-- <div class="widget">
                             <h2>Comodidades</h2>
-                            <select name="amenity" class="form-control select2" onchange="this.form.submit()">
+                            <select name="amenity" class="form-select" onchange="this.form.submit()">
                                 <option value="">Seleccionar comodidad</option>
                                 @foreach($amenities as $amenity)
                                     <option value="{{ $amenity->id }}" @if($form_amenity == $amenity->id) selected @endif>{{ $amenity->name }}</option>
@@ -69,7 +69,7 @@
 
                         <div class="widget">
                             <h2>Habitaciones</h2>
-                            <select name="bedroom" class="form-control select2" onchange="this.form.submit()">
+                            <select name="bedroom" class="form-select" onchange="this.form.submit()">
                                 <option value="">Número de habitaciones</option>
                                 @for($i=1;$i<=50;$i++)
                                     <option value="{{ $i }}" @if($form_bedroom == $i) selected @endif>{{ $i }}</option>
@@ -79,7 +79,7 @@
 
                         <div class="widget">
                             <h2>Baños</h2>
-                            <select name="bathroom" class="form-control select2" onchange="this.form.submit()">
+                            <select name="bathroom" class="form-select" onchange="this.form.submit()">
                                 <option value="">Número de baños</option>
                                 @for($i=1;$i<=50;$i++)
                                     <option value="{{ $i }}" @if($form_bathroom == $i) selected @endif>{{ $i }}</option>
