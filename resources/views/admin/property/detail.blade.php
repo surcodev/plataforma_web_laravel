@@ -61,13 +61,11 @@
                                     <tr>
                                         <th>Comodidades</th>
                                         <td>
-                                            @php
-                                            $amenity_arr = explode(',', $property->amenities);
-                                            $amenity = \App\Models\Amenity::whereIn('id', $amenity_arr)->get();
-                                            foreach($amenity as $item) {
-                                                echo '<span class="badge bg-primary me-1">'.$item->name.'</span>';
-                                            }
-                                            @endphp
+                                            @if($amenities->isNotEmpty())
+                                                @foreach($amenities as $amenity)
+                                                    <span class="badge bg-primary me-1">{{ $amenity->name }}</span>
+                                                @endforeach
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>

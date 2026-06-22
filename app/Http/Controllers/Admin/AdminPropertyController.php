@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Amenity;
 use App\Models\Property;
 use App\Models\PropertyPhoto;
 use App\Models\Agent;
@@ -20,7 +21,22 @@ class AdminPropertyController extends Controller
     public function detail($id)
     {
         $property = Property::where('id',$id)->first();
-        return view('admin.property.detail', compact('property'));
+
+        $amenityIds = collect(explode(',', (string) $property->amenities))
+            ->map(static fn (string $id): int => (int) trim($id))
+            ->filter(static fn (int $id): bool => $id > 0)
+            ->unique()
+            ->values();
+
+        $amenities = $amenityIds->isEmpty()
+            ? collect()
+            : Amenity::query()
+                ->whereIn('id', $amenityIds)
+                ->get()
+                ->sortBy(static fn (Amenity $amenity) => $amenityIds->search($amenity->id))
+                ->values();
+
+        return view('admin.property.detail', compact('property', 'amenities'));
     }
 
     public function change_status($id)
