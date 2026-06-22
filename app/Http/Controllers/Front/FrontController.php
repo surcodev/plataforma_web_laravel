@@ -244,7 +244,21 @@ class FrontController extends Controller
             return redirect()->route('front.home')->with('error', 'Propiedad no encontrada');
         }
 
-        return view('front.property_detail', compact('property'));
+        $amenityIds = collect(explode(',', (string) $property->amenities))
+            ->map(static fn (string $id): int => (int) trim($id))
+            ->filter(static fn (int $id): bool => $id > 0)
+            ->unique()
+            ->values();
+
+        $amenities = $amenityIds->isEmpty()
+            ? collect()
+            : Amenity::query()
+                ->whereIn('id', $amenityIds)
+                ->get()
+                ->sortBy(static fn (Amenity $amenity) => $amenityIds->search($amenity->id))
+                ->values();
+
+        return view('front.property_detail', compact('property', 'amenities'));
     }
 
     public function property_send_message(Request $request,$id)

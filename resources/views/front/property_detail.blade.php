@@ -395,20 +395,13 @@
                     </div>
                 </div>
 
-                @php
-                    //Procesamos los IDs y hacemos la consulta al inicio
-                    $amenity_arr = !empty($property->amenities) ? explode(',', $property->amenities) : [];
-                    $amenity = !empty($amenity_arr) ? \App\Models\Amenity::whereIn('id', $amenity_arr)->get() : collect();
-                @endphp
-
-                <!-- Solo si la colección NO está vacía, dibujamos el contenedor -->
-                @if(!$amenity->isEmpty())
+                @if($amenities->isNotEmpty())
                     <div class="right-item">
                         <h2>Comodidades</h2>
                         <div class="amenity">
                             <ul class="amenity-ul">
-                                @foreach($amenity as $item)
-                                    <li><i class="fas fa-check-square"></i> {{ $item->name }}</li>
+                                @foreach($amenities as $amenity)
+                                    <li><i class="fas fa-check-square"></i> {{ $amenity->name }}</li>
                                 @endforeach
                             </ul>
                         </div>
