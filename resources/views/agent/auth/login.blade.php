@@ -31,9 +31,12 @@
                             <label for="" class="form-label">Contraseña *</label>
                             <input type="password" name="password" class="form-control">
                         </div>
-                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <a href="{{ route('agent_registration') }}" class="primary-color">
+                            ¿No tienes cuenta? Regístrate aquí
+                        </a>
+                        <div class="my-3 d-flex justify-content-between align-items-center">
                             <a href="{{ route('agent_forget_password') }}" class="primary-color">
-                                ¿Olvidó su contraseña?
+                                <u>¿Olvidó su contraseña?<u>
                             </a>
                             <button type="submit" class="btn btn-primary bg-website">
                                 Iniciar Sesión
