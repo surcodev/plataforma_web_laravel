@@ -414,6 +414,8 @@ class AgentController extends Controller
 
     public function paypal_webhook(Request $request)
     {
+        \Illuminate\Support\Facades\Log::info('¡ALERTA! El Webhook de PayPal acaba de tocar nuestra puerta.', $request->all());
+        
         if ($request->input('event_type') !== 'PAYMENT.SALE.COMPLETED') {
             return response()->json(['status' => 'ignored']);
         }
