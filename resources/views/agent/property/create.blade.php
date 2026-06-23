@@ -1,7 +1,8 @@
 @extends('front.layouts.master')
 
+<x-image-cropper-assets />
+
 @push('styles')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css">
 <style>
     .featured-photo-preview {
         width: min(100%, 520px);
@@ -16,26 +17,6 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
-
-    .featured-photo-crop-stage {
-        height: min(65vh, 650px);
-        min-height: 280px;
-        overflow: hidden;
-        background: #111827;
-    }
-
-    .featured-photo-crop-stage img {
-        display: block;
-        max-width: 100%;
-    }
-
-    #featuredPhotoCropModal {
-        z-index: 1000001;
-    }
-
-    .modal-backdrop {
-        z-index: 1000000;
     }
 
     .bootstrap-property-form .form-label {
@@ -112,7 +93,25 @@
             <div class="col-lg-9 col-md-12">
                 <form id="property-create-form" class="bootstrap-property-form" action="{{ route('agent_property_store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="col-12 mb-4">
+                    <div
+                        class="col-12 mb-4"
+                        data-image-cropper
+                        data-source-input="#featured_photo_source"
+                        data-upload-input="#featured_photo"
+                        data-preview-image="#featured_photo_preview"
+                        data-preview-wrapper="#featured_photo_preview_wrapper"
+                        data-recrop-button="#featured_photo_recrop"
+                        data-error="#featured_photo_client_error"
+                        data-form="#property-create-form"
+                        data-required="true"
+                        data-required-message="Selecciona y recorta la foto destacada antes de guardar."
+                        data-aspect-ratio="1.7777777778"
+                        data-width="1600"
+                        data-height="900"
+                        data-quality="0.84"
+                        data-file-name="featured-photo.webp"
+                        data-title="Recortar foto destacada (16:9)"
+                    >
                         <label for="featured_photo_source" class="form-label">Foto destacada <span class="text-danger">*</span></label>
                         <input
                             type="file"
@@ -290,29 +289,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="featuredPhotoCropModal" tabindex="-1" aria-labelledby="featuredPhotoCropModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="featuredPhotoCropModalLabel">Recortar foto destacada (16:9)</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <div class="featured-photo-crop-stage">
-                    <img id="featured_photo_crop_image" src="" alt="Imagen para recortar">
-                </div>
-                <small class="text-muted d-block mt-2">
-                    Arrastra la imagen y usa la rueda del mouse o gestos táctiles para ajustar el encuadre.
-                </small>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" id="featured_photo_apply_crop" class="btn btn-primary">Usar este recorte</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 {{-- Script para actualizar la vista previa en tiempo real --}}
 <script>
     const mapInput = document.getElementById('map');
@@ -365,142 +341,3 @@
     });
 </script>
 @endsection
-
-@push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
-<script>
-    (() => {
-        const form = document.getElementById('property-create-form');
-        const sourceInput = document.getElementById('featured_photo_source');
-        const uploadInput = document.getElementById('featured_photo');
-        const cropImage = document.getElementById('featured_photo_crop_image');
-        const preview = document.getElementById('featured_photo_preview');
-        const previewWrapper = document.getElementById('featured_photo_preview_wrapper');
-        const recropButton = document.getElementById('featured_photo_recrop');
-        const applyCropButton = document.getElementById('featured_photo_apply_crop');
-        const clientError = document.getElementById('featured_photo_client_error');
-        const modalElement = document.getElementById('featuredPhotoCropModal');
-        const cropModal = new bootstrap.Modal(modalElement);
-        let cropper = null;
-        let sourceUrl = '';
-        let previewUrl = '';
-
-        function showError(message) {
-            clientError.textContent = message;
-            clientError.classList.remove('d-none');
-        }
-
-        function clearError() {
-            clientError.textContent = '';
-            clientError.classList.add('d-none');
-        }
-
-        function openCropper() {
-            if (!sourceUrl) {
-                return;
-            }
-
-            cropImage.src = sourceUrl;
-            cropModal.show();
-        }
-
-        sourceInput.addEventListener('change', function () {
-            const file = this.files[0];
-            clearError();
-
-            if (!file) {
-                return;
-            }
-
-            if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-                this.value = '';
-                showError('Selecciona una imagen JPG, PNG o WebP.');
-                return;
-            }
-
-            if (file.size > 15 * 1024 * 1024) {
-                this.value = '';
-                showError('La imagen original no debe superar los 15 MB.');
-                return;
-            }
-
-            if (sourceUrl) {
-                URL.revokeObjectURL(sourceUrl);
-            }
-
-            sourceUrl = URL.createObjectURL(file);
-            openCropper();
-        });
-
-        modalElement.addEventListener('shown.bs.modal', function () {
-            cropper?.destroy();
-            cropper = new Cropper(cropImage, {
-                aspectRatio: 16 / 9,
-                viewMode: 1,
-                autoCropArea: 1,
-                responsive: true,
-                background: false,
-                checkOrientation: true,
-            });
-        });
-
-        modalElement.addEventListener('hidden.bs.modal', function () {
-            cropper?.destroy();
-            cropper = null;
-        });
-
-        applyCropButton.addEventListener('click', function () {
-            if (!cropper) {
-                return;
-            }
-
-            const canvas = cropper.getCroppedCanvas({
-                width: 1600,
-                height: 900,
-                imageSmoothingEnabled: true,
-                imageSmoothingQuality: 'high',
-                fillColor: '#ffffff',
-            });
-
-            canvas.toBlob((blob) => {
-                if (!blob) {
-                    showError('No se pudo procesar la imagen. Intenta con otro archivo.');
-                    return;
-                }
-
-                if (typeof DataTransfer === 'undefined') {
-                    showError('Tu navegador no permite preparar la imagen recortada. Actualízalo e intenta nuevamente.');
-                    return;
-                }
-
-                const croppedFile = new File([blob], 'featured-photo.webp', {
-                    type: 'image/webp',
-                    lastModified: Date.now(),
-                });
-                const transfer = new DataTransfer();
-                transfer.items.add(croppedFile);
-                uploadInput.files = transfer.files;
-
-                if (previewUrl) {
-                    URL.revokeObjectURL(previewUrl);
-                }
-                previewUrl = URL.createObjectURL(blob);
-                preview.src = previewUrl;
-                previewWrapper.classList.remove('d-none');
-                clearError();
-                cropModal.hide();
-            }, 'image/webp', 0.84);
-        });
-
-        recropButton.addEventListener('click', openCropper);
-
-        form.addEventListener('submit', function (event) {
-            if (!uploadInput.files.length) {
-                event.preventDefault();
-                showError('Selecciona y recorta la foto destacada antes de guardar.');
-                sourceInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        });
-    })();
-</script>
-@endpush

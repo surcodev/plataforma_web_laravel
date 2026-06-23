@@ -1,5 +1,31 @@
 @extends('front.layouts.master')
 
+<x-image-cropper-assets />
+
+@push('styles')
+<style>
+    .profile-photo-card {
+        max-width: 260px;
+    }
+
+    .profile-photo-preview {
+        width: 100%;
+        aspect-ratio: 1;
+        overflow: hidden;
+        border: 1px solid #d8dee6;
+        border-radius: 0.75rem;
+        background: #f3f4f6;
+    }
+
+    .profile-photo-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+</style>
+@endpush
+
 @section('main_content')
 <div class="page-top" style="background-image: url({{ asset('uploads/'.$global_setting->banner) }})">
     <div class="bg"></div>
@@ -21,29 +47,67 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <form action="{{ route('agent_profile_submit') }}" method="post" enctype="multipart/form-data">
+                <form id="agent-profile-form" action="{{ route('agent_profile_submit') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label for="">Foto existente</label>
-                            <div class="form-group">
-                                @if(Auth::guard('agent')->user()->photo == null)
-                                <img src="{{ asset('uploads/default.png') }}" alt="" class="user-photo">
-                                @else
-                                <img src="{{ asset('uploads/'.Auth::guard('agent')->user()->photo) }}" alt="" class="user-photo">
-                                @endif
-                            </div>
+                        <div
+                            class="col-md-12 mb-4"
+                            data-image-cropper
+                            data-source-input="#profile_photo_source"
+                            data-upload-input="#profile_photo"
+                            data-preview-image="#profile_photo_preview"
+                            data-preview-wrapper="#profile_photo_preview_wrapper"
+                            data-recrop-button="#profile_photo_recrop"
+                            data-error="#profile_photo_client_error"
+                            data-aspect-ratio="1"
+                            data-width="800"
+                            data-height="800"
+                            data-quality="0.84"
+                            data-file-name="profile-photo.webp"
+                            data-title="Recortar foto de perfil"
+                        >
+                            <label for="profile_photo_source" class="form-label">Cambiar foto de perfil</label>
+                            <input
+                                type="file"
+                                id="profile_photo_source"
+                                class="form-control"
+                                accept="image/jpeg,image/png,image/webp"
+                            >
+                            <input type="file" id="profile_photo" name="photo" class="d-none">
+                            <small class="text-muted">
+                                Selecciona una imagen, ajústala al formato cuadrado y se guardará optimizada en WebP.
+                            </small>
+                            @error('photo')
+                                <div class="text-danger mt-1">{{ $message }}</div>
+                            @enderror
+                            <div id="profile_photo_client_error" class="text-danger mt-1 d-none"></div>
                         </div>
-                        <div class="col-md-12 mb-3">
-                            <label for="">Cambiar foto</label>
-                            <div class="form-group">
-                                <input
-                                    type="file"
-                                    name="photo"
-                                    id="featured_photo_source"
-                                    class="form-control"
-                                    accept="image/jpeg,image/png,image/webp"
-                                >
+
+                        <div class="col-md-12 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-6">
+                                    <div class="profile-photo-card">
+                                        <label class="form-label">Foto actual</label>
+                                        <div class="profile-photo-preview">
+                                            <img
+                                                src="{{ asset('uploads/'.(Auth::guard('agent')->user()->photo ?: 'default.png')) }}"
+                                                alt="Foto de perfil actual"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="profile_photo_preview_wrapper" class="col-sm-6 d-none">
+                                    <div class="profile-photo-card">
+                                        <label class="form-label">Foto nueva</label>
+                                        <div class="profile-photo-preview">
+                                            <img id="profile_photo_preview" src="" alt="Vista previa de la nueva foto de perfil">
+                                        </div>
+                                        <button type="button" id="profile_photo_recrop" class="btn btn-outline-primary btn-sm mt-2">
+                                            Ajustar recorte
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -167,4 +231,5 @@
         </div>
     </div>
 </div>
+
 @endsection

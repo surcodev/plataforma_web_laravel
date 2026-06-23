@@ -1,0 +1,36 @@
+.global-image-cropper-modal {
+    z-index: 1000001;
+}
+
+.global-image-cropper-modal + .modal-backdrop,
+.modal-backdrop.global-image-cropper-backdrop {
+    z-index: 1000000;
+}
+
+.global-image-cropper-stage {
+    height: min(65vh, 650px);
+    min-height: 280px;
+    overflow: hidden;
+    background: #111827;
+}
+
+.global-image-cropper-stage img {
+    display: block;
+    max-width: 100%;
+}
+
+.admin-image-cropper-preview {
+    width: min(100%, var(--image-cropper-preview-width, 220px));
+    aspect-ratio: var(--image-cropper-preview-ratio, 1);
+    overflow: hidden;
+    border: 1px solid #d8dee6;
+    border-radius: 0.35rem;
+    background: #f8f9fa;
+}
+
+.admin-image-cropper-preview img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}

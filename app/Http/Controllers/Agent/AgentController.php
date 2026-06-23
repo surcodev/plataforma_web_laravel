@@ -193,13 +193,20 @@ class AgentController extends Controller
 
         if($request->photo){
             $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'photo' => ['image', 'mimes:jpeg,png,jpg,webp', 'max:4096'],
+            ], [
+                'photo.image' => 'El archivo seleccionado no es una imagen válida.',
+                'photo.mimes' => 'La foto de perfil debe estar en formato JPG, PNG o WebP.',
+                'photo.max' => 'La foto de perfil procesada no debe superar los 4 MB.',
             ]);
-            $final_name = 'agent_'.time().'.'.$request->photo->extension();
-            if($agent->photo != '') {
-                unlink(public_path('uploads/'.$agent->photo));
+
+            $final_name = $this->storeAgentProfilePhoto($request->file('photo'));
+            $currentPhoto = public_path('uploads/'.$agent->photo);
+
+            if($agent->photo != '' && $agent->photo !== 'default.png' && file_exists($currentPhoto)) {
+                unlink($currentPhoto);
             }
-            $request->photo->move(public_path('uploads'), $final_name);
+
             $agent->photo = $final_name;
         }
 
@@ -230,6 +237,60 @@ class AgentController extends Controller
         $agent->update();
 
         return redirect()->back()->with('success', 'Perfil actualizado exitosamente');
+    }
+
+    private function storeAgentProfilePhoto(UploadedFile $file): string
+    {
+        $sourceData = file_get_contents($file->getRealPath());
+        $sourceImage = $sourceData !== false ? @imagecreatefromstring($sourceData) : false;
+
+        if ($sourceImage === false) {
+            throw ValidationException::withMessages([
+                'photo' => 'No pudimos leer la foto de perfil. Selecciona otra imagen e inténtalo nuevamente.',
+            ]);
+        }
+
+        $sourceWidth = imagesx($sourceImage);
+        $sourceHeight = imagesy($sourceImage);
+        $cropSize = min($sourceWidth, $sourceHeight);
+        $sourceX = (int) floor(($sourceWidth - $cropSize) / 2);
+        $sourceY = (int) floor(($sourceHeight - $cropSize) / 2);
+        $outputSize = min(800, $cropSize);
+        $outputImage = imagecreatetruecolor($outputSize, $outputSize);
+        $white = imagecolorallocate($outputImage, 255, 255, 255);
+        imagefill($outputImage, 0, 0, $white);
+
+        imagecopyresampled(
+            $outputImage,
+            $sourceImage,
+            0,
+            0,
+            $sourceX,
+            $sourceY,
+            $outputSize,
+            $outputSize,
+            $cropSize,
+            $cropSize
+        );
+
+        $uploadDirectory = public_path('uploads');
+        if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory, 0755, true);
+        }
+
+        $fileName = 'agent_'.now()->format('YmdHis').'_'.Str::lower(Str::random(8)).'.webp';
+        $saved = imagewebp($outputImage, $uploadDirectory.DIRECTORY_SEPARATOR.$fileName, 82);
+
+        imagedestroy($sourceImage);
+        imagedestroy($outputImage);
+
+        if (!$saved) {
+            throw ValidationException::withMessages([
+                'photo' => 'No pudimos guardar la foto de perfil optimizada. Vuelve a seleccionarla y confirma el recorte.',
+            ]);
+        }
+
+        return $fileName;
     }
 
     public function order()
