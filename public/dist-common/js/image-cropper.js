@@ -127,6 +127,7 @@
             this.width = this.numberValue('outputWidth', this.numberValue('width', 800));
             this.height = this.numberValue('outputHeight', this.numberValue('height', 800));
             this.quality = this.numberValue('quality', 0.84);
+            this.fillColor = element.dataset.fillColor || '#ffffff';
             this.maxSize = this.numberValue('maxSize', DEFAULT_MAX_SIZE);
             this.fileName = element.dataset.fileName || 'image.webp';
             this.title = element.dataset.title || 'Recortar imagen';
@@ -237,7 +238,7 @@
                 height: this.height,
                 imageSmoothingEnabled: true,
                 imageSmoothingQuality: 'high',
-                fillColor: '#ffffff',
+                fillColor: this.fillColor,
             });
 
             canvas.toBlob((blob) => {

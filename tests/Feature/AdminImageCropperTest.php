@@ -21,8 +21,18 @@ class AdminImageCropperTest extends TestCase
             ->assertSee('data-image-cropper', false)
             ->assertSee('data-output-width="512"', false)
             ->assertSee('data-output-height="512"', false)
+            ->assertSee('data-fill-color="transparent"', false)
             ->assertSee('--image-cropper-preview-width: 180px;', false)
             ->assertSee('name="logo"', false)
+            ->assertDontSee('x-admin-image-cropper-field', false);
+
+        $this->actingAs($admin, 'admin')
+            ->get(route('admin_setting_favicon_index'))
+            ->assertOk()
+            ->assertSee('data-output-width="512"', false)
+            ->assertSee('data-output-height="512"', false)
+            ->assertSee('data-fill-color="transparent"', false)
+            ->assertSee('name="favicon"', false)
             ->assertDontSee('x-admin-image-cropper-field', false);
 
         $this->actingAs($admin, 'admin')

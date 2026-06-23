@@ -31,6 +31,7 @@
                                     data-output-width="512"
                                     data-output-height="512"
                                     data-quality="0.84"
+                                    data-fill-color="transparent"
                                     data-file-name="favicon.webp"
                                     data-title="Recortar favicon (1:1)">
                                     <label for="admin_favicon_source" class="d-block mb-1">Cambiar favicon</label>
