@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
-                                <input type="file" name="photo">
+                                <input type="file" name="photo" class="form-control">
                             </div>
                         </div>
                     </div>
