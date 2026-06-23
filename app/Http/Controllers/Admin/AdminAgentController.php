@@ -26,7 +26,7 @@ class AdminAgentController extends Controller
         $request->validate([
             'name' => ['required'],
             'email' => ['required','unique:agents,email', 'email'],
-            'photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg,webp','max:2048'],
             'company' => ['required'],
             'designation' => ['required'],
             'password' => ['required'],
@@ -115,7 +115,7 @@ class AdminAgentController extends Controller
 
         if ($request->hasFile('photo')) {
             $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             ]);
             $final_name = 'agent_' . time() . '.' . $request->photo->extension();
             // Eliminar imagen anterior si existe

@@ -130,7 +130,7 @@ class AdminController extends Controller
 
         if($request->photo){
             $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             ]);
             $final_name = 'admin_'.time().'.'.$request->photo->extension();
             if($admin->photo != '') {

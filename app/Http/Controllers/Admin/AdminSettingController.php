@@ -17,7 +17,7 @@ class AdminSettingController extends Controller
     public function logo_update(Request $request)
     {
         $request->validate([
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $setting = Setting::where('id',1)->first();
@@ -41,7 +41,7 @@ class AdminSettingController extends Controller
     public function favicon_update(Request $request)
     {
         $request->validate([
-            'favicon' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'favicon' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $setting = Setting::where('id',1)->first();
@@ -65,7 +65,7 @@ class AdminSettingController extends Controller
     public function banner_update(Request $request)
     {
         $request->validate([
-            'banner' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $setting = Setting::where('id',1)->first();

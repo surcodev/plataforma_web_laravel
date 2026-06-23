@@ -25,7 +25,7 @@ class AdminTestimonialController extends Controller
             'name' => ['required'],
             'designation' => ['required'],
             'comment' => ['required'],
-            'photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg,webp','max:2048'],
         ]);
 
         $final_name = 'testimonial_'.time().'.'.$request->photo->extension();
@@ -59,7 +59,7 @@ class AdminTestimonialController extends Controller
 
         if($request->hasFile('photo')){
             $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             ]);
             $final_name = 'testimonial_'.time().'.'.$request->photo->extension();
             if($testimonial->photo != '') {

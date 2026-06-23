@@ -25,7 +25,7 @@ class AdminLocationController extends Controller
         $request->validate([
             'name' => 'required',
             'slug' => ['required','unique:locations,slug', 'regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/'],
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         $final_name = 'location_'.time().'.'.$request->photo->extension();
@@ -57,7 +57,7 @@ class AdminLocationController extends Controller
 
         if($request->hasFile('photo')){
             $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             ]);
             $final_name = 'location_'.time().'.'.$request->photo->extension();
             if($location->photo != '') {

@@ -25,7 +25,7 @@ class AdminCustomerController extends Controller
         $request->validate([
             'name' => ['required'],
             'email' => ['required','unique:users,email', 'email'],
-            'photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif,svg,webp','max:2048'],
             'password' => ['required'],
             'confirm_password' => ['required','same:password'],
         ]);
@@ -82,7 +82,7 @@ class AdminCustomerController extends Controller
 
         if($request->hasFile('photo')){
             $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             ]);
             $final_name = 'user_'.time().'.'.$request->photo->extension();
             if($user->photo != '') {

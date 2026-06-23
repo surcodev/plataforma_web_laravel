@@ -11,6 +11,7 @@
 
     @include('admin.layouts.style')
     @include('admin.layouts.script')
+    @stack('styles')
 </head>
 
 <body>
@@ -21,6 +22,7 @@
 </div>
 
 @include('admin.layouts.script_footer')
+@stack('scripts')
 
 </body>
 </html>
