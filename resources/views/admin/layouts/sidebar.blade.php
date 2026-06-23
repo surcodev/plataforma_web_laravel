@@ -36,7 +36,7 @@
 
             <li class="{{ Request::is('admin/order/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_order_index') }}"><i class="far fa-file"></i> <span>Pedidos</span></a></li>
 
-            <li class="{{ Request::is('admin/customer/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_customer_index') }}"><i class="far fa-file"></i> <span>Cliente</span></a></li>
+            {{-- <li class="{{ Request::is('admin/customer/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_customer_index') }}"><i class="far fa-file"></i> <span>Cliente</span></a></li> --}}
 
             <li class="{{ Request::is('admin/agent/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_agent_index') }}"><i class="far fa-file"></i> <span>Agente</span></a></li>
 
