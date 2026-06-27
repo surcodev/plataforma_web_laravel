@@ -325,7 +325,7 @@
                             <select class="form-select" id="wa_tipo" required>
                                 <option value="" selected disabled>Selecciona el tipo...</option>
                                 @foreach($types as $type)
-                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                    <option value="{{ $type->name }}">{{ $type->name }}</option>
                                 @endforeach
                             </select>
                         </div>
